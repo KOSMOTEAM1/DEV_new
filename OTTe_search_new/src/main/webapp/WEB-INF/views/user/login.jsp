@@ -27,13 +27,13 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Log in</h3>
-                        <form action="#">
+                        <form action="/user/loginPost" method="post">
                             <div class="input__item">
-                                <input type="text" placeholder="ID(email type)">
+                                <input type="text" name="userid" placeholder="ID(email type)">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="password">
+                                <input type="text" name="userpassword" placeholder="password">
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">Login</button>
@@ -44,7 +44,7 @@
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Don't you Have An Account??</h3>
-                        <a href="signup" class="primary-btn">REGISTER NOW</a>
+                        <a href="register" class="primary-btn">REGISTER NOW</a>
                     </div>
                 </div>
             </div>

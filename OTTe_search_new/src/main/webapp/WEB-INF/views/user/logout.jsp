@@ -9,6 +9,7 @@
 </head>
 <body>
 	<script type="text/javascript">
+	alert("로그아웃 되었습니다.");
 		self.location = "/user/login";
 	</script>
 </body>

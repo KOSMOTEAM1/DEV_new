@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class mainpageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(mainpageController.class);
-	
+//asifhasfifh\
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
