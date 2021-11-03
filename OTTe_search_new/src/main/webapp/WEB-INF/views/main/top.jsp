@@ -1,5 +1,7 @@
 <%@ include file="../include/header.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%-- <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%> --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +59,8 @@
 							</div>
 						</div>
 						<div class="row">
+						
+						<c:forEach var="top" items="${top}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
@@ -71,15 +75,16 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>Active</li>
-											<li>Movie</li>
+											<li>${top.gradeid}</li>
+											<li>${top.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
+											<a href="#">${top.title}</a>
 										</h5>
 									</div>
 								</div>
 							</div>
+						</c:forEach>
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
