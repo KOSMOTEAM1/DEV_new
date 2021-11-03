@@ -60,7 +60,7 @@
 						</div>
 						<div class="row">
 						
-					<c:forEach var="item" items="top">
+					<c:forEach var="top" items="${top}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
@@ -79,7 +79,7 @@
 											<li>${top.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${top.title}</a>
+											<a href="#">${top.contentstitle}</a>
 										</h5>
 									</div>
 								</div>

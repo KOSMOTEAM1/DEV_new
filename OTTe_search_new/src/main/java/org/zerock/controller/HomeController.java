@@ -21,98 +21,60 @@ import org.zerock.service.ContentsService;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/main")
+
+
+@RequestMapping(value = "/")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Inject
 	private ContentsService contentsService;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String gohome(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String gohomepage(Model model) throws Exception {
+		List<ContentsVO> top = contentsService.selectContentsAll();
+	    model.addAttribute("top", top );
 		
 		return "/main/home";
 	}
-	@RequestMapping(value = "/latest", method = RequestMethod.GET)
-	public String golastest(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	
+	@RequestMapping(value = "main/home", method = RequestMethod.GET)
+	public String gohome(Model model) throws Exception {
+		List<ContentsVO> top = contentsService.selectContentsAll();
+	    model.addAttribute("top", top );
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		return "/main/home";
+	}
+	@RequestMapping(value = "main/latest", method = RequestMethod.GET)
+	public String golastest(Model model) {
 		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "/main/latest";
 	}
-	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
-	public String gorecommend(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	@RequestMapping(value = "main/recommend", method = RequestMethod.GET)
+	public String gorecommend(Model model) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "/main/recommend";
 	}
-	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
-	public String gowishlist(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+	@RequestMapping(value = "main/wishlist", method = RequestMethod.GET)
+	public String gowishlist(Model model) {
 		
 		return "/main/wishlist";
 	}
-	@RequestMapping(value = "/korean", method = RequestMethod.GET)
-	public String gokorean(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+	@RequestMapping(value = "main/korean", method = RequestMethod.GET)
+	public String gokorean(Model model) {
 		
 		return "/main/korean";
 	}
-	@RequestMapping(value = "/top", method = RequestMethod.GET)
+	@RequestMapping(value = "main/top", method = RequestMethod.GET)
 	   public String gotop(Model model) throws Exception {
 	    
 	      List<ContentsVO> top = contentsService.selectContentsAll();
 	      model.addAttribute("top", top );
 	            
 	      return"/main/top";
-	   }
+	}
 }
+
+
