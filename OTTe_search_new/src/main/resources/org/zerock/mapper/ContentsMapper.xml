@@ -7,30 +7,13 @@
 	
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 
 		있습니다. -->
-	<select id="selectContentsAll" resultMap="contents">
+	<select id="selectContentsAll" resultType="org.zerock.domain.ContentsVO">
 		<!-- select CONTENTSID,NATIONID,OTTID,GRADEID,CLASSID,CONTENTSTITLE,CONTENTSSUMMARY, 
 			CONTENTSYEARS,CONTENTSSEASON,CONTENTSEPISODE,CONTENTSSCORE,CONTENTSDURATION 
 			from contents_t where CONTENTSID = #{CONTENTSID} -->
 			
 			
 			<![CDATA[SELECT * FROM(                    
-			SELECT * FROM contents_t ORDER BY contentsscore DESC)WHERE ROWNUM<5]]>
-			
+			SELECT * FROM contents_t ORDER BY contentsscore DESC)]]>
 	</select>
-	
-	<resultMap type="org.zerock.domain.ContentsVO" id="contents">
-        		<result property="contentsid" column="contentsid"/>
-        		<result property="nationid"  column="nationid"/>
-        		<result property="ottid"  column="ottid"/>
-        		<result property="gradeid"  column="gradeid"/>
-        		<result property="classid"  column="contnetsclassid"/>
-        		<result property="title"  column="contnetstitle"/>
-        		<result property="summary"  column="contnetssummary"/>
-        		<result property="years"  column="contnetsyears"/>
-        		<result property="season"  column="contnetsseason"/>
-        		<result property="episode"  column="contnetsepisode"/>
-        		<result property="years"  column="contnetsscore"/>
-        		<result property="duration"  column="contnetsduration"/>     		
-        		
-	</resultMap>
 </mapper>
