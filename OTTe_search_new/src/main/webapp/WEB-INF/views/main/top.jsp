@@ -77,7 +77,7 @@
 											<li>${top.gradeid}</li>
 											<li>${top.classid}</li>
 										</ul>
-										<h5>
+										<h5> 
 											<a href="#">${top.contentstitle}</a>
 										</h5>
 									</div>
