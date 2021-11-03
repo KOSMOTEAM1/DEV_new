@@ -39,6 +39,7 @@
                     <div class="header__right">
                         <a href="/search" class="search-switch"><span class="icon_search"></span></a>
                         <a href="../user/login"><span class="icon_profile"></span></a>
+                        <a href="../user/logout"><span class="icon_close_alt"></span></a>
                     </div>
                 </div>
             </div>
