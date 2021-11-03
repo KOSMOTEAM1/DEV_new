@@ -64,6 +64,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
 										data-setbg="../../../../resources/img/trending/trend-1.jpg">
+										
 
 										<div class="comment">
 											<i class="fa fa-comments"></i> 11
