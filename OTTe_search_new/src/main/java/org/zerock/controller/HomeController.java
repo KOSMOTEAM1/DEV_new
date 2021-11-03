@@ -108,13 +108,11 @@ public class HomeController {
 		return "/main/korean";
 	}
 	@RequestMapping(value = "/top", method = RequestMethod.GET)
-	public String gotop(Model model) throws Exception {
- 	
-		List<ContentsVO> top = contentsService.selectContentsAll();
-		logger.info("// top.toString()=" + top.toString());
-		model.addAttribute("top", top);
-		logger.info(model.toString());
-		
-		return"redirect:/main/top";
-	}
+	   public String gotop(Model model) throws Exception {
+	    
+	      List<ContentsVO> top = contentsService.selectContentsAll();
+	      model.addAttribute("top", top );
+	            
+	      return"/main/top";
+	   }
 }

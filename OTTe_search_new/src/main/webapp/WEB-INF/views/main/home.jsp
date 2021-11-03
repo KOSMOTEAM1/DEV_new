@@ -53,7 +53,7 @@
 							</div>
 							<div class="col-lg-3 col-md-4 col-sm-4">
 								<div class="btn__all">
-									<a href="./top" class="primary-btn">View All <span
+									<a href="./main/top" class="primary-btn">View All <span
 										class="arrow_right"></span></a>
 								</div>
 							</div>
