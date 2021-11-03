@@ -48,7 +48,7 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
-									<h4>한국 콘텐츠</h4>
+									<h4>최신 콘텐츠</h4>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-4 col-sm-4">

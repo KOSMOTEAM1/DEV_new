@@ -20,8 +20,7 @@
 	</select>
 	<select id="selectLatestOrder" resultType="org.zerock.domain.ContentsVO">
 			
-			<![CDATA[SELECT * FROM(                    
-			SELECT * FROM contents_t ORDER BY contentsscore DESC)]]>
+			<![CDATA[SELECT * FROM CONTENTS_T ORDER BY CONTENTSSTART DESC]]>
 			
 	</select>
 </mapper>
