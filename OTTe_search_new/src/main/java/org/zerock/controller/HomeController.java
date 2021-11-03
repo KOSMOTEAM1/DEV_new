@@ -22,59 +22,76 @@ import org.zerock.service.ContentsService;
  */
 @Controller
 
-
 @RequestMapping(value = "/")
 public class HomeController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Inject
 	private ContentsService contentsService;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String gohomepage(Model model) throws Exception {
-		List<ContentsVO> top = contentsService.selectContentsAll();
-	    model.addAttribute("top", top );
+		List<ContentsVO> top = contentsService.selectTopOrder();
+		model.addAttribute("top", top);
+
+		List<ContentsVO> korean = contentsService.selectKoreanOrder();
+		model.addAttribute("korean", korean );
+		 
+		List<ContentsVO> latest = contentsService.selectLatestOrder();
+		model.addAttribute("latest", latest );
 		
 		return "/main/home";
 	}
-	
+
 	@RequestMapping(value = "main/home", method = RequestMethod.GET)
 	public String gohome(Model model) throws Exception {
-		List<ContentsVO> top = contentsService.selectContentsAll();
-	    model.addAttribute("top", top );
-		
+		List<ContentsVO> top = contentsService.selectTopOrder();
+		model.addAttribute("top", top);
+
+		List<ContentsVO> korean = contentsService.selectKoreanOrder();
+		model.addAttribute("korean", korean );
+		 
+		List<ContentsVO> latest = contentsService.selectLatestOrder();
+		model.addAttribute("latest", latest );
+
 		return "/main/home";
 	}
+
 	@RequestMapping(value = "main/latest", method = RequestMethod.GET)
-	public String golastest(Model model) {
-		
-		
+	public String golastest(Model model) throws Exception {
+		List<ContentsVO> latest = contentsService.selectLatestOrder();
+		model.addAttribute("latest", latest);
+
 		return "/main/latest";
 	}
+
 	@RequestMapping(value = "main/recommend", method = RequestMethod.GET)
 	public String gorecommend(Model model) {
-		
-		
+
 		return "/main/recommend";
 	}
+
 	@RequestMapping(value = "main/wishlist", method = RequestMethod.GET)
 	public String gowishlist(Model model) {
-		
+
 		return "/main/wishlist";
 	}
+
 	@RequestMapping(value = "main/korean", method = RequestMethod.GET)
-	public String gokorean(Model model) {
-		
+	public String gokorean(Model model) throws Exception {
+		List<ContentsVO> korean = contentsService.selectKoreanOrder();
+		model.addAttribute("korean", korean);
+
 		return "/main/korean";
 	}
+
 	@RequestMapping(value = "main/top", method = RequestMethod.GET)
-	   public String gotop(Model model) throws Exception {
-	    
-	      List<ContentsVO> top = contentsService.selectContentsAll();
-	      model.addAttribute("top", top );
-	            
-	      return"/main/top";
+	public String gotop(Model model) throws Exception {
+
+		List<ContentsVO> top = contentsService.selectTopOrder();
+		model.addAttribute("top", top);
+
+		return "/main/top";
 	}
 }
-
-

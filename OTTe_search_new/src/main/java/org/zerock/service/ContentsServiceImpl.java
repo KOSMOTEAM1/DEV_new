@@ -27,11 +27,21 @@ public class ContentsServiceImpl implements ContentsService {
 	@Autowired
 	private ContentsMapper ContentsMapper;
 
-	@Override
+
 	@Transactional
-	public List<ContentsVO> selectContentsAll() throws Exception {
-		return ContentsMapper.selectContentsAll();
-	
+	@Override
+	public List<ContentsVO> selectTopOrder() throws Exception {
+		return ContentsMapper.selectTopOrder();
+	}
+
+	@Override
+	public List<ContentsVO> selectKoreanOrder() throws Exception {
+		return ContentsMapper.selectKoreanOrder();
+	}
+
+	@Override
+	public List<ContentsVO> selectLatestOrder() throws Exception {
+		return ContentsMapper.selectLatestOrder();
 	}
 	
 }
