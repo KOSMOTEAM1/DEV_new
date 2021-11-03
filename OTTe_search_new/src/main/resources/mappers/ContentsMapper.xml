@@ -5,12 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.zerock.mapper.ContentsMapper">
 
-	<select id="read" resultType="org.zerock.domain.ContentsVO">
+	<select id="selectContentsAll" resultType="org.zerock.domain.ContentsVO">
 		select
 			CONTENTSID,NATIONID,OTTID,GRADEID,CLASSID,CONTENTSTITLE,CONTENTSSUMMARY,
 			CONTENTSYEARS,CONTENTSSEASON,CONTENTSEPISODE,CONTENTSSCORE,CONTENTSDURATION
 		from
-			contents_t;
-		where CONTENTSID = #{CONTENTSID}
+			contents_t
+		where CONTENTSID = #{CONTENTSID};
 	</select>
 </mapper>
