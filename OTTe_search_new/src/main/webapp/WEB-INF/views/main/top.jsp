@@ -79,7 +79,7 @@
 											<li>${top.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${top.title}</a>
+											<a href="#">${top.contentstitle}</a>
 										</h5>
 									</div>
 								</div>

@@ -11,13 +11,13 @@ public @Data class ContentsVO {
 	private Integer ottid;
 	private Integer gradeid;
 	private Integer classid;
-	private String title;
-	private String summary;
-	private Date years;
-	private Integer season;
-	private Integer episode;
-	private Integer score;
-	private Integer duration;
+	private String contentstitle;
+	private String contentssummary;
+	private Date contentsyears;
+	private Integer contentsseason;
+	private Integer contentsepisode;
+	private Integer contentsscore;
+	private Integer contentsduration;
 	
 	/*
 	 * public Integer getContentsid() { return contentsid; } public void
