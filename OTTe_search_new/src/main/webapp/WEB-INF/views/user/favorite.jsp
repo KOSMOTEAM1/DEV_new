@@ -1,5 +1,5 @@
 <%@ include file="../include/header.jspf" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg" data-setbg="../resources/img/normal-breadcrumb.jpg">
@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text">
-                        <h2>Favorite Contents</h2>
-                        <p>Select your favorite contents.</p>
+                        <h2>선호하는 컨텐츠</h2>
+                        <p>선호하는 컨텐츠를 선택해주세요.</p>
                     </div>
                 </div>
             </div>
@@ -19,44 +19,44 @@
     <!-- Signup Section Begin -->
     <section class="signup spad">
         <div class="blog__details__title">
-          <h2>Select favorite genre </h2>
+          <h2>좋아하는 장르를 선택해주세요. </h2>
           <h4> <font color="white">
-          <input type="checkbox">&nbsp&nbsp action</br>
-          <input type="checkbox">&nbsp&nbsp romance</br>  
-          <input type="checkbox">&nbsp&nbsp comedy</br>
-          <input type="checkbox">&nbsp&nbsp drama</br>
-          <input type="checkbox">&nbsp&nbsp crime</br>
-          <input type="checkbox">&nbsp&nbsp fantasy</br>
-          <input type="checkbox">&nbsp&nbsp documentary</br>
-          <input type="checkbox">&nbsp&nbsp animation</br>
+          <input type="checkbox">&nbsp&nbsp 액션</br>
+          <input type="checkbox">&nbsp&nbsp 로맨스</br>  
+          <input type="checkbox">&nbsp&nbsp 코미디</br>
+          <input type="checkbox">&nbsp&nbsp 드라마</br>
+          <input type="checkbox">&nbsp&nbsp 범죄</br>
+          <input type="checkbox">&nbsp&nbsp 판타지</br>
+          <input type="checkbox">&nbsp&nbsp 다큐멘터리</br>
+          <input type="checkbox">&nbsp&nbsp 애니메이션</br>
           </font></h4>
          </div>
     
         <div class="blog__details__title">
-          <h2>Select favorite contents </h2>
+          <h2>가장 좋아하는 분류를 선택해주세요. </h2>
            <h4> <font color="white">
-          <input type="checkbox">&nbsp&nbsp Movie</br>
-          <input type="checkbox">&nbsp&nbsp Drama</br>  
-          <input type="checkbox">&nbsp&nbsp TV-Series</br>
-          <input type="checkbox">&nbsp&nbsp Documentary</br>
-          <input type="checkbox">&nbsp&nbsp Animation</br>
-          <input type="checkbox">&nbsp&nbsp Kids</br>
+          <input type="checkbox">&nbsp&nbsp 영화</br>
+          <input type="checkbox">&nbsp&nbsp 드라마</br>  
+          <input type="checkbox">&nbsp&nbsp 티비 시리즈</br>
+          <input type="checkbox">&nbsp&nbsp 다큐멘터리</br>
+          <input type="checkbox">&nbsp&nbsp 애니메이션</br>
+          <input type="checkbox">&nbsp&nbsp 키즈</br>
             </font></h4>
          </div>
           <div class="blog__details__title">
-          <h2>Select your favorite director </h2>
+          <h2>좋아하는 감독을 입력해주세요. </h2>
            <h5> <font color="white">
           <input type="text" placeholder="director name. using comma(,)" size="50">
             </font></h5>
          </div>
          <div class="blog__details__title">
-          <h2>Select your favorite actor </h2>
+          <h2>좋아하는 배우를 입력해주세요. </h2>
            <h5> <font color="white">
           <input type="text" placeholder="actor name. using comma(,)" size="50">
             </font></h5>
             </br>
             </br>
-                <button type="submit" class="site-btn">Register complete</button>
+                <button type="submit" class="site-btn">가입 완료하기!</button>
          </div>
          
     </section>
