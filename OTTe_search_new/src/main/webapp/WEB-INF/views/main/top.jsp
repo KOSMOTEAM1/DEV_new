@@ -59,7 +59,6 @@
 							</div>
 						</div>
 						<div class="row">
-						
 						<c:forEach var="top" items="${top}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
@@ -85,78 +84,7 @@
 								</div>
 							</div>
 						</c:forEach>
-							<div class="col-lg-3 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/trending/trend-2.jpg">
-
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo
-												Eien</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/trending/trend-3.jpg">
-
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Shingeki no Kyojin Season 3 Part 2</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/trending/trend-4.jpg">
-
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Fullmetal Alchemist: Brotherhood</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+							
 					<div class="korean_contents">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
