@@ -45,7 +45,7 @@
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>계정이 아직 없으신가요?</h3>
-                        <a href="register" class="primary-btn">지금 가입하기</a>
+                        <a href="../member/register" class="primary-btn">지금 가입하기</a>
                     </div>
                 </div>
             </div>
