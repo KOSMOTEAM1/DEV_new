@@ -64,7 +64,7 @@
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/trending/trend-1.jpg">
+										data-setbg="../../../../resources/img/poster/${korean.imgname}.jpg">
 
 										<div class="comment">
 											<i class="fa fa-comments"></i> 11
