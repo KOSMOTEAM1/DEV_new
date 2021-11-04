@@ -18,6 +18,7 @@ public @Data class ContentsVO {
 	private Integer contentsepisode;
 	private Integer contentsscore;
 	private Integer contentsduration;
+	private String imgname;
 	
 	/*
 	 * public Integer getContentsid() { return contentsid; } public void

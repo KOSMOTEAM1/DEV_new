@@ -13,6 +13,11 @@
 			SELECT * FROM contents_t ORDER BY contentsscore DESC)]]>
 			
 	</select>
+	
+	<!--select id="selectTopOrder" resultType="org.zerock.domain.ContentsVO">
+			<![CDATA[SELECT * FROM IMG I, CONTENTS_T C WHERE I.CONTENTS_ID = C.CONTENTS_ID;]]>
+	</select> -->
+	
 	<select id="selectKoreanOrder" resultType="org.zerock.domain.ContentsVO">
 			
 			<![CDATA[SELECT * FROM CONTENTS_T WHERE NATIONCODE='KR' ORDER BY CONTENTSSCORE DESC]]>
