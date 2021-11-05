@@ -9,28 +9,35 @@
 		있습니다. -->
 	<select id="selectTopOrder"
 		resultType="org.zerock.domain.ContentsVO">
-			
-			<![CDATA[SELECT * FROM(                    
-			SELECT * FROM contents_t ORDER BY contentsscore DESC)]]>
+			<![CDATA[select c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, c.imgname
+from contents_t c, ott o, nation_t n, grade_t g, class_t cl
+where c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid
+order by c.CONTENTSSCORE DESC]]>
 
 	</select>
 
 	<select id="selectKoreanOrder"
 		resultType="org.zerock.domain.ContentsVO">
-			
-			<![CDATA[SELECT * FROM CONTENTS_T WHERE NATIONCODE='KR' ORDER BY CONTENTSSCORE DESC]]>
+			<![CDATA[select c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, c.imgname
+from contents_t c, ott o, nation_t n, grade_t g, class_t cl
+where c.NATIONCODE='KR'and c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid
+order by c.contentsid]]>
 
 	</select>
 
 	<select id="selectLatestOrder"
 		resultType="org.zerock.domain.ContentsVO">
-			
-			<![CDATA[SELECT * FROM CONTENTS_T ORDER BY CONTENTSSTART DESC]]>
-
+			<![CDATA[select c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, c.imgname
+from contents_t c, ott o, nation_t n, grade_t g, class_t cl
+where c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid
+ORDER BY CONTENTSSTART DESC]]>
 	</select>
 
 	<select id="view" resultType="org.zerock.domain.ContentsVO">
-		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSID = #{CONTENTSID}]]>
+		<![CDATA[select c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, c.imgname
+from contents_t c, ott o, nation_t n, grade_t g, class_t cl
+where c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and CONTENTSID = #{CONTENTSID}
+order by c.contentsid]]>
 	</select>
 
 	<select id="selectSearch"

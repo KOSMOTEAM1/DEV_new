@@ -75,8 +75,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${top.gradeid}</li>
-											<li>${top.classid}</li>
+											<li>${top.gradename}</li>
+											<li>${top.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${top.contentsid}">${top.contentstitle}</a>
@@ -122,8 +122,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${korean.gradeid}</li>
-											<li>${korean.classid}</li>
+											<li>${korean.gradename}</li>
+											<li>${korean.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${korean.contentsid}">${korean.contentstitle}</a>
@@ -167,8 +167,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${latest.gradeid }</li>
-											<li>${latest.classid }</li>
+											<li>${latest.gradename }</li>
+											<li>${latest.classname }</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${latest.contentsid}">${latest.contentstitle }</a>

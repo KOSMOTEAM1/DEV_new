@@ -74,8 +74,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${latest.gradeid}</li>
-											<li>${latest.classid}</li>
+											<li>${latest.gradename}</li>
+											<li>${latest.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${latest.contentsid}">${latest.contentstitle}</a>

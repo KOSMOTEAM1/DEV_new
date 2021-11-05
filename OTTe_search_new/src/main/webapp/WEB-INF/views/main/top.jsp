@@ -75,8 +75,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${top.gradeid}</li>
-											<li>${top.classid}</li>
+											<li>${top.gradename}</li>
+											<li>${top.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${top.contentsid}">

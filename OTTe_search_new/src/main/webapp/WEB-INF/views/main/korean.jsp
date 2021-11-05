@@ -75,8 +75,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${korean.gradeid}</li>
-											<li>${korean.classid}</li>
+											<li>${korean.gradename}</li>
+											<li>${korean.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${korean.contentsid}">${korean.contentstitle}</a>

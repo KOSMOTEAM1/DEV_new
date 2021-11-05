@@ -103,11 +103,11 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
-                                            <li><span>Type: </span> ${view.classid}</li>
+                                            <li><span>Type: </span> ${view.classname}</li>
                                             <li><span>Release Date: </span> ${view.contentsstart}</li>
-                                            <li><span>Genre: </span> 추가예정</li>
-                                            <li><span>Nation: </span> ${view.nationcode}</li>
-                                            <li><span>서비스중인 OTT: </span> ${view.ottid}</li>
+                                            <li><span>Genre: </span> ${view.classname}</li>
+                                            <%-- <li><span>Nation: </span> ${view.nationcode}</li> --%>
+                                            <li><span>서비스중인 OTT: </span> ${view.ottname}</li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-8">

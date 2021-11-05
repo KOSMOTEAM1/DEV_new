@@ -7,13 +7,13 @@ import lombok.Data;
 public @Data class ContentsVO {
 
 	private Integer contentsid;
-	private Integer nationid;
-	private Integer ottid;
-	private Integer gradeid;
-	private Integer classid;
+	private String nationname;
+	private String ottname;
+	private String gradename;
+	private String classname;
 	private String contentstitle;
 	private String contentssummary;
-	private Date contentsyears;
+	private Date contentsstart;
 	private Integer contentsseason;
 	private Integer contentsepisode;
 	private Integer contentsscore;
