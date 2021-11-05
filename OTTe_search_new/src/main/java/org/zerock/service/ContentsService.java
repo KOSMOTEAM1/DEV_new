@@ -3,7 +3,7 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.ContentsVO;
-import org.zerock.domain.Criteria;
+import org.zerock.domain.SearchCriteria;
 
 
 public interface ContentsService {
@@ -11,5 +11,5 @@ public interface ContentsService {
 	List<ContentsVO> selectTopOrder()throws Exception;
 	List<ContentsVO> selectKoreanOrder()throws Exception;
 	List<ContentsVO> selectLatestOrder()throws Exception;
-	List<ContentsVO> selectSearch(Criteria cri)throws Exception;
+	List<ContentsVO> selectSearch(SearchCriteria cri)throws Exception;
 }

@@ -68,7 +68,7 @@
 						"click",
 						function(event) {
 
-							self.location = "search/result"
+							self.location = "/search/result?"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&keyword=" + $('#search-input').val();
 

@@ -29,4 +29,8 @@
 	<select id="view" resultType="org.zerock.domain.ContentsVO">
 		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSID = #{CONTENTSID}]]>
 	</select>
+	
+		<select id="selectSearch" resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSTITLE = #{keyword}]]>
+	</select>
 </mapper>

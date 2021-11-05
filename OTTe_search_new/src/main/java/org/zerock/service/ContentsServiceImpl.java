@@ -2,16 +2,11 @@ package org.zerock.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.domain.BoardVO;
 import org.zerock.domain.ContentsVO;
-import org.zerock.domain.Criteria;
+import org.zerock.domain.SearchCriteria;
 import org.zerock.mapper.ContentsMapper;
 
 @Service
@@ -51,7 +46,7 @@ public class ContentsServiceImpl implements ContentsService {
 	}
 	
 	@Override
-	public List<ContentsVO> selectSearch(Criteria cri) throws Exception {
+	public List<ContentsVO> selectSearch(SearchCriteria cri) throws Exception {
 		return ContentsMapper.selectSearch(cri);
 	}
 }

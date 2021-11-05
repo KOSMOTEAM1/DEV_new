@@ -14,34 +14,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
-import org.zerock.service.BoardService;
 import org.zerock.service.ContentsService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/search/result/*")
-//@RequestMapping(value = "/search")
+@RequestMapping("/search/*")
 public class SearchController {
-	
-	  private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
-	
-		@Inject
-		private ContentsService contentsService;
-	
-	  @RequestMapping(value = "/list", method = RequestMethod.GET)
-	  public void S(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-	    logger.info(cri.toString());
+	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
-	    // model.addAttribute("list", service.listCriteria(cri));
-	    model.addAttribute("list", contentsService.selectSearch(cri));
-
-	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
-
-	    model.addAttribute("pageMaker", pageMaker);
-	  }
+	@Inject
+	private ContentsService contentsService;
 	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String SearchGet(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+		return "/search/searchform";
+	}
+
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
+	public String SearchPost(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+
+		logger.info("/* cri="+cri.toString());
+
+		// model.addAttribute("list", service.listCriteria(cri));
+		model.addAttribute("list", contentsService.selectSearch(cri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "/search/result";
+	}
+
 }
