@@ -31,6 +31,6 @@
 	</select>
 	
 		<select id="selectSearch" resultType="org.zerock.domain.ContentsVO">
-		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSTITLE = #{keyword}]]>
+		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSTITLE LIKE '%'||#{keyword}||'%']]>
 	</select>
 </mapper>

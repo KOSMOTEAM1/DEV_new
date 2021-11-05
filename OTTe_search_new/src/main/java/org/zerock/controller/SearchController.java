@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.domain.ContentsVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
@@ -38,9 +40,11 @@ public class SearchController {
 	public String SearchPost(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
 		logger.info("/* cri="+cri.toString());
+		List<ContentsVO> search = contentsService.selectSearch(cri);
+		model.addAttribute("search", search);
 
 		// model.addAttribute("list", service.listCriteria(cri));
-		model.addAttribute("list", contentsService.selectSearch(cri));
+		//model.addAttribute("list", contentsService.selectSearch(cri));
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
