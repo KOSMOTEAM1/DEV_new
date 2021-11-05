@@ -48,10 +48,6 @@
 </header>
 <!-- Header End -->
 
-
-
-
-
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
@@ -79,38 +75,94 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-
 <script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				
-				location.href = "/login";
-						    
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#useremail").val()==""){
-					alert("이메일 입력해주세요.");
-					$("#useremail").focus();
-					return false;
-				}
-				if($("#userid").val()==""){
-					alert("이름을 입력해주세요.");
-					$("#userid").focus();
-					return false;
-				}
-				if($("#userpassword").val()==""){
-					alert("암호를 입력해주세요.");
-					$("#userpassword").focus();
-					return false;
-				}else alert("별사탕 생산 완료!");										
-			});
-			
-				
-			
+	$(document).ready(function() {
+		// 취소
+		$(".cencle").on("click", function() {
+			location.href = "/";
 		})
-	</script>
+
+		$("#submit").on("click", function() {
+			if ($("#useremail").val() == "") {
+				alert("이메일을 입력해주세요.");
+				$("#useremail").focus();
+				return false;
+			}
+			if ($("#userid").val() == "") {
+				alert("아이디를 입력해주세요.");
+				$("#userid").focus();
+				return false;
+			}
+			if ($("#userpassword").val() == "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#userpassword").focus();
+				return false;
+			}
+			var idChkVal = $("#idChk").val();
+			if (idChkVal == "N") {
+				alert("중복확인 버튼을 눌러주세요.");
+			} else if (idChkVal == "Y") {
+				$("#regForm").submit();
+			}
+		});
+	})
+	function fn_emailChk() {
+		$.ajax({
+			url : "/member/emailChk",
+			type : "post",
+			dataType : "json",
+			data : {
+				"useremail" : $("#useremail").val()
+			},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 이메일입니다.");
+				} else if (data == 0) {
+					$("#emailChk").attr("value", "Y");
+					alert("사용가능한 이메일입니다.");
+				}
+			}
+		})
+	}
+
+	function fn_idChk() {
+		$.ajax({
+			url : "/member/idChk",
+			type : "post",
+			dataType : "json",
+			data : {
+				"userid" : $("#userid").val()
+			},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 아이디입니다.");
+				} else if (data == 0) {
+					$("#idChk").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
+				}
+			}
+		})
+	}
+	$(function() {
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		$("input").keyup(function() {
+			var userpassword = $("#userpassword").val();
+			var Confirmpassword = $("#Confirmpassword").val();
+			if (userpassword != "" || Confirmpassword != "") {
+				if (userpassword == Confirmpassword) {
+					$("#alert-success").show();
+					$("#alert-danger").hide();
+					$("#submit").removeAttr("disabled");
+				} else {
+					$("#alert-success").hide();
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", "disabled");
+				}
+			}
+		});
+	});
+</script>
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -140,30 +192,37 @@
 				<div class="col-lg-6">
 					<div class="login__form">
 						<h3>Register</h3>
-						<form action="/member/register" method="post">
-							<!--  id="regForm" -->
+						<form id="regForm" action="/member/register" method="post">							
 							<div class="input__item">
 								<input type="email" id="useremail" name="useremail"
 									placeholder="ID(Email type)"> <span class="icon_mail"></span>
-								<!--    <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>      -->
+								<button class="emailChk" type="button" id="emailChk"
+									onclick="fn_emailChk();" value="N">중복확인</button>
 							</div>
 							<div class="input__item">
 								<input type="text" id="userid" name="userid"
 									placeholder="userid"> <span class="icon_profile"></span>
-							<!-- 	<button class="idChk" type="button" id="idChk"
-									onclick="fn_idChk();" value="N">중복확인</button> -->
+								<button class="idChk" type="button" id="idChk"
+									onclick="fn_idChk();" value="N">중복확인</button>
 							</div>
 							<div class="input__item">
 								<input type="password" id="userpassword" name="userpassword"
 									placeholder="Password"> <span class="icon_lock"></span>
 							</div>
-							<!-- <div class="input__item">
-								<input type="password" placeholder="Confirm password"> <span
-									class="icon_lock"></span>
-							</div> -->
-							<button type="submit" id="submit" class="site-btn">Register</button>
+							<div class="input__item">
+								<input type="password" id="Confirmpassword"
+									name="Confirmpassword" placeholder="Confirm password">
+								<span class="icon_lock"></span>
+								<div class="alert alert-success" id="alert-success">비밀번호가
+									일치합니다.</div>
+								<div class="alert alert-danger" id="alert-danger">비밀번호가
+									일치하지 않습니다.</div>
+							</div>
 						</form>
-						<!--   <h5>Already user? <a href="#">Login now</a></h5> -->
+						<div class="form-group has-feedback">
+							<button type="button" id="submit" class="site-btn">Register</button>
+						</div>
+
 					</div>
 				</div>
 
@@ -173,7 +232,7 @@
 
 						<br> <br> <br> <br> <br> <br>
 						<h3>Already user?</h3>
-						<a href="./login.html"><button type="submit" class="site-btn">Login
+						<a href="../user/login"><button type="submit" class="site-btn">Login
 								now!</button></a>
 
 					</div>

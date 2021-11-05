@@ -68,8 +68,8 @@
 		<!-- <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property> -->
 	</bean>
 
- 
- 	<!-- user팀 추가  -->
+
+	<!-- user팀 추가 -->
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
@@ -78,13 +78,11 @@
 	</bean>
 	<!-- user팀 추가 end -->
 
-
-
 	<mybatis-spring:scan
 		base-package="org.zerock.mapper" />
 
 	<context:component-scan
-		base-package="org.zerock.sample"></context:component-scan>
+		base-package="org.zerock.sample"></context:component-scan>	
 	<context:component-scan
 		base-package="org.zerock.service"></context:component-scan>
 

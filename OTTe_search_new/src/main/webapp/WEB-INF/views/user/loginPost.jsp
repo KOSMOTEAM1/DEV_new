@@ -10,6 +10,7 @@
 <body>
 	<script type="text/javascript">
 		self.location = "/user/login";
+		
 	</script>
 </body>
 </html>
