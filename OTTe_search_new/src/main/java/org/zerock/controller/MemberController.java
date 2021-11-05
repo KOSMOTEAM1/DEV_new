@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.MemberVO;
 import org.zerock.service.MemberService;
 
@@ -105,17 +106,17 @@ public class MemberController {
 	 * @RequestMapping(value="/memberDeleteView", method = RequestMethod.GET) public
 	 * String memberDeleteView() throws Exception{ return "member/memberDeleteView";
 	 * }
-	 * 
-	 * // 회원 탈퇴 post
-	 * 
-	 * @RequestMapping(value="/memberDelete", method = RequestMethod.POST) public
-	 * String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes
-	 * rttr) throws Exception{
-	 * 
-	 * service.memberDelete(vo); session.invalidate();
-	 * 
-	 * return "redirect:/"; }
-	 */
+	 */ 
+	  // 회원 탈퇴 post
+	  
+	  @RequestMapping(value="/memberDelete", method = RequestMethod.POST) public
+	  String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes
+	  rttr) throws Exception{
+	  
+	  service.memberDelete(vo); session.invalidate();
+	  
+	  return "user/login"; }
+	 
 	// 패스워드 체크
 	@ResponseBody
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
