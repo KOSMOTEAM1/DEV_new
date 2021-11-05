@@ -79,7 +79,7 @@
 											<li>${top.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${top.contentstitle}</a>
+											<a href="/contents/view?contentsid=${top.contentsid}">${top.contentstitle}</a>
 										</h5>
 									</div>
 								</div>
@@ -126,7 +126,7 @@
 											<li>${korean.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${korean.contentstitle}</a>
+											<a href="/contents/view?contentsid=${korean.contentsid}">${korean.contentstitle}</a>
 										</h5>
 									</div>
 								</div>
@@ -171,7 +171,7 @@
 											<li>${latest.classid }</li>
 										</ul>
 										<h5>
-											<a href="#">${latest.contentstitle }</a>
+											<a href="/contents/view?contentsid=${latest.contentsid}">${latest.contentstitle }</a>
 										</h5>
 									</div>
 								</div>

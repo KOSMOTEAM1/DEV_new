@@ -78,7 +78,7 @@
 											<li>${latest.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${latest.contentstitle}</a>
+											<a href="/contents/view?contentsid=${latest.contentsid}">${latest.contentstitle}</a>
 										</h5>
 									</div>
 								</div>

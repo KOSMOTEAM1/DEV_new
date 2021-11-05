@@ -79,7 +79,7 @@
 											<li>${korean.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${korean.contentstitle}</a>
+											<a href="/contents/view?contentsid=${korean.contentsid}">${korean.contentstitle}</a>
 										</h5>
 									</div>
 								</div>

@@ -67,7 +67,7 @@
 			<div class="col-lg-12 text-center">
 				<div class="card-body">
 					<div class="product__item__pic"
-						data-setbg="../../../../resources/img/trending/${view.imgname}.jpg">
+						data-setbg="../../../../resources/img/poster/${view.imgname}.jpg">
 					</div>
 					<div class="normal__breadcrumb__text">
 						<h2>${view.contentstitle}</h2>
