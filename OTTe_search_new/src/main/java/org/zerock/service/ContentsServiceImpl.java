@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.ContentsVO;
+import org.zerock.domain.Criteria;
 import org.zerock.mapper.ContentsMapper;
 
 @Service
@@ -47,5 +48,10 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public ContentsVO view(Integer contentsid) throws Exception {
 		return ContentsMapper.view(contentsid);
+	}
+	
+	@Override
+	public List<ContentsVO> selectSearch(Criteria cri) throws Exception {
+		return ContentsMapper.selectSearch(cri);
 	}
 }
