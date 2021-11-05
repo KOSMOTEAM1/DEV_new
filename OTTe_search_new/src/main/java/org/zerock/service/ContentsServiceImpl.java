@@ -43,5 +43,9 @@ public class ContentsServiceImpl implements ContentsService {
 	public List<ContentsVO> selectLatestOrder() throws Exception {
 		return ContentsMapper.selectLatestOrder();
 	}
-	
+
+	@Override
+	public ContentsVO view(Integer contentsid) throws Exception {
+		return ContentsMapper.view(contentsid);
+	}
 }

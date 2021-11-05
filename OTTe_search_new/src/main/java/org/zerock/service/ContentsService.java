@@ -6,7 +6,7 @@ import org.zerock.domain.ContentsVO;
 
 
 public interface ContentsService {
-	//public ContentsVO read(Integer contents_id) throws Exception;
+	public ContentsVO view(Integer contentsid) throws Exception;
 	List<ContentsVO> selectTopOrder()throws Exception;
 	List<ContentsVO> selectKoreanOrder()throws Exception;
 	List<ContentsVO> selectLatestOrder()throws Exception;

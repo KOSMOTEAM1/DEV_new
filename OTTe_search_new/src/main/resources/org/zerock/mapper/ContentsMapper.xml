@@ -14,18 +14,19 @@
 			
 	</select>
 	
-	<!--select id="selectTopOrder" resultType="org.zerock.domain.ContentsVO">
-			<![CDATA[SELECT * FROM IMG I, CONTENTS_T C WHERE I.CONTENTS_ID = C.CONTENTS_ID;]]>
-	</select> -->
-	
 	<select id="selectKoreanOrder" resultType="org.zerock.domain.ContentsVO">
 			
 			<![CDATA[SELECT * FROM CONTENTS_T WHERE NATIONCODE='KR' ORDER BY CONTENTSSCORE DESC]]>
 			
 	</select>
+	
 	<select id="selectLatestOrder" resultType="org.zerock.domain.ContentsVO">
 			
 			<![CDATA[SELECT * FROM CONTENTS_T ORDER BY CONTENTSSTART DESC]]>
 			
+	</select>
+	
+	<select id="view" resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSID = #{CONTENTSID}]]>
 	</select>
 </mapper>

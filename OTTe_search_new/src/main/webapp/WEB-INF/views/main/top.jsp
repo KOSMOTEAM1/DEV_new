@@ -79,13 +79,13 @@
 											<li>${top.classid}</li>
 										</ul>
 										<h5>
-											<a href="#">${top.contentstitle}</a>
+											<a href="/contents/view?contentsid=${top.contentsid}">
+										${top.contentstitle}</a>
 										</h5>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-							
 						</div>
 					</div>
 				</div>

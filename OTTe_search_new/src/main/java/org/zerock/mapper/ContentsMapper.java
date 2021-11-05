@@ -8,4 +8,5 @@ public interface ContentsMapper{
 	List<ContentsVO> selectTopOrder();
 	List<ContentsVO> selectKoreanOrder();
 	List<ContentsVO> selectLatestOrder();
+	ContentsVO view(Integer contentsid);
 }
