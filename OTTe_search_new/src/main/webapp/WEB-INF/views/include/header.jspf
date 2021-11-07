@@ -31,6 +31,7 @@
                                 <li><a href="../main/recommend">취향저격 콘텐츠</a></li>
                                 <li><a href="../main/latest">New 콘텐츠</a></li>
                                 <li><a href="../main/wishlist">내가 찜한 콘텐츠</a></li>
+                                <li><a href="../board/list2">자유게시판</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -61,18 +62,12 @@
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/elegant-icons.css"
-	type="text/css">
+<link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
 <link rel="stylesheet" href="../resources/css/plyr.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/slicknav.min.css"
-	type="text/css">
+<link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 </head>

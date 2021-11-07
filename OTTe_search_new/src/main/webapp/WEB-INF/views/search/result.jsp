@@ -73,8 +73,8 @@
 									</div>
 									<div class="product__item__text">
 										<ul>
-											<li>${search.gradeid}</li>
-											<li>${search.classid}</li>
+											<li>${search.gradename}</li>
+											<li>${search.classname}</li>
 										</ul>
 										<h5>
 											<a href="/contents/view?contentsid=${search.contentsid}">
