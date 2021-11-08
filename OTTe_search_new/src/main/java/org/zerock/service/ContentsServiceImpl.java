@@ -55,4 +55,17 @@ public class ContentsServiceImpl implements ContentsService {
 	public List<ContentsVO> selectWishlist(UserVO userVo) throws Exception {
 		return ContentsMapper.selectWishlist(userVo);
 	}
+	
+	@Override
+	public List<ContentsVO> selectViewReply(Integer contentsid) throws Exception {
+		return ContentsMapper.selectViewReply(contentsid);
+	}
+	
+	@Override
+	public List<ContentsVO> insertReply(Integer contentsid) throws Exception {
+		return ContentsMapper.insertReply(contentsid);
+	}
+	
+	
+	
 }

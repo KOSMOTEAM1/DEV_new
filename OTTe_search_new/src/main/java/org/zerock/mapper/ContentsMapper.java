@@ -14,4 +14,10 @@ public interface ContentsMapper{
 	List<ContentsVO> selectSearch(SearchCriteria cri);
 	ContentsVO view(Integer contentsid);
 	List<ContentsVO> selectWishlist(UserVO userVo);
+	List<ContentsVO> selectViewReply(Integer contentsid);
+	List<ContentsVO> insertReply(Integer contentsid);
+	
+	
+	
+	
 }

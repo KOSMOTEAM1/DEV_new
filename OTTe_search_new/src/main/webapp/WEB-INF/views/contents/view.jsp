@@ -14,47 +14,47 @@
 <title>OTTe</title>
 
 <link
-	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+   rel="stylesheet">
 <link
-	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+   rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/font-awesome.min.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/elegant-icons.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/plyr.css" type="text/css">
 <link rel="stylesheet" href="../resources/css/nice-select.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 </head>
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+   <!-- Page Preloder -->
+   <div id="preloder">
+      <div class="loader"></div>
+   </div>
 
-	<input type='hidden' name='contentsid' value="${contentsid}">
-	<!-- Normal Breadcrumb Begin -->
-	<!-- <section class="normal-breadcrumb set-bg">
-		<div class="container">
-			<div class="row">
+   <input type='hidden' name='contentsid' value="${contentsid}">
+   <!-- Normal Breadcrumb Begin -->
+   <!-- <section class="normal-breadcrumb set-bg">
+      <div class="container">
+         <div class="row">
 
-				<div class="col-lg-12 text-center">
-				
-			</div>
-		</div>
-	</section> -->
-	
-	
+            <div class="col-lg-12 text-center">
+            
+         </div>
+      </div>
+   </section> -->
+   
+   
   <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-8">
                                         <ul>
-                                        	
+                                           
                                             <li><span>Scores: </span> ${view.contentsscore}</li>
                                             <li><span>Season: </span> ${view.contentsseason}</li>
                                             <li><span>Episode: </span> ${view.contentsepisode}</li>
@@ -123,8 +123,8 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="https://www.netflix.com/kr/title/80057918" target="_blank" class="watch-btn"><span>Watch Now</span> <i
+                                <a class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
+                                <a href="#" target="_blank" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
@@ -137,61 +137,25 @@
                             <div class="section-title">
                                 <h5>Reviews</h5>
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-1.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
+                            
+                                     
+                            
+                            <!-- 댓글 시작 -->
+                            <c:forEach var="viewReply" items="${viewReply}">
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
                                     <img src="img/anime/review-2.jpg" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
+                                    <h6>${viewReply.userid}</h6>
+                                    <p>${viewReply.reviewnatter}</p>
                                 </div>
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-3.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-4.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-5.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="img/anime/review-6.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
+                      </c:forEach>
+                      <!-- 댓글 끝 -->
+                      
+                      
+                      
                             </div>
                         </div>
                         <div class="anime__details__form">
@@ -199,7 +163,7 @@
                                 <h5>Your Comment</h5>
                             </div>
                             <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
+                                <textarea placeholder="Your Comment" value='${cri.keyword }'></textarea>
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                         </div>

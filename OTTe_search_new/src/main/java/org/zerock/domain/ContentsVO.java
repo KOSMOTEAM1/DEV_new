@@ -21,6 +21,11 @@ public @Data class ContentsVO {
 	private String imgname;
 	private Date wishdate;
 	private Integer usernum;
+	private Integer reviewid;
+	private Integer reviewscore;
+	private String reviewnatter;
+	private Date reviewdate;
+	private String userid;
 	
 	
 	/*

@@ -30,8 +30,14 @@ public class ContentsController {
 	public void read(@RequestParam("contentsid") int contentsid, Model model) throws Exception {
 		
 		ContentsVO view = contentsService.view(contentsid);
+		List<ContentsVO> viewReply = contentsService.selectViewReply(contentsid);
+		List<ContentsVO> insertReply = contentsService.insertReply(contentsid);
+		model.addAttribute("insertReply",insertReply);
+		model.addAttribute("viewReply",viewReply);
 		model.addAttribute("view",view);
 		
 	}
+	
+	
 
 }

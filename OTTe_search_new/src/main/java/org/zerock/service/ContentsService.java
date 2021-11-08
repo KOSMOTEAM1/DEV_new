@@ -14,4 +14,6 @@ public interface ContentsService {
 	List<ContentsVO> selectLatestOrder()throws Exception;
 	List<ContentsVO> selectSearch(SearchCriteria cri)throws Exception;
 	List<ContentsVO> selectWishlist(UserVO userVo)throws Exception;
+	List<ContentsVO> selectViewReply(Integer contentsid)throws Exception;
+	List<ContentsVO> insertReply(Integer contentsid)throws Exception;
 }
