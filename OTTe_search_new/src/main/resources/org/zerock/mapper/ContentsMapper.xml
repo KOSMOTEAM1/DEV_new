@@ -64,10 +64,6 @@
 			     where r.contentsid= #{CONTENTSID} and R.usernum=U.usernum]]>
 	</select>
 
-	<insert id="insertReply">
-		<![CDATA[ insert into review_t
-				  values(REVIEW_SEQ.nextval, #{usernum}, #{CONTENTSID}, null, #{reviewnatter}, sysdate]]>
-	</insert>
 
 	
 </mapper>

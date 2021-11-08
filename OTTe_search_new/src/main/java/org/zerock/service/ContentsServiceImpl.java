@@ -61,10 +61,6 @@ public class ContentsServiceImpl implements ContentsService {
 		return ContentsMapper.selectViewReply(contentsid);
 	}
 	
-	@Override
-	public List<ContentsVO> insertReply(Integer contentsid) throws Exception {
-		return ContentsMapper.insertReply(contentsid);
-	}
 	
 	
 	
