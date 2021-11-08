@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.ContentsVO;
 import org.zerock.service.ContentsService;
 import org.zerock.domain.UserVO;
+import org.zerock.dto.LoginDTO;
 
 /**
  * Handles requests for the application home page.
@@ -73,10 +76,18 @@ public class HomeController {
 
 		return "/main/recommend";
 	}
+	
+	
 
 	@RequestMapping(value = "main/wishlist", method = RequestMethod.GET)
-	public String gowishlist(@RequestParam("usernum") int usernum, Model model, HttpSession session) throws Exception {
-		List<ContentsVO> wish = contentsService.selectWishlist(usernum);
+	public String gowishlist(LoginDTO usernum, Model model, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		
+		logger.info("/* userVo="+userVo.toString());
+		List<ContentsVO> wish = contentsService.selectWishlist(userVo);
 		model.addAttribute("wish", wish);
 		return "/main/wishlist";
 	}

@@ -4,7 +4,7 @@ public class UserVO {
 
 	private String useremail;
 	private String userpassword;
-	private String uname;
+	private String userid;
 	private Integer usernum;
 	private int upoint;
 
@@ -32,12 +32,12 @@ public class UserVO {
 		this.userpassword = userpassword;
 	}
 
-	public String getUname() {
-		return uname;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 	public int getUpoint() {
@@ -47,5 +47,13 @@ public class UserVO {
 	public void setUpoint(int upoint) {
 		this.upoint = upoint;
 	}
+
+	@Override
+	public String toString() {
+		return "UserVO [useremail=" + useremail + ", userpassword=" + userpassword + ", userid=" + userid + ", usernum="
+				+ usernum + ", upoint=" + upoint + "]";
+	}
+	
+	
 
 }

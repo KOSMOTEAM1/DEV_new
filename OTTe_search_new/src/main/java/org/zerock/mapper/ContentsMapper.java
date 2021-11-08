@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.zerock.domain.ContentsVO;
 import org.zerock.domain.SearchCriteria;
+import org.zerock.domain.UserVO;
+import org.zerock.dto.LoginDTO;
 
 public interface ContentsMapper{
 	List<ContentsVO> selectTopOrder();
@@ -11,5 +13,5 @@ public interface ContentsMapper{
 	List<ContentsVO> selectLatestOrder();
 	List<ContentsVO> selectSearch(SearchCriteria cri);
 	ContentsVO view(Integer contentsid);
-	List<ContentsVO> selectWishlist(Integer usernum);
+	List<ContentsVO> selectWishlist(UserVO userVo);
 }

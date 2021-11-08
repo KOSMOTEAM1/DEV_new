@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.zerock.domain.ContentsVO;
 import org.zerock.domain.SearchCriteria;
+import org.zerock.domain.UserVO;
 
 
 public interface ContentsService {
@@ -12,5 +13,5 @@ public interface ContentsService {
 	List<ContentsVO> selectKoreanOrder()throws Exception;
 	List<ContentsVO> selectLatestOrder()throws Exception;
 	List<ContentsVO> selectSearch(SearchCriteria cri)throws Exception;
-	List<ContentsVO> selectWishlist(Integer usernum)throws Exception;
+	List<ContentsVO> selectWishlist(UserVO userVo)throws Exception;
 }

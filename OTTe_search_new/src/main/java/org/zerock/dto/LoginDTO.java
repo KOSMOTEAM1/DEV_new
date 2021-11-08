@@ -5,6 +5,8 @@ public class LoginDTO {
 	private String useremail;
 	private String userpassword;
 	private Integer usernum;
+	
+	
 	public Integer getUsernum() {
 		return usernum;
 	}

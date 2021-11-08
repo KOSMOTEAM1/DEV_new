@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.ContentsVO;
 import org.zerock.domain.SearchCriteria;
+import org.zerock.domain.UserVO;
 import org.zerock.mapper.ContentsMapper;
 
 @Service
@@ -51,7 +52,7 @@ public class ContentsServiceImpl implements ContentsService {
 	}
 	
 	@Override
-	public List<ContentsVO> selectWishlist(Integer usernum) throws Exception {
-		return ContentsMapper.selectWishlist(usernum);
+	public List<ContentsVO> selectWishlist(UserVO userVo) throws Exception {
+		return ContentsMapper.selectWishlist(userVo);
 	}
 }
