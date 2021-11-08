@@ -98,10 +98,10 @@
 												style="max-width: 80rem; margin: auto;">
 												<div class="card-header"><!-- 게시물 번호 / 제목 / 작성일 -->
 													<div class="row">
-														<div class="col-md-10">
+														<div class="col-md-10" style="vertical-align:center;">
 															<h5>${item.num}/${item.title}</h5>
 														</div>
-														<div class="col-md-2" style="text-align: right">
+														<div class="col-md-2" style="vertical-align:center; text-align: right;">
 															<p>
 																<fmt:formatDate value="${item.writeDate}"
 																	pattern="yy-MM-dd" />

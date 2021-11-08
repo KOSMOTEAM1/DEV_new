@@ -64,6 +64,20 @@
 		<div class="loader"></div>
 	</div>
 
+<!-- Breadcrumb Begin / 최상단 Home->자유게시판 -->
+	<div class="breadcrumb-option">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb__links">
+						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>자유게시판</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumb End -->
+
 	<section class="product-page spad">
 		<div class="container">
 			<div class="col-lg-12">

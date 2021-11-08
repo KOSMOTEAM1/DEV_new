@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../include/header.jspf"%>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -57,63 +56,11 @@
 	margin: auto;
 }
 </style>
-	<%
-	HttpSession httpSession = request.getSession(false);
-	if (httpSession != null && httpSession.getAttribute("User") != null) {
-	%>
-	"세션이 있습니다."
-	<%
-	} else {
-	%>
-	"세션이 없습니다."
-	<%
-	}
-	%>
+	
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
 
-	<!-- Header Section Begin -->
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2">
-					<div class="header__logo">
-						<a href="./index.html"> </a>
-					</div>
-				</div>
-				<div class="col-lg-8">
-					<div class="header__nav">
-						<nav class="header__menu mobile-menu">
-							<ul>
-								<li><a href="./index.html">Homepage</a></li>
-								<li><a href="./categories.html">Categories <span
-										class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="./categories.html">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-										<li><a href="./signup.html">Sign Up</a></li>
-										<li><a href="./login.html">Login</a></li>
-									</ul></li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="col-lg-2">
-					<div class="header__right">
-						<a href="#" class="search-switch"><span class="icon_search"></span></a>
-						<a href="./login.html"><span class="icon_profile"></span></a>
-					</div>
-				</div>
-			</div>
-			<div id="mobile-menu-wrap"></div>
-		</div>
-	</header>
-	<!-- Header End -->
 
 	<!-- Normal Breadcrumb Begin -->
 	<section class="normal-breadcrumb set-bg">
@@ -143,7 +90,7 @@
 						</div>
 						<div class="card-body">
 							<h4 class="card-title"></h4>
-								<img src="../../resources/img/board/${boardVO.filename}" width="1500" alt="Attachment" id="thumbnail${item.num}">
+								<img src="../../resources/img/board/${boardVO.filename}" style="max-width:100%; height:auto" alt="Attachment" id="thumbnail${item.num}">
 							<p class="card-text">
 								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" value="${boardVO.content}" placeholder="${boardVO.content}"></textarea>
 							</p>
@@ -195,7 +142,7 @@
 
 	$(".fileDrop").on("drop", function(event) {
 		event.preventDefault();
-		
+		S
 		var files = event.originalEvent.dataTransfer.files;
 		var file = files[0];
 		var formData = new FormData();
