@@ -116,14 +116,19 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="login__form">
-						<h3>비밀번호 수정</h3>
+						<h3>비밀번호 변경</h3>
 						<!-- <section id="container"> -->
 						<form id="updateForm" action="/member/profile" method="post">
 							<div class="input__item">
 								<input class="form-control" type="text" id="useremail"
-									name="useremail" value="${USER_T.useremail}" /> <span
+									name="useremail" readonly value="${ login.useremail }" /> <span
 									class="icon_mail"></span>
 							</div>
+							<%-- <div class="input__item">
+								<input class="form-control" type="text" id="userid"
+									name="useremail" readonly value="${ login.usereid }" /> <span
+									class="icon_profile"></span>
+							</div> --%>
 							<div class="input__item">
 								<input class="form-control" type="password" id="userpassword"
 									name="userpassword" placeholder="Enter Current Password" /> <span
@@ -166,7 +171,7 @@
 											</div>
 											<div class="input__item">
 												<input class="form-control" type="text" id="useremail"
-													name="useremail" value="${USER_T.useremail}" /> <span
+													name="useremail" readonly value="${ login.useremail }" /> <span
 													class="icon_mail"></span>
 											</div>
 											<div class="input__item">

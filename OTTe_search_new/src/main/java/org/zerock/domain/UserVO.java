@@ -2,17 +2,17 @@ package org.zerock.domain;
 
 public class UserVO {
 
-	private String userid;
+	private String useremail;
 	private String userpassword;
 	private String uname;
 	private int upoint;
 
-	public String getUserid() {
-		return userid;
+	public String getuseremail() {
+		return useremail;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setuseremail(String useremail) {
+		this.useremail = useremail;
 	}
 
 	public String getUserpassword() {

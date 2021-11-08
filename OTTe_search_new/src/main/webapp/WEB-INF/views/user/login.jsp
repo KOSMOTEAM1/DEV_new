@@ -30,7 +30,7 @@
                         <h3>로그인</h3>
                         <form action="/user/loginPost" method="post">
                             <div class="input__item">
-                                <input type="text" name="userid" placeholder="ID(email type)">
+                                <input type="email" name="useremail" placeholder="ID(email type)">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
