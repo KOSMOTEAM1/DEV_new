@@ -3089,6 +3089,8 @@ fieldset[disabled] .btn-default.active {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
+  display: inline-block;
+    vertical-align: top;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3224,6 +3226,8 @@ fieldset[disabled] .btn-info.active {
   color: #fff;
   background-color: #f0ad4e;
   border-color: #eea236;
+  display: inline-block;
+    vertical-align: top;
 }
 .btn-warning:hover,
 .btn-warning:focus,
@@ -3269,6 +3273,8 @@ fieldset[disabled] .btn-warning.active {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
+  display: inline-block;
+    vertical-align: top;
 }
 .btn-danger:hover,
 .btn-danger:focus,

@@ -1,6 +1,5 @@
+<%@ include file="../include/header.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="true"%>
 <%@ page import="org.zerock.domain.BoardVO"%>
 <%@ page import="org.zerock.domain.UserVO"%>
@@ -73,68 +72,103 @@
 	</div>
 	<!-- Breadcrumb End -->
 
-	<div class="product-page spad">
+	<!-- Blog Details Section Begin -->
+	<section class="blog-details spad">
 		<div class="container">
-			<div class="col-lg-12">
-				<div class="product__page__content">
-					<!-- 페이지 제목+검색기능 시작-->
-					<div class="product__page__title">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="section-title">
-									<h4>자유게시판</h4>
-								</div>
-								<br></br>
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-8">
+				<!-- 제목/작성자/작성일자 -->
+					<div class="blog__details__title">
+						<h6>${boardVO.num}
+							${boardVO.name} <span>-${item.writeDate}</span>
+						</h6>
+						<h2>${boardVO.title}</h2>
+					</div>
+				</div>
+
+				<!-- 본문/수정,삭제,목록 -->
+				<div class="col-lg-8">
+					<div class="blog__details__content">
+						<div class="blog__details__text">
+							<img src="img/blog/details/bd-item-1.jpg" alt="">
+							<p>${boardVO.content}</p>
+							<!-- 수정,삭제,목록 버튼 구현 -->
+							<div class="blog__details__tags">
+								<c:set var="I1" value="${login.userid}" />
+								<c:set var="I2" value="${boardVO.name}" />
+								<c:if test="${I1 eq I2}">
+									<form action="/board/modify" method="Get"
+										style="display: inline">
+										<input type="text" name="num" value="${boardVO.num}"
+											style="display: none;" readonly>
+										<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
+									</form>
+									<form action="/board/delete" method="post"
+										style="display: inline">
+										<input type="text" name="num" value="${boardVO.num}"
+											style="display: none;" readonly> <input type="text"
+											name="originnum" value="${boardVO.num}"
+											style="display: none;" readonly>
+
+										<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
+									</form>
+								</c:if>
+								<form action="/board/list2" method="Get" style="display: inline">
+									<button type="submit" class="btn btn-primary" id="goListBtn">LIST</button>
+								</form>
 							</div>
-							
+						</div>
+						
+						<!-- 댓글 -->
+						<div class="blog__details__comment">
+							<h4>3 Comments</h4>
+							<div class="blog__details__comment__item">
+								<div class="blog__details__comment__item__pic">
+									<!--작성자 이미지-->
+									<img src="img/blog/details/comment-1.png" alt="">
+								</div>
+								<div class="blog__details__comment__item__text">
+									<!—작성 일자/작성자/내용/좋아요-->
+									<span>Sep 08, 2020</span>
+									<h5>John Smith</h5>
+									<p>Neque</p>
+									<a href="#">Like</a>
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="blog__details__form">
+							<!--댓글작성-->
+							<h4>Leave A Commnet</h4>
+							<form action="#">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6">
+										<input type="text" placeholder="Name">
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6">
+										<input type="text" placeholder="Email">
+									</div>
+									<div class="col-lg-12">
+										<textarea placeholder="Message"></textarea>
+										<button type="submit" class="site-btn">Send Message</button>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+	<!-- Blog Details Section End -->
 
 
 
-	<div class="row" style="width: 100%">
-		<div style="width: 70%; float: none; margin: 0 auto">
-			<tr>
-				<div class="card border-primary mb-3"
-					style="max-width: 80rem; margin: auto;">
-					<div class="card-header">${RT.num}</div>
-					<div class="card-body">
-						<h4 class="card-title">${boardVO.title}</h4>
-						<img src="../../resources/img/board${boardVO.filename}"
-							style="max-width: 100%; height: auto" alt="Attachment"
-							id="thumbnail${item.num}">
-						<p class="card-text">작성자 = ${boardVO.num}</p>
-						<p class="card-text">작성자 = ${boardVO.name}</p>
-						<p class="card-text">${boardVO.content}</p>
-						<p>
-							<c:set var="I1" value="${login.userid}" />
-							<c:set var="I2" value="${boardVO.name}" />
-							<c:if test="${I1 eq I2}">
-								<form action="/board/modify" method="Get">
-									<input type="text" name="num" value="${boardVO.num}"
-										style="display: none;" readonly>
-									<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
-								</form>
-								<form action="/board/delete" method="post">
-									<input type="text" name="num" value="${boardVO.num}"
-										style="display: none;" readonly> <input type="text"
-										name="originnum" value="${boardVO.num}" style="display: none;"
-										readonly>
-									<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-								</form>
-							</c:if>
-						<form action="/board/list2" method="Get">
-							<button type="submit" class="btn btn-primary" id="goListBtn">GO
-								LIST</button>
-						</form>
 
 
-						</p>
-					</div>
+	
 					<div class="card-footer">
 						<a>테스트 구간입니다.</a>
 					</div>
