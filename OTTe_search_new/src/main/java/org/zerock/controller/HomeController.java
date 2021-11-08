@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.ContentsVO;
 import org.zerock.service.ContentsService;
+import org.zerock.domain.UserVO;
 
 /**
  * Handles requests for the application home page.
@@ -73,8 +75,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "main/wishlist", method = RequestMethod.GET)
-	public String gowishlist(Model model) {
-
+	public String gowishlist(@RequestParam("usernum") int usernum, Model model, HttpSession session) throws Exception {
+		List<ContentsVO> wish = contentsService.selectWishlist(usernum);
+		model.addAttribute("wish", wish);
 		return "/main/wishlist";
 	}
 
@@ -94,4 +97,5 @@ public class HomeController {
 
 		return "/main/top";
 	}
+	
 }

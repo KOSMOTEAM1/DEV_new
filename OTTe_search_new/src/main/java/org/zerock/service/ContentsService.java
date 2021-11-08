@@ -12,4 +12,5 @@ public interface ContentsService {
 	List<ContentsVO> selectKoreanOrder()throws Exception;
 	List<ContentsVO> selectLatestOrder()throws Exception;
 	List<ContentsVO> selectSearch(SearchCriteria cri)throws Exception;
+	List<ContentsVO> selectWishlist(Integer usernum)throws Exception;
 }

@@ -19,6 +19,9 @@ public @Data class ContentsVO {
 	private Integer contentsscore;
 	private Integer contentsduration;
 	private String imgname;
+	private Date wishdate;
+	private Integer usernum;
+	
 	
 	/*
 	 * public Integer getContentsid() { return contentsid; } public void

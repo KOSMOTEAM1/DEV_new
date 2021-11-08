@@ -11,4 +11,5 @@ public interface ContentsMapper{
 	List<ContentsVO> selectLatestOrder();
 	List<ContentsVO> selectSearch(SearchCriteria cri);
 	ContentsVO view(Integer contentsid);
+	List<ContentsVO> selectWishlist(Integer usernum);
 }

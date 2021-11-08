@@ -45,4 +45,13 @@ order by c.contentsid]]>
 		<![CDATA[SELECT * FROM CONTENTS_T WHERE CONTENTSTITLE LIKE '%'||#{keyword}||'%']]>
 
 	</select>
+	
+		<select id="selectWishlist"
+		resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[select c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, c.imgname
+from contents_t c, ott o, nation_t n, grade_t g, class_t cl, wish w
+where c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and w.contentsid=c.contentsid and w.usernum=#{usernum}
+order by w.wishdate asc]]>
+
+	</select>
 </mapper>

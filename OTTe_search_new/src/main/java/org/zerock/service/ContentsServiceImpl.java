@@ -49,4 +49,9 @@ public class ContentsServiceImpl implements ContentsService {
 	public List<ContentsVO> selectSearch(SearchCriteria cri) throws Exception {
 		return ContentsMapper.selectSearch(cri);
 	}
+	
+	@Override
+	public List<ContentsVO> selectWishlist(Integer usernum) throws Exception {
+		return ContentsMapper.selectWishlist(usernum);
+	}
 }
