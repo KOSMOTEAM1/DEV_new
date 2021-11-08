@@ -5,7 +5,19 @@ public class UserVO {
 	private String userid;
 	private String userpassword;
 	private String uname;
+	private String unum;
 	private int upoint;
+
+	
+	
+
+	public String getUnum() {
+		return unum;
+	}
+
+	public void setUnum(String unum) {
+		this.unum = unum;
+	}
 
 	public String getUserid() {
 		return userid;
