@@ -4,6 +4,15 @@ public class LoginDTO {
 
 	private String useremail;
 	private String userpassword;
+	private Integer usernum;
+	public Integer getUsernum() {
+		return usernum;
+	}
+
+	public void setUsernum(Integer usernum) {
+		this.usernum = usernum;
+	}
+
 	private boolean useCookie;
 
 	public String getuseremail() {

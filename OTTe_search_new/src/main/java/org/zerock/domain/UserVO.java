@@ -5,7 +5,16 @@ public class UserVO {
 	private String useremail;
 	private String userpassword;
 	private String uname;
+	private Integer usernum;
 	private int upoint;
+
+	public Integer getUsernum() {
+		return usernum;
+	}
+
+	public void setUsernum(Integer usernum) {
+		this.usernum = usernum;
+	}
 
 	public String getuseremail() {
 		return useremail;
