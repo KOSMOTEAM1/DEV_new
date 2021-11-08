@@ -16,8 +16,7 @@
 <title>Home</title>
 
 
-<link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet"
-	type="text/css" />
+<link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
 <link href="../resources/dist/css/skins/_all-skins.min.css"
@@ -47,7 +46,8 @@
 </head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <body>
 	<!-- Page Preloder -->
@@ -77,7 +77,7 @@
 										<li><a href="./anime-watching.html">Anime Watching</a></li>
 										<li><a href="./blog-details.html">Blog Details</a></li>
 										<li><a href="./signup.html">Sign Up</a></li>
-										<li><a href="./login.html">Login</a></li>
+										<li><a href="/user/logout">Login</a></li>
 									</ul></li>
 								<li><a href="./blog.html">Our Blog</a></li>
 								<li><a href="#">Contacts</a></li>
@@ -114,33 +114,39 @@
 	<div class="row" style="width: 100%">
 		<div style="width: 70%; float: none; margin: 0 auto">
 			<tr>
-				<div class="card border-primary mb-3" style="max-width: 80rem; margin: auto;">
-					<div class="card-header">${RT.num}</div> 
+				<div class="card border-primary mb-3"
+					style="max-width: 80rem; margin: auto;">
+					<div class="card-header">${RT.num}</div>
 					<%-- 						<input type="text" name="num" value="${RT.num}"
 							style="display: none;" readonly> --%>
 					<div class="card-body">
 						<h4 class="card-title">${boardVO.title}</h4>
-						<img src="../../resources/img/board${boardVO.filename}" width="1500" alt="Attachment" id="thumbnail${item.num}">
+						<img src="../../resources/img/board${boardVO.filename}"
+							width="1500" alt="Attachment" id="thumbnail${item.num}">
 						<p class="card-text">작성자 = ${boardVO.num}</p>
 						<p class="card-text">작성자 = ${boardVO.name}</p>
 						<p class="card-text">${boardVO.content}</p>
 						<p>
-							<c:set var="I1" value="${User.userid}" />
+							<c:set var="I1" value="${login.userid}" />
 							<c:set var="I2" value="${boardVO.name}" />
 							<c:if test="${I1 eq I2}">
 								<form action="/board/modify" method="Get">
-									<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
+									<input type="text" name="num" value="${boardVO.num}"
+										style="display: none;" readonly>
 									<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
 								</form>
 								<form action="/board/delete" method="post">
-									<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
-									<input type="text" name="originnum" value="${boardVO.num}" style="display: none;" readonly>
+									<input type="text" name="num" value="${boardVO.num}"
+										style="display: none;" readonly> <input type="text"
+										name="originnum" value="${boardVO.num}" style="display: none;"
+										readonly>
 									<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
 								</form>
 							</c:if>
-							<form action="/board/list2" method="Get">
-								<button type="submit" class="btn btn-primary" id="goListBtn">GO LIST</button>
-							</form>
+						<form action="/board/list2" method="Get">
+							<button type="submit" class="btn btn-primary" id="goListBtn">GO
+								LIST</button>
+						</form>
 
 
 						</p>
@@ -173,7 +179,7 @@
 				</c:if> --%>
 
 					<div class="col-md-12">
-						<c:set var="I1" value="${User.userid}" />
+						<c:set var="I1" value="${login.userid}" />
 						<c:if test="${I1 != null }">
 							<div class="box box-success">
 								<div class="box-header">
@@ -181,10 +187,10 @@
 								</div>
 								<div class="box-body">
 									<label for="exampleInputEmail1">Writer</label>
-									<input class="form-control" type="text" id="newReplyWriter" value="${User.usernum}" style="display: none;" readonly>
-									<input class="form-control" type="text" placeholder="${User.userid}" readonly>
+									<input class="form-control" type="text" id="newReplyWriter" value="${login.userid}" style="display: none;" readonly>
+									<input class="form-control" type="text" placeholder="${login.userid}" readonly>
 									<label for="exampleInputEmail1">Reply Text</label>
-									<input class="form-control" type="text" placeholder="REPLY TEXT" id="newcomemnttext">
+								<input class="form-control" type="text" placeholder="REPLY TEXT" id="newcomemnttext">
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
@@ -231,15 +237,27 @@
 <!--이거 추가 테스트용 문구입니다.  -->
 <!-- 
 	<c:set var="I3" value="${User.userid}"/>
-	<c:set var="I4">{{comemntuser}}</c:set>
+	<c:set var="I4" value="{{comemntuser}}"/>
 	<c:if test="${I3 eq I4}">
-      <div class="timeline-footer">
+		<c:out value="${login.userid}"/>
+		<c:out value="{{comemntuser}}"/>
+    	<div class="timeline-footer">
         <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
        </div>
 	</c:if>
 -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	
+	
+<script id="templateAttach" type="text/x-handlebars-template">
+<li data-src='{{fullName}}'>
+  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+  <div class="mailbox-attachment-info">
+	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+	</span>
+  </div>
+</li>                
+</script>  
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
 <li class="replyLi" data-comemntnum={{comemntnum}}>
@@ -247,11 +265,13 @@
  <div class="timeline-item" >
   <span class="time"><i class="fa fa-clock-o"></i>{{comemntdate}}</span>
   <h3 class="timeline-header"><strong>{{comemntnum}}</strong> -{{comemntuser}}</h3>
-	<input class="form-control" type="text" id="intimeuser" value="${User.usernum}" style="display: none;" readonly>
+	<input class="form-control" type="text" id="intimeuser" value="${login.userid}" style="display: none;" readonly>
 	<input class="form-control" type="text" id="disReplyWriter" value="{{comemntuser}}" style="display: none;" readonly>
-	<h4>${comemntuser}</h4>
-  <div class="timeline-body">{{comemnttext}}</div>
-  </div>			
+	<div class="timeline-body">{{comemnttext}}</div>
+	<div class="timeline-footer">
+        <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+    </div>
+  </div>
 </li>
 {{/each}}
 </script>
@@ -276,7 +296,7 @@
 	}
 
 	var originnum = ${boardVO.num};
-
+	var template = Handlebars.compile($("#templateAttach").html());
 	var replyPage = 1;
 
 	function getPage(pageInfo) {
@@ -291,16 +311,7 @@
 	}
 
 	$("#modifyModal").on("click", function() {
-		
-		var userObj = $("#intimeuser");
-		var disReplyWriterObj = $("#disReplyWriter");
-		var comemntuser = userObj.val();
-		var disReplyWriter = disReplyWriterObj.val();
-		if(comemntuser == disReplyWriter){
-			$("#modifyModal").modal('show'); 
-		}else{
-			alert("권한이 없는 사용자 입니다.");	
-		}
+		$("#modifyModal").modal('show');
 	});
 
 	var printPaging = function(pageMaker, target) {
@@ -398,32 +409,50 @@
 
 		var comemntnum = $(".modal-title").html();
 		var comemnttext = $("#comemnttext").val();
-
-		$.ajax({
-			type : 'put',
-			url : '/replies/' + comemntnum,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "PUT"
-			},
-			data : JSON.stringify({
-				comemnttext : comemnttext
-			}),
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("수정 되었습니다.");
-					getPage("/replies/" + originnum + "/" + replyPage);
+		
+		
+		var userObj = $("#intimeuser");
+		var comemntuserObj = $("#disReplyWriter ");
+		var originuser = userObj.val();
+		var comemntuser = comemntuserObj.val();
+		if( originuser != comemntuser) {
+			alert("권한이 없는 사용자 입니다.");
+		}else{
+			$.ajax({
+				type : 'put',
+				url : '/replies/' + comemntnum,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PUT"
+				},
+				data : JSON.stringify({
+					comemnttext : comemnttext
+				}),
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						alert("수정 되었습니다.");
+						getPage("/replies/" + originnum + "/" + replyPage);
+					}
 				}
-			}
-		});
+			});
+		}
+		
 	});
-	
+
 	$("#replyDelBtn").on("click", function() {
 		alert("시작되었습니다.");
 		var comemntnum = $(".modal-title").html();
 		var comemnttext = $("#comemnttext").val();
+		
+		var userObj = $("#intimeuser");
+		var comemntuserObj = $("#disReplyWriter ");
+		var originuser = userObj.val();
+		var comemntuser = comemntuserObj.val();
+		if( originuser != comemntuser) {
+			alert("권한이 없는 사용자 입니다.");
+		}
 
 		$.ajax({
 			type : 'delete',
@@ -451,6 +480,7 @@
 		var formObj = $("form[role='form']");
 
 		console.log(formObj);
+		
 
 		$("#modifyBtn").on("click", function() {
 			alert("게시글을 수정합니다.");

@@ -59,7 +59,7 @@
 </style>
 	<%
 	HttpSession httpSession = request.getSession(false);
-	if (httpSession != null && httpSession.getAttribute("User") != null) {
+	if (httpSession != null && httpSession.getAttribute("login") != null) {
 	%>
 	"세션이 있습니다."
 	<%
@@ -138,7 +138,7 @@
 						style="max-width: 80rem; margin: auto;">
 						<div class="card-header">
 							<input type="text" name="title" class="form-control" placeholder="제목을 입력해 주세요">
-							<input type="text" name="name" value="${User.userid}" style="display: none;" readonly>
+							<input type="text" name="name" value="${login.userid}" style="display: none;" readonly>
 						</div>
 						<div class="card-body">
 							<h4 class="card-title"></h4>

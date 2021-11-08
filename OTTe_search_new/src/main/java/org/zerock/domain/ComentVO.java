@@ -7,7 +7,7 @@ public class ComentVO {
 	private Integer comemntnum;
 	private Integer comemnttypenum;
 	private Integer originnum;
-	private Integer comemntuser;
+	private String comemntuser;
 	private String comemnttext;
 	private Date comemntdate;
 	public Integer getComemntnum() {
@@ -28,10 +28,10 @@ public class ComentVO {
 	public void setOriginnum(Integer originnum) {
 		this.originnum = originnum;
 	}
-	public Integer getComemntuser() {
+	public String getComemntuser() {
 		return comemntuser;
 	}
-	public void setComemntuser(Integer comemntuser) {
+	public void setComemntuser(String comemntuser) {
 		this.comemntuser = comemntuser;
 	}
 	public String getComemnttext() {

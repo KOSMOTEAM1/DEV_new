@@ -144,7 +144,7 @@
 			//(session 유무 확인 + 로그인 시 할당한 attribute 존재 확인)
 
 			HttpSession session = request.getSession(false);
-			if (session != null && session.getAttribute("User") != null) {
+			if (session != null && session.getAttribute("login") != null) {
 			%>
 			<button type="submit" class="site-btn" method="get" onclick="location.href='/board/write' ">Login Now</button>
 			<%
@@ -175,8 +175,6 @@
 									<div class="card-header">${item.num}</div>
 									<div class="card-body">
 										<h4 class="card-title">${item.title}</h4>
-										<c:set var="I1" value="${item.filename}" />
-										<c:set var="I2" value=" " />
 										<p class="card-text"><img src="../../resources/img/board${item.filename}" width="200" alt="Attachment" id="thumbnail${item.num}">${item.content}</p>
 										<p><fmt:formatDate value="${item.writeDate}" pattern="yy-MM-dd" /></p>
 									</div>
