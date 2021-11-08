@@ -163,7 +163,7 @@
                                 <h5>Your Comment</h5>
                             </div>
                             <form action="#">
-                                <textarea placeholder="Your Comment" value='${cri.keyword }'></textarea>
+                                <textarea placeholder="Your Comment"></textarea>
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                             </form>
                         </div>
