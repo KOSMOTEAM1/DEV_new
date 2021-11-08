@@ -106,7 +106,7 @@ public class LoginController {
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
-				service.keepLogin(vo.getUserid(), session.getId(), new Date());
+				service.keepLogin(vo.getuseremail(), session.getId(), new Date());
 			}
 		}
 
