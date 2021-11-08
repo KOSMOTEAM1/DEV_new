@@ -63,7 +63,8 @@
 					<c:forEach var="top" items="${top }" varStatus="count" begin="0" end="3" step="1">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"  style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${top.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${top.imgname}.jpg">
 
 										<div class="comment">
@@ -110,7 +111,8 @@
 						<c:forEach var="korean" items="${korean}" varStatus="count" begin="0" end="3" step="1">
 						<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${korean.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${korean.imgname}.jpg">
 
 										<div class="comment">
@@ -155,7 +157,8 @@
 						<c:forEach var="latest" items="${latest }" varStatus="count" begin="0" end="3" step="1">
 						<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${latest.imgname}.jpg">
 
 										<div class="comment">

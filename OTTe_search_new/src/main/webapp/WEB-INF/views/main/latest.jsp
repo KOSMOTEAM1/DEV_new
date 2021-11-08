@@ -62,7 +62,8 @@
 						<c:forEach var="latest" items="${latest}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${latest.imgname}.jpg">
 
 										<div class="comment">

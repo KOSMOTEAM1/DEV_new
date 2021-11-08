@@ -62,7 +62,8 @@
 						<c:forEach var="top" items="${top}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${top.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${top.imgname}.jpg">
 										
 
