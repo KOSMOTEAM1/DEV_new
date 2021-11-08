@@ -169,7 +169,7 @@ public class BoardController {
 		}
 		System.out.println(board);
 		BoardVO NewBvo = boardService.insertBoard(board);
-		return "redirect:/board/list";
+		return "redirect:/board/list2";
 	}
 
 
