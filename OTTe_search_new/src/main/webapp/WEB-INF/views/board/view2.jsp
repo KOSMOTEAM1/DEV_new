@@ -77,7 +77,7 @@
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-8">
-				<!-- 제목/작성자/작성일자 -->
+					<!-- 제목/작성자/작성일자 -->
 					<div class="blog__details__title">
 						<h6>${boardVO.num}
 							${boardVO.name} <span>-${item.writeDate}</span>
@@ -118,45 +118,42 @@
 								</form>
 							</div>
 						</div>
-						
+
 						<!-- 댓글 -->
 						<div class="blog__details__comment">
-							<h4>3 Comments</h4>
+							<h4>Comments</h4>
 							<div class="blog__details__comment__item">
-								<div class="blog__details__comment__item__pic">
-									<!--작성자 이미지-->
-									<img src="img/blog/details/comment-1.png" alt="">
-								</div>
+
 								<div class="blog__details__comment__item__text">
-									<!—작성 일자/작성자/내용/좋아요-->
-									<span>Sep 08, 2020</span>
-									<h5>John Smith</h5>
-									<p>Neque</p>
-									<a href="#">Like</a>
+									<button type="button" class="btn btn-primary" id="repliesDiv">RepliesList</button>
 
 								</div>
+								<ul id="pagination" class="pagination pagination-sm no-margin ">
+			</ul>
 							</div>
 						</div>
 
 
 						<div class="blog__details__form">
-							<!--댓글작성-->
-							<h4>Leave A Commnet</h4>
-							<form action="#">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<input type="text" placeholder="Name">
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<input type="text" placeholder="Email">
-									</div>
-									<div class="col-lg-12">
-										<textarea placeholder="Message"></textarea>
-										<button type="submit" class="site-btn">Send Message</button>
-									</div>
-								</div>
-							</form>
-						</div>
+                                <h4>Leave A Commnet</h4>
+                                <form>
+                                <c:set var="I1" value="$login.userid}"/>
+                                <c:if test="${I1 != null }">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <input class="form-control" type="text" placeholder="${login.userid}" value="${login.userid}" readonly>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <input class="form-control" type="text" placeholder="${userVO.useremail}" value="${userVO.useremail}" readonly>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea id="newcomemnttext" placeholder="Message"></textarea>
+                                            <button type="submit" class="site-btn" id="replyAddBtn">Send Message</button>
+                                        </div>
+                                    </div>
+                                    </c:if>
+                                </form>
+                            </div>
 					</div>
 				</div>
 			</div>
@@ -165,72 +162,29 @@
 	<!-- Blog Details Section End -->
 
 
-
-
-
-	
-					<div class="card-footer">
-						<a>테스트 구간입니다.</a>
-					</div>
-
-					<div class="col-md-12">
-						<c:set var="I1" value="${login.userid}" />
-						<c:if test="${I1 != null }">
-							<div class="box box-success">
-								<div class="box-header">
-									<h3 class="box-title">ADD NEW REPLY</h3>
-								</div>
-								<div class="box-body">
-									<label for="exampleInputEmail1">Writer</label> <input
-										class="form-control" type="text" id="newReplyWriter"
-										value="${login.userid}" style="display: none;" readonly>
-									<input class="form-control" type="text"
-										placeholder="${login.userid}" readonly> <label
-										for="exampleInputEmail1">Reply Text</label> <input
-										class="form-control" type="text" placeholder="REPLY TEXT"
-										id="newcomemnttext">
-								</div>
-								<!-- /.box-body -->
-								<div class="box-footer">
-									<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
-										REPLY</button>
-								</div>
-							</div>
-						</c:if>
-						<ul class="timeline">
-							<button type="button" class="btn btn-primary" id="repliesDiv">RepliesList</button>
-							<!-- <li class="time-label" id="repliesDiv"><span class="bg-green">RepliesList</span></li> -->
-						</ul>
-						<div class='text-center'>
-							<ul id="pagination" class="pagination pagination-sm no-margin ">
-							</ul>
-						</div>
-					</div>
-			</tr>
-			<!-- Modal -->
-			<div id="modifyModal" class="modal modal-primary fade" role="dialog">
-				<div class="modal-dialog">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"></h4>
-						</div>
-						<div class="modal-body" data-rno>
-							<p>
-								<input type="text" id="comemnttext" class="form-control">
-							</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
-							<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
+	<!-- Modal -->
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body" data-rno>
+					<p>
+						<input type="text" id="comemnttext" class="form-control">
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+					<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 </body>
 
