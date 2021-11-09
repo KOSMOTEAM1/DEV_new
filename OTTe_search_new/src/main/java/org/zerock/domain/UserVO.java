@@ -12,6 +12,7 @@ public class UserVO {
 	private String title;
 	private String content;
 	private String temp;
+	private Integer admin;
 	/*
 	 * private Random rnd;
 	 * 
@@ -21,6 +22,14 @@ public class UserVO {
 	 * 
 	 * public void setRnd(Random rnd) { this.rnd = rnd; }
 	 */
+
+	public Integer getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Integer admin) {
+		this.admin = admin;
+	}
 
 	public String getTemp() {
 		return temp;
@@ -99,9 +108,11 @@ public class UserVO {
 	@Override
 	public String toString() {
 		return "UserVO [useremail=" + useremail + ", userpassword=" + userpassword + ", userid=" + userid + ", usernum="
-				+ usernum + ", upoint=" + upoint + "]";
+				+ usernum + ", fromMail=" + fromMail + ", title=" + title + ", content=" + content + ", temp=" + temp
+				+ ", admin=" + admin + ", upoint=" + upoint + "]";
 	}
-	
+
+
 	
 
 }

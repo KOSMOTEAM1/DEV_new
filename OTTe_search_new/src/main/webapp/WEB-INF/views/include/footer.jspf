@@ -21,6 +21,7 @@
 						<li><a href="../main/latest">New 콘텐츠</a></li>
 						<li><a href="../main/wishlist">내가 찜한 콘텐츠</a></li>
 						<li><a href="../board/list2">자유게시판</a></li>
+						<li><a href="../movie/selectmovie">관리페이지1</a></li>
 					</ul>
 				</div>
 			</div>

@@ -1,6 +1,8 @@
 package org.zerock.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.MovieVO;
 import org.zerock.domain.PagingVO;
+import org.zerock.domain.UserVO;
+import org.zerock.dto.LoginDTO;
 import org.zerock.service.MovieService;
 
 /**
@@ -105,7 +109,7 @@ public class MovieController {
 	}
 	//페이징 기능을 추가한 영상물 조회
 	@RequestMapping(value = "/selectmovie", method = RequestMethod.GET)
-	public String selectmovie(PagingVO vo, Model model,
+	public String selectmovie(PagingVO vo, Model model, HttpServletRequest request,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
 
@@ -119,10 +123,22 @@ public class MovieController {
 			cntPerPage = "5";
 		}
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		logger.info("/* userVoad="+userVo.toString());
 		model.addAttribute("paging", vo);
 		model.addAttribute("movieservice", service.selectBoard(vo));
-		return "movie/selectmovie";
+		
+		
+		if(userVo.getAdmin() != null) {
+			return "/movie/selectmovie";
+			} else {
+				return "redirect:/main/home";
+			}
 	}
+	
+	
 	
 	/*
 	 * 
