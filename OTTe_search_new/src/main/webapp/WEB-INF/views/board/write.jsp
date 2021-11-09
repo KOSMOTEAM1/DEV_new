@@ -100,10 +100,8 @@
 											<div class="card border-primary mb-3"
 												style="max-width: 80rem; margin: auto;">
 												<div class="card-header">
-													<input type="text" name="title" class="form-control"
-														placeholder="제목을 입력해 주세요"> <input type="text"
-														name="name" value="${login.userid}" style="display: none;"
-														readonly>
+													<input type="text" name="title" class="form-control" placeholder="제목을 입력해 주세요">
+													<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
 												</div>
 												<div class="card-body">
 													<h4 class="card-title"></h4>

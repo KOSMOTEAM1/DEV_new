@@ -19,6 +19,7 @@ import org.zerock.domain.BoardVO;
 import org.zerock.domain.ComentVO;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
+import org.zerock.domain.UserVO;
 import org.zerock.service.BoardService;
 import org.zerock.service.ComentService;
 
@@ -49,7 +50,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/list2", method = RequestMethod.GET)
-	public void boardList2(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void boardList2(@ModelAttribute("cri") SearchCriteria cri, Model model,  /*user id 가져오기*/HttpServletRequest request) throws Exception {
+		
+		// userid 가져오기
+		HttpSession session = request.getSession();
+	      
+	    UserVO userVo = (UserVO) session.getAttribute("login");
+	    //userid 가져오기
+	    
 		logger.info("// /board/list");
 
 		List<BoardVO> list = boardService.selectBoardList();
@@ -71,6 +79,8 @@ public class BoardController {
 	    pageMaker.setTotalCount(boardService.listSearchCount(cri));
 
 	    model.addAttribute("pageMaker", pageMaker);
+	    
+	    model.addAttribute("user", userVo);//userid 가져오기
 	}
 	
 
@@ -81,9 +91,15 @@ public class BoardController {
 	}
 	
 	 @RequestMapping(value = "/view2", method = RequestMethod.GET)
-	 public void read(@RequestParam("num") int num, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	 public void read(@RequestParam("num") int num, @ModelAttribute("cri") SearchCriteria cri, Model model,/*user id 가져오기*/HttpServletRequest request) throws Exception {
+		// userid 가져오기
+		 HttpSession session = request.getSession();
+		      
+		 UserVO userVo = (UserVO) session.getAttribute("login");
+		    //userid 가져오기
 		 System.out.println(num);
 		 model.addAttribute(boardService.read(num));
+		 model.addAttribute("user", userVo);//userid 가져오기
 	}
 	
 	/*
@@ -156,7 +172,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/write",  method = RequestMethod.GET)
-	public String boardWrite() throws Exception{
+	public String boardWrite(/*user id 가져오기*/HttpServletRequest request, Model model) throws Exception{
+		// userid 가져오기
+		HttpSession session = request.getSession();
+		      
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		    //userid 가져오기 
+		model.addAttribute("user", userVo);//userid 가져오기
 		return null;
 	}
 	

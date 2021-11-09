@@ -119,41 +119,48 @@
 							</div>
 						</div>
 
-						<!-- 댓글 -->
+						<!-- 댓글 작성하기 -->
+						<div class="blog__details__form">
+							<h4>Leave A Commnet</h4>
+							<form>
+
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6">
+										<input class="form-control" type="text"
+											placeholder="${user.userid}" value="${user.userid}" readonly>
+									</div>
+									<div class="col-lg-12">
+										<textarea id="newcomemnttext" placeholder="Message"></textarea>
+										<input type="text" name="num" value="${boardVO.num}"
+											style="display: none;" readonly> <input type="text"
+											name="originnum" value="${boardVO.num}"
+											style="display: none;" readonly>
+											<div class="timeline">
+										<button type="submit" class="site-btn" id="replyAddBtn">Send Message</button>
+										</div>
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<!-- 댓글 작성하기 -->
+
+						<!-- 전체 댓글 펼쳐보기 -->
 						<div class="blog__details__comment">
 							<h4>Comments</h4>
 							<div class="blog__details__comment__item">
+								<div class="timeline">
+									<div class="blog__details__comment__item__text">
+										<button type="button" class="btn btn-primary" id="repliesDiv">RepliesList</button>
 
-								<div class="blog__details__comment__item__text">
-									<button type="button" class="btn btn-primary" id="repliesDiv">RepliesList</button>
-
+									</div>
 								</div>
 								<ul id="pagination" class="pagination pagination-sm no-margin ">
-			</ul>
+								</ul>
 							</div>
 						</div>
+						<!-- 전체 댓글 펼쳐보기 -->
 
-
-						<div class="blog__details__form">
-                                <h4>Leave A Commnet</h4>
-                                <form>
-                                <c:set var="I1" value="$login.userid}"/>
-                                <c:if test="${I1 != null }">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <input class="form-control" type="text" placeholder="${login.userid}" value="${login.userid}" readonly>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <input class="form-control" type="text" placeholder="${userVO.useremail}" value="${userVO.useremail}" readonly>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <textarea id="newcomemnttext" placeholder="Message"></textarea>
-                                            <button type="submit" class="site-btn" id="replyAddBtn">Send Message</button>
-                                        </div>
-                                    </div>
-                                    </c:if>
-                                </form>
-                            </div>
 					</div>
 				</div>
 			</div>

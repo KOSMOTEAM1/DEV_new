@@ -75,8 +75,7 @@
 							<!-- 검색기능 적용(진행중) -->
 							<div class="col-md-6" style="text-align: right;">
 							
-									<button type="submit" class="site-btn" id='newBtn' method="get"
-										onclick="location.href='/board/write'">글쓰기</button>
+									<button type="submit" class="site-btn" id='newBtn' method="get" onclick="location.href='/board/write'">글쓰기</button>
 
 								<button id='newBtn'>New Board</button>
 							</div>
@@ -135,7 +134,7 @@
 
 						<c:if test="${pageMaker.prev}">
 							<ul class="fa fa-angle-double-left"><a
-								href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></ul>
+								href="list2${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></ul>
 						</c:if>
 
 
@@ -143,14 +142,14 @@
 							end="${pageMaker.endPage }" var="idx">
 							<ul>
 								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>
-								<a href="list${pageMaker.makeSearch(idx)}" class="current-page">${idx}</a>
+								<a href="list2${pageMaker.makeSearch(idx)}" class="current-page">${idx}</a>
 
 							</ul>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 							<ul class="fa fa-angle-double-right"><a
-								href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></ul>
+								href="list2${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></ul>
 						</c:if>
 					
 				</div>
