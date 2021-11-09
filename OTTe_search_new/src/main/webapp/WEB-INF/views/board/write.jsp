@@ -193,7 +193,7 @@
 
 	$(".fileDrop").on("drop", function(event) {
 		event.preventDefault();
-		
+		alert("목록으로 돌아갑니다.");
 		var files = event.originalEvent.dataTransfer.files;
 		var file = files[0];
 		var formData = new FormData();
