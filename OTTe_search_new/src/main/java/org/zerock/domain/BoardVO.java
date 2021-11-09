@@ -12,7 +12,9 @@ public class BoardVO {
 	private String content;
 	private Integer readCount;
 	private Date writeDate;
-	private String filename;
+
+	private String[] filename;
+	private String[] testname;
 	
 	public Integer getNum() {
 		return num;
@@ -51,12 +53,13 @@ public class BoardVO {
 		this.writeDate = writeDate;
 	}
 	
-	public String getFilename() {
+	public String[] getFilename() {
 		return filename;
 	}
-	public void setFilename(String filename) {
+	public void setFilename(String[] filename) {
 		this.filename = filename;
 	}
+	
 	@Override
 	public String toString() {
 		return "BoardVO [num=" + num + ", name=" + name + ", title=" + title + ", content=" + content + ", readCount="

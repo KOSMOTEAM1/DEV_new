@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.ComentVO;
+import org.zerock.domain.FileVO;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
 import org.zerock.domain.UserVO;
@@ -98,6 +99,9 @@ public class BoardController {
 		 UserVO userVo = (UserVO) session.getAttribute("login");
 		    //userid 가져오기
 		 System.out.println(num);
+		 
+		 List<FileVO> list = boardService.selectFileList(num);
+		 model.addAttribute("filename", list);
 		 model.addAttribute(boardService.read(num));
 		 model.addAttribute("user", userVo);//userid 가져오기
 	}
@@ -183,14 +187,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String boardWriteUpdate(BoardVO board) throws Exception {
+	public String boardWriteUpdate(BoardVO board, RedirectAttributes rttr) throws Exception {
 		logger.info("// /board/write");
 		System.out.println(board);
-		if(board.getFilename() == null) {
-			board.setFilename(" ");
-		}
 		System.out.println(board);
-		BoardVO NewBvo = boardService.insertBoard(board);
+		boardService.insertBoard(board);
 		return "redirect:/board/list2";
 	}
 

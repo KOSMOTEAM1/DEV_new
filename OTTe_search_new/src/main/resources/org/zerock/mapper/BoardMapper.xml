@@ -26,8 +26,7 @@
 		#{title},
 		#{content},
 		'0',
-		SYSDATE,
-		#{filename})
+		SYSDATE)
 	</select>
 
 
@@ -39,7 +38,6 @@
 		, CONTENT
 		, READCOUNT
 		, WRITEDATE
-		, FILENAME
 		FROM
 		BOARD
 		WHERE NUM = #{num}
@@ -59,8 +57,7 @@
 		TITLE,
 		CONTENT,
 		READCOUNT,
-		WRITEDATE,
-		FILENAME
+		WRITEDATE
 		FROM
 		BOARD
 		WHERE NUM = #{num}
@@ -92,7 +89,6 @@
 		CONTENT,
 		READCOUNT,
 		WRITEDATE,
-		FILENAME
 		FROM
 		BOARD 
  where NUM > 0 
@@ -104,9 +100,9 @@
 	<select id="listCriteria" resultType="org.zerock.domain.BoardVO">
  <![CDATA[
  
- SELECT NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE, FILENAME FROM
-  ( SELECT SEQ, NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE, FILENAME FROM
-  ( SELECT ROWNUM AS SEQ, NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE, FILENAME FROM
+ SELECT NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE FROM
+  ( SELECT SEQ, NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE FROM
+  ( SELECT ROWNUM AS SEQ, NUM, NAME, TITLE, CONTENT, READCOUNT, WRITEDATE FROM
       (SELECT * FROM BOARD ORDER BY NUM DESC, WRITEDATE DESC))
   WHERE SEQ >= #{pageStart} ) WHERE ROWNUM <= #{perPageNum}
  ]]>
@@ -130,7 +126,6 @@
 		SET
 		TITLE = #{title},
 		CONTENT = #{content},
-		FILENAME =#{filename}
 		WHERE NUM = #{num}
 	</select>
 	
@@ -195,4 +190,40 @@
 		<include refid="search"></include>
 
 	</select>
+	
+<update id="updateReplyCnt">
+  update tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+</update>
+
+
+<update id="updateViewCnt">
+  update tbl_board set viewcnt = viewcnt +1 where bno = #{bno}
+</update>
+
+
+ 
+<insert id="addAttach">
+insert into files (BOARDNUM, FILENAME, REGDATE) values (BOARDNUMS.CURRVAL, #{fullName}, SYSDATE)
+</insert> 
+
+
+<select id="getAttach" resultType="string">
+select filename from files where boardnum = #{num} order by regdate
+</select> 
+
+ 
+<delete id="deleteAttach">
+delete from tbl_attach where bno = #{bno}
+</delete>
+
+<insert id="replaceAttach">
+insert into tbl_attach(fullname, bno) values (#{fullName}, #{bno})
+</insert>
+
+
+<select id="selectFileList" resultType="org.zerock.domain.FileVO">
+select filename from files where boardnum = #{num} order by regdate
+</select> 
+
+  
 </mapper>

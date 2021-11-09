@@ -4,22 +4,22 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.BoardVO;
-import org.zerock.domain.ComentVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.FileVO;
 import org.zerock.domain.SearchCriteria;
 import org.zerock.mapper.BoardMapper;
 
-@Service
+@Repository
+
 //@Configuration
 //@MapperScan("org.zerock.mapper")
 public class BoardServiceImpl implements BoardService {
-
+	
 	@Autowired
 	private BoardMapper boardMapper;
 
@@ -29,9 +29,16 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.selectBoardList();
 	}
 
-	public BoardVO insertBoard(BoardVO board) throws Exception {
+	public void insertBoard(BoardVO board) throws Exception {
 		// TODO Auto-generated method stub
-		return boardMapper.insertBoard(board);
+		boardMapper.insertBoard(board);
+	    String[] files = board.getFilename();
+	    
+	    if(files == null) { return; } 
+	    
+	    for (String fileName : files) {
+			boardMapper.addAttach(fileName);
+	    }
 	}
 
 	public BoardVO selectBoardOne(BoardVO board) throws Exception {
@@ -87,5 +94,16 @@ public class BoardServiceImpl implements BoardService {
 
 		return boardMapper.listSearchCount(cri);
 	}
+	
+	@Override
+	public List<String> getAttach(Integer num) throws Exception {
+		    
+	    return boardMapper.getAttach(num);
+	}  
+	
+	public List<FileVO> selectFileList(Integer num) throws Exception {
+	    return boardMapper.selectFileList(num);
+	}  
+	
 
 }
