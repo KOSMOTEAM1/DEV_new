@@ -1,12 +1,60 @@
 package org.zerock.domain;
 
+import java.util.Random;
+
 public class UserVO {
 
 	private String useremail;
 	private String userpassword;
 	private String userid;
 	private Integer usernum;
+	private String fromMail;
+	private String title;
+	private String content;
+	private String temp;
+	/*
+	 * private Random rnd;
+	 * 
+	 * 
+	 * 
+	 * public Random getRnd() { return rnd; }
+	 * 
+	 * public void setRnd(Random rnd) { this.rnd = rnd; }
+	 */
+
+	public String getTemp() {
+		return temp;
+	}
+
+	public void setTemp(String temp) {
+		this.temp = temp;
+	}
+
 	private int upoint;
+
+	public String getFromMail() {
+		return fromMail;
+	}
+
+	public void setFromMail(String fromMail) {
+		this.fromMail = fromMail;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public Integer getUsernum() {
 		return usernum;

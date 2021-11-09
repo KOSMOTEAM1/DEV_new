@@ -1,6 +1,7 @@
 package org.zerock.service;
 
 import org.zerock.domain.MemberVO;
+import org.zerock.domain.UserVO;
 
 public interface MemberService {
 
@@ -15,5 +16,12 @@ public interface MemberService {
 	public int idChk(MemberVO vo) throws Exception;
 	
 	public int emailChk(MemberVO vo) throws Exception;
+	
+	public int memChk(MemberVO vo) throws Exception;
+	
+	public String randomPw(UserVO vo) throws Exception;
+	
+	
+	
 
 }

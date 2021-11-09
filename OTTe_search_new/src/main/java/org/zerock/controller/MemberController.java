@@ -1,10 +1,7 @@
 package org.zerock.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.MemberVO;
+import org.zerock.domain.UserVO;
+import org.zerock.dto.LoginDTO;
 import org.zerock.service.MemberService;
 
 @Controller
@@ -106,17 +105,18 @@ public class MemberController {
 	 * @RequestMapping(value="/memberDeleteView", method = RequestMethod.GET) public
 	 * String memberDeleteView() throws Exception{ return "member/memberDeleteView";
 	 * }
-	 */ 
-	  // 회원 탈퇴 post
-	  
-	  @RequestMapping(value="/memberDelete", method = RequestMethod.POST) public
-	  String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes
-	  rttr) throws Exception{
-	  
-	  service.memberDelete(vo); session.invalidate();
-	  
-	  return "user/login"; }
-	 
+	 */
+	// 회원 탈퇴 post
+
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
+	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		service.memberDelete(vo);
+		session.invalidate();
+
+		return "user/login";
+	}
+
 	// 패스워드 체크
 	@ResponseBody
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
@@ -132,46 +132,101 @@ public class MemberController {
 		int result = service.idChk(vo);
 		return result;
 	}
+
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(MemberVO vo) throws Exception {
+		int result = service.emailChk(vo);
+		return result;
+	}
+	
 	// 이메일 중복 체크
 		@ResponseBody
-		@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
-		public int emailChk(MemberVO vo) throws Exception {
-			int result = service.emailChk(vo);
+		@RequestMapping(value = "/memChk", method = RequestMethod.POST)
+		public int memChk(MemberVO vo) throws Exception {
+			int result = service.memChk(vo);
 			return result;
 		}
+		
+	
 
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String goprofile(Locale locale, Model model) {
-		logger.info("Welcome signup! The client locale is {}.", locale);
+	
+	/*
+	 * @RequestMapping(value = "/profile", method = RequestMethod.GET) public String
+	 * goprofile(Locale locale, Model model) {
+	 * logger.info("Welcome signup! The client locale is {}.", locale);
+	 * 
+	 * Date date = new Date(); DateFormat dateFormat =
+	 * DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+	 * 
+	 * String formattedDate = dateFormat.format(date);
+	 * 
+	 * model.addAttribute("serverTime", formattedDate);
+	 * 
+	 * return "/member/profile"; }
+	 */
+	 
+	
+	  @RequestMapping(value = "/profile", method = RequestMethod.GET) public String
+	  goprofile(LoginDTO userid, Model model, HttpServletRequest request) throws
+	  Exception {
+	  
+	  HttpSession session = request.getSession();
+	  
+	  UserVO userVo = (UserVO) session.getAttribute("login");
+	  
+	  logger.info("/* userVo="+userVo.toString());
+	  
+		/*
+		 * List<ContentsVO> wish = contentsService.selectWishlist(userVo);
+		 * model.addAttribute("wish", wish);
+		 */
+	  
+	  return "/member/profile"; 
+	  }
+	
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-
-		return "/member/profile";
-	}
 	// 회원정보 수정 post
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public String postprofile(MemberVO vo) throws Exception {
 		logger.info("/* post profile");
 		/*
-		int result = service.passChk(vo);
-		try {
-			if (result == 1) {
-				return "/member/profile";
-			} else if (result == 0) {				
-				service.memberUpdate(vo);
-			}
-			
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-		*/
+		 * int result = service.passChk(vo); try { if (result == 1) { return
+		 * "/member/profile"; } else if (result == 0) { service.memberUpdate(vo); }
+		 * 
+		 * } catch (Exception e) { throw new RuntimeException(); }
+		 */
 		service.memberUpdate(vo);
-		
+
 		return "redirect:/";
 	}
+	
+	
+	
+	
+	// 비밀번호 분실 메일전송 
+	
+	/*
+	 * @RequestMapping(value="/mPwdSearch", method=RequestMethod.GET) public String
+	 * mPwdSearchGet() { return "member/mPwdSearch"; }
+	 * 
+	 * 
+	 * @RequestMapping(value="/mPwdSearch", method=RequestMethod.POST) public String
+	 * mPwdSearchPost(String useremail, String userid) { String pwd = "";
+	 * 
+	 * //기존 db에 아이디와 이메일이 일치하는지 확인하기 MemberVO vo =
+	 * service.getPwdSearch(useremail,userid);
+	 * 
+	 * if(vo != null) { //임시비밀번호를 발급한다 UUID uid = UUID.randomUUID(); pwd =
+	 * uid.toString().substring(0,6); service.setPwdChange(useremail,
+	 * passwordEncoder.encode(pwd)); //암호화 시킨 비밀번호를 저장 String toMail = userid;
+	 * String content = pwd; return
+	 * "redirect:/mail/pwdConfirmMailForm/"+toMail+"/"+content+"/"; } else { msgFlag
+	 * = "pwdConfirmNo"; return "redirect:/msg/"+msgFlag; } }
+	 */
+	
+	
+	
+	
 }

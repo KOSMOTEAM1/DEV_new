@@ -1,6 +1,7 @@
 package org.zerock.mapper;
 
 import org.zerock.domain.MemberVO;
+import org.zerock.domain.UserVO;
 
 public interface MemberMapper {
 
@@ -24,5 +25,9 @@ public interface MemberMapper {
 
 	// 이메일 중복체크
 	public int emailChk(MemberVO vo) throws Exception;
+	
+	public int memChk(MemberVO vo) throws Exception;
+	
+	public String randomPw(UserVO vo) throws Exception;
 
 }

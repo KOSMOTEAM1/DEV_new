@@ -39,7 +39,7 @@
                             </div>
                             <button type="submit" class="site-btn">로그인 하기</button>
                         </form>
-                        <a href="#" class="forget_pass">패스워드를 잊으셨나요?</a>
+                        <a href="../mail/mailForm" class="forget_pass">패스워드를 잊으셨나요?</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

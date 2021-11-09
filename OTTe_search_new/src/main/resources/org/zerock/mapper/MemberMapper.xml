@@ -34,7 +34,8 @@
 
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate"> UPDATE USER_T SET userpassword = #{repassword}
-		WHERE useremail = #{useremail} and userpassword = #{userpassword}
+		WHERE
+		useremail = #{useremail} and userpassword = #{userpassword}
 	</update>
 
 	<!-- 회원탈퇴 -->
@@ -48,17 +49,34 @@
 		WHERE useremail = #{useremail} AND userpassword = #{userpassword}
 	</select>
 
+	<!-- 회원 이메일,아이디 일치 조회(비밀번호 찾기) -->
+	<select id="memChk" resultType="int"> SELECT COUNT(*) FROM
+		USER_T
+		WHERE
+		useremail = #{useremail} AND userid = #{userid}
+	</select>
+
+	<!-- 임시 비밀번호 업데이트 -->
+	<update id="randomPw"> UPDATE USER_T SET userpassword = #{userpassword}
+		WHERE
+		useremail = #{useremail} and userid = #{userid}
+	</update>
+
 
 	<!-- 아이디 중복 체크 -->
 	<select id="idChk" resultType="int"> SELECT COUNT(*)
 		FROM USER_T WHERE
 		userid = #{userid}
 	</select>
-	
+
 	<!-- 이메일 중복 체크 -->
 	<select id="emailChk" resultType="int"> SELECT COUNT(*)
-		FROM USER_T WHERE
+		FROM USER_T
+		WHERE
 		useremail = #{useremail}
 	</select>
+
+
+
 
 </mapper>

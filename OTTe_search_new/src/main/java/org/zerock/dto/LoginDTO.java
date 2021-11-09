@@ -4,9 +4,18 @@ public class LoginDTO {
 
 	private String useremail;
 	private String userpassword;
+	private String userid;
 	private Integer usernum;
 	
 	
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public Integer getUsernum() {
 		return usernum;
 	}
