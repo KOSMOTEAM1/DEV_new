@@ -26,6 +26,8 @@ public @Data class ContentsVO {
 	private String reviewnatter;
 	private Date reviewdate;
 	private String userid;
+	private Float avgScore;
+	private Integer reviewcnt;
 	
 	
 	/*

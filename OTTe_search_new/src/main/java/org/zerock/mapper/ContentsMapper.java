@@ -15,6 +15,9 @@ public interface ContentsMapper{
 	ContentsVO view(Integer contentsid);
 	List<ContentsVO> selectWishlist(UserVO userVo);
 	List<ContentsVO> selectViewReply(Integer contentsid);
+	ContentsVO selectAvgscore(Integer contentsid);
+	ContentsVO selectReviewcnt(Integer contentsid);
+	
 	
 	
 	

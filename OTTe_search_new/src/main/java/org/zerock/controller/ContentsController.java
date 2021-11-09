@@ -31,12 +31,16 @@ public class ContentsController {
 		
 		ContentsVO view = contentsService.view(contentsid);
 		List<ContentsVO> viewReply = contentsService.selectViewReply(contentsid);
-
+		ContentsVO avgScore = contentsService.selectAvgscore(contentsid);
+		ContentsVO reviewcnt = contentsService.selectReviewcnt(contentsid);
+		
+		
+		
+		logger.info("/* avgScore="+avgScore.toString());
+		model.addAttribute("reviewcnt",reviewcnt);
+		model.addAttribute("avgScore",avgScore);
 		model.addAttribute("viewReply",viewReply);
 		model.addAttribute("view",view);
 		
 	}
-	
-	
-
 }

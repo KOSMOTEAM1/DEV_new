@@ -61,6 +61,16 @@ public class ContentsServiceImpl implements ContentsService {
 		return ContentsMapper.selectViewReply(contentsid);
 	}
 	
+	@Override
+	public ContentsVO selectAvgscore(Integer contentsid) throws Exception {
+		return ContentsMapper.selectAvgscore(contentsid);
+	}
+	
+	@Override
+	public ContentsVO selectReviewcnt(Integer contentsid) throws Exception {
+		return ContentsMapper.selectReviewcnt(contentsid);
+	}
+	
 	
 	
 	

@@ -59,9 +59,19 @@
 
 	<select id="selectViewReply"
 		resultType="org.zerock.domain.ContentsVO">
-		<![CDATA[select R.reviewid, R.contentsid, U.userid, r.reviewnatter, r.reviewdate 
+		<![CDATA[select R.reviewid, R.contentsid, U.userid, r.reviewnatter, r.reviewscore, r.reviewdate 
 				 from review_t R, user_t U 
 			     where r.contentsid= #{CONTENTSID} and R.usernum=U.usernum]]>
+	</select>
+	
+		<select id="selectAvgscore"
+		resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[ select Round(avg(nvl(reviewscore,0)),1) avgScore from review_t where contentsid=#{CONTENTSID}]]>
+	</select>
+	
+			<select id="selectReviewcnt"
+		resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[select count(*)reviewcnt from review_t where contentsid=#{CONTENTSID}]]>
 	</select>
 
 

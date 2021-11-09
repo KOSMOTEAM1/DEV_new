@@ -15,5 +15,9 @@ public interface ContentsService {
 	List<ContentsVO> selectSearch(SearchCriteria cri)throws Exception;
 	List<ContentsVO> selectWishlist(UserVO userVo)throws Exception;
 	List<ContentsVO> selectViewReply(Integer contentsid)throws Exception;
-
+	public ContentsVO selectAvgscore(Integer contentsid)throws Exception;
+	public ContentsVO selectReviewcnt(Integer contentsid)throws Exception;
+	
+	
+	
 }
