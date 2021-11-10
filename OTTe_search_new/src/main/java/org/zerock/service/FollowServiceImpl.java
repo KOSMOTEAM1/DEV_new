@@ -43,7 +43,7 @@ public class FollowServiceImpl implements FollowService {
 		paramMap.put("contentsid", contentsid);
 		paramMap.put("usernum", usernum);
 		
-		System.out.println("test@@@@@@@@"+FollowMapper.checkFollow(paramMap));
+		//System.out.println("test@@@@@@@@"+FollowMapper.checkFollow(paramMap));
 		return FollowMapper.checkFollow(paramMap);
 	
 	}

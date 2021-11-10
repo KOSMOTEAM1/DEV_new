@@ -128,12 +128,17 @@
 									</div>
 								</div>
 							</div>
+							
+							
+							
+							
 							<div class="anime__details__btn">
-								<a class="follow-btn" id="follow"><i class="fa fa-heart-o"></i>Follow</a> 
-								
-								
-								
-								
+								<c:if test="${checkfollow.count == 0}">
+									<a class="follow-btn" id="follow"><i class="fa fa-heart-o"></i>Follow</a> 
+								</c:if>
+								<c:if test="${checkfollow.count != 0}">
+									<a class="follow-btn" id="follow"><i class="fa fa-heart"></i>Follow</a> 
+								</c:if>
 								<a href="#" target="_blank" class="watch-btn"><span>Watch
 										Now</span> <i class="fa fa-angle-right"></i></a>
 							</div>
@@ -205,6 +210,7 @@ $("#follow").on("click", function(){
 		},
 	})   
 });
+
 
 // 리뷰제출버튼
 $("#reviewAdd").on("click",function(){

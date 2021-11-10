@@ -5,9 +5,7 @@
 
 <mapper namespace="org.zerock.mapper.FollowMapper">
 
-	<resultMap id="count" type="org.zerock.domain.FollowVO">
-		<result column="count(1)" property="count"/>
-	</resultMap>
+
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 
 		있습니다. -->
 	<insert id="addFollow" parameterType="HashMap">
@@ -18,8 +16,10 @@
 		<![CDATA[DELETE FROM WISH WHERE contentsid = #{contentsid} and usernum = #{usernum}]]>
 	</delete>
 
-	<select id="checkFollow" resultMap="count">
-		<![CDATA[SELECT COUNT(1)  FROM WISH where USERNUM = #{usernum} AND CONTENTSID = #{CONTENTSID}]]>
+	<select id="checkFollow" resultType="org.zerock.domain.FollowVO">
+		<![CDATA[
+			SELECT COUNT(*) count FROM WISH where USERNUM = #{usernum} AND CONTENTSID = #{contentsid}
+		]]>
 	</select>
 
 </mapper>

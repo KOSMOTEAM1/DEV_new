@@ -13,13 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.ContentsVO;
+import org.zerock.domain.FollowVO;
 import org.zerock.domain.UserVO;
 import org.zerock.service.ContentsService;
 import org.zerock.service.FollowService;
@@ -28,21 +26,28 @@ import org.zerock.service.FollowService;
 @RequestMapping(value = "/contents")
 public class ContentsController {
 
-	//private static final Logger logger = LoggerFactory.getLogger(ContentsController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ContentsController.class);
 
 	@Inject
 	private ContentsService contentsService;
+	//private FollowService followService;
 	@Autowired
 	private FollowService followService;
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public void read(@RequestParam("contentsid") int contentsid, Model model) throws Exception {
+	public void read(@RequestParam("contentsid") int contentsid, Model model, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
 		
 		ContentsVO view = contentsService.view(contentsid);
 		List<ContentsVO> viewReply = contentsService.selectViewReply(contentsid);
 		ContentsVO avgScore = contentsService.selectAvgscore(contentsid);
 		ContentsVO reviewcnt = contentsService.selectReviewcnt(contentsid);
+		FollowVO checkfollow = followService.checkFollow(contentsid, userVo.getUsernum());
 		
+		logger.info("/* checkfollow="+checkfollow.toString());
+		model.addAttribute("checkfollow",checkfollow);
 		model.addAttribute("reviewcnt",reviewcnt);
 		model.addAttribute("avgScore",avgScore);
 		model.addAttribute("viewReply",viewReply);
@@ -65,5 +70,6 @@ public class ContentsController {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		return entity;
+
 	}
 }

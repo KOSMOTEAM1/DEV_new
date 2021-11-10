@@ -11,5 +11,5 @@ public interface FollowMapper {
 
 	void removeFollow(ContentsVO contentsvo);
 
-	public FollowVO checkFollow(Map<String, Integer> paramMap);
+	FollowVO checkFollow(Map<String, Integer> paramMap);
 }
