@@ -33,12 +33,18 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		boardMapper.insertBoard(board);
 	    String[] files = board.getFilename();
-	    
-	    if(files == null) { return; } 
-	    
-	    for (String fileName : files) {
-			boardMapper.addAttach(fileName);
+	    String[] nuwName = {" "};
+	    if(files == null) {
+	    	for (String fileName : nuwName) {
+				boardMapper.addAttach(fileName);
+		    }
+	    } else {
+	    	for (String fileName : files) {
+				boardMapper.addAttach(fileName);
+		    }
 	    }
+	    
+	    
 	}
 
 	public BoardVO selectBoardOne(BoardVO board) throws Exception {
