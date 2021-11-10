@@ -112,7 +112,7 @@ public class LoginController {
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
-				service.keepLogin(vo.getuseremail(), session.getId(), new Date());
+				service.keepLogin(vo.getUseremail(), session.getId(), new Date());
 			}
 		}
 

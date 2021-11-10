@@ -157,14 +157,14 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="login__register">
-						<h3>비밀번호를 잊으셨나요 ?</h3>
+						<!-- <h3>비밀번호를 잊으셨나요 ?</h3>
 						<a href="#" class="primary-btn">비밀번호 찾기</a>
 					</div>
 					<section class="login spad" id="container">
 						<div class="container-fulid">
 							<div class="row">
-								<div class="col-lg-6">
-									<div class="login__form">
+								<div class="col-lg-6"> -->
+									<div class="login__form"> -->
 										<form id="delForm" action="/member/memberDelete" method="post">
 											<div class="login__register">
 												<h3>비밀번호를 영원히 잊고 싶나요 ?</h3>
@@ -191,11 +191,11 @@
 							</div>
 						</div>
 					</section>
-
+<!-- 
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Login Section End -->
 
 

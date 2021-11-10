@@ -146,7 +146,7 @@ $(document).ready(function() {
 					<div class="login__form">
 						<h3>비밀번호 찾기</h3>
 						<!-- <section id="container"> -->
-						<form action="/mail/mailForm" method="post" id="memChkForm">
+						<form action="/member/mailForm" method="post" id="memChkForm">
 							<div class="input__item">
 								<input class="form-control" type="text" id="useremail"
 									name="useremail" placeholder="Enter Your Email" /> <span

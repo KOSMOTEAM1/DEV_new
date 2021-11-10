@@ -1,5 +1,32 @@
 <%@ include file="../include/header.jspf" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// 취소
+		$(".cencle").on("click", function() {
+			location.href = "/";
+		})
+
+		$("#submit").on("click", function() {
+			if ($("#useremail").val() == "") {
+				alert("이메일을 입력해주세요.");
+				$("#useremail").focus();
+				return false;
+			}
+			
+			if ($("#userpassword").val() == "") {
+				alert("비밀번호를 입력해주세요.");
+				$("#userpassword").focus();
+				return false;
+			}
+			
+			$("#loginForm").submit();
+			
+		});
+	})
+</script>
 <body>
 	<!-- Page Preloder. -->
 	<div id="preloder">
@@ -28,18 +55,18 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>로그인</h3>
-                        <form action="/user/loginPost" method="post">
+                        <form id=loginForm action="/user/loginPost" method="post">
                             <div class="input__item">
-                                <input type="email" name="useremail" placeholder="ID(email type)">
+                                <input type="email" name="useremail" id="useremail" placeholder="ID(email type)">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="userpassword" placeholder="password">
+                                <input type="password" name="userpassword" id="userpassword" placeholder="password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">로그인 하기</button>
+                            <button type="submit" id="submit" class="site-btn">로그인 하기</button>
                         </form>
-                        <a href="../mail/mailForm" class="forget_pass">패스워드를 잊으셨나요?</a>
+                        <a href="../member/mailForm" class="forget_pass">패스워드를 잊으셨나요?</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

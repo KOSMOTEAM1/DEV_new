@@ -1,18 +1,25 @@
 package org.zerock.controller;
 
+import java.util.Random;
+
 import javax.inject.Inject;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.MemberVO;
 import org.zerock.domain.UserVO;
 import org.zerock.dto.LoginDTO;
 import org.zerock.service.MemberService;
@@ -35,7 +42,7 @@ public class MemberController {
 	// 회원가입 post 심플.ver
 	/*
 	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
-	 * String postRegister(MemberVO vo) throws Exception {
+	 * String postRegister(UserVO vo) throws Exception {
 	 * 
 	 * logger.info("post register");
 	 * 
@@ -46,7 +53,7 @@ public class MemberController {
 
 	// 회원가입 post
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVO vo) throws Exception {
+	public String postRegister(UserVO vo) throws Exception {
 		logger.info("post register");
 		int result = service.idChk(vo);
 		try {
@@ -64,52 +71,11 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	/*
-	 * // 로그인 post
-	 * 
-	 * @RequestMapping(value = "/login", method = RequestMethod.POST) public String
-	 * login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws
-	 * Exception{ logger.info("post login");
-	 * 
-	 * session.getAttribute("member"); MemberVO login = service.login(vo); boolean
-	 * pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
-	 * 
-	 * if(login != null && pwdMatch == true) { session.setAttribute("member",
-	 * login); } else { session.setAttribute("member", null);
-	 * rttr.addFlashAttribute("msg", false); }
-	 * 
-	 * 
-	 * return "redirect:/"; }
-	 */
-	/*
-	 * // 회원정보 수정 get
-	 * 
-	 * @RequestMapping(value="/memberUpdateView", method = RequestMethod.GET) public
-	 * String registerUpdateView() throws Exception{ return
-	 * "member/memberUpdateView"; }
-	 * 
-	 * // 회원정보 수정 post
-	 * 
-	 * @RequestMapping(value="/memberUpdate", method = RequestMethod.POST) public
-	 * String registerUpdate(MemberVO vo, HttpSession session) throws Exception{
-	 * 
-	 * MemberVO login = service.login(vo);
-	 * 
-	 * boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
-	 * if(pwdMatch) { service.memberUpdate(vo); session.invalidate(); }else { return
-	 * "member/memberUpdateView"; } service.memberUpdate(vo); session.invalidate();
-	 * return "redirect:/"; }
-	 * 
-	 * // 회원 탈퇴 get
-	 * 
-	 * @RequestMapping(value="/memberDeleteView", method = RequestMethod.GET) public
-	 * String memberDeleteView() throws Exception{ return "member/memberDeleteView";
-	 * }
-	 */
+	
 	// 회원 탈퇴 post
 
 	@RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
-	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String memberDelete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 
 		service.memberDelete(vo);
 		session.invalidate();
@@ -120,7 +86,7 @@ public class MemberController {
 	// 패스워드 체크
 	@ResponseBody
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
-	public int passChk(MemberVO vo) throws Exception {
+	public int passChk(UserVO vo) throws Exception {
 		int result = service.passChk(vo);
 		return result;
 	}
@@ -128,7 +94,7 @@ public class MemberController {
 	// 아이디 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
-	public int idChk(MemberVO vo) throws Exception {
+	public int idChk(UserVO vo) throws Exception {
 		int result = service.idChk(vo);
 		return result;
 	}
@@ -136,7 +102,7 @@ public class MemberController {
 	// 이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
-	public int emailChk(MemberVO vo) throws Exception {
+	public int emailChk(UserVO vo) throws Exception {
 		int result = service.emailChk(vo);
 		return result;
 	}
@@ -144,29 +110,11 @@ public class MemberController {
 	// 이메일 중복 체크
 		@ResponseBody
 		@RequestMapping(value = "/memChk", method = RequestMethod.POST)
-		public int memChk(MemberVO vo) throws Exception {
+		public int memChk(UserVO vo) throws Exception {
 			int result = service.memChk(vo);
 			return result;
 		}
 		
-	
-
-	
-	/*
-	 * @RequestMapping(value = "/profile", method = RequestMethod.GET) public String
-	 * goprofile(Locale locale, Model model) {
-	 * logger.info("Welcome signup! The client locale is {}.", locale);
-	 * 
-	 * Date date = new Date(); DateFormat dateFormat =
-	 * DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-	 * 
-	 * String formattedDate = dateFormat.format(date);
-	 * 
-	 * model.addAttribute("serverTime", formattedDate);
-	 * 
-	 * return "/member/profile"; }
-	 */
-	 
 	
 	  @RequestMapping(value = "/profile", method = RequestMethod.GET) public String
 	  goprofile(LoginDTO userid, Model model, HttpServletRequest request) throws
@@ -189,7 +137,7 @@ public class MemberController {
 
 	// 회원정보 수정 post
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
-	public String postprofile(MemberVO vo) throws Exception {
+	public String postprofile(UserVO vo) throws Exception {
 		logger.info("/* post profile");
 		/*
 		 * int result = service.passChk(vo); try { if (result == 1) { return
@@ -204,29 +152,85 @@ public class MemberController {
 	
 	
 	
+	String msgFlag = "";
+
+	@Autowired
+	JavaMailSender mailSender;
 	
-	// 비밀번호 분실 메일전송 
+	@Inject
+	SqlSession sql;
 	
-	/*
-	 * @RequestMapping(value="/mPwdSearch", method=RequestMethod.GET) public String
-	 * mPwdSearchGet() { return "member/mPwdSearch"; }
-	 * 
-	 * 
-	 * @RequestMapping(value="/mPwdSearch", method=RequestMethod.POST) public String
-	 * mPwdSearchPost(String useremail, String userid) { String pwd = "";
-	 * 
-	 * //기존 db에 아이디와 이메일이 일치하는지 확인하기 MemberVO vo =
-	 * service.getPwdSearch(useremail,userid);
-	 * 
-	 * if(vo != null) { //임시비밀번호를 발급한다 UUID uid = UUID.randomUUID(); pwd =
-	 * uid.toString().substring(0,6); service.setPwdChange(useremail,
-	 * passwordEncoder.encode(pwd)); //암호화 시킨 비밀번호를 저장 String toMail = userid;
-	 * String content = pwd; return
-	 * "redirect:/mail/pwdConfirmMailForm/"+toMail+"/"+content+"/"; } else { msgFlag
-	 * = "pwdConfirmNo"; return "redirect:/msg/"+msgFlag; } }
-	 */
-	
-	
-	
+	private static String namespace = "org.zerock.mapper.MemberMapper";
+
+	@RequestMapping(value = "/mailForm", method = RequestMethod.GET)
+	public String mailFormGet() {
+		return "member/mailForm";
+		
+	}
+
+	@RequestMapping(value = "/mailForm", method = RequestMethod.POST)
+	public String mailFormPost(UserVO vo) {
+		String fromMail = "OtteOfficial@gmail.com";
+		String useremail = vo.getUseremail();
+		String title = vo.getTitle();
+		String content = vo.getContent();
+
+		try {
+
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+			// 인증 번호 생성기
+			StringBuffer temp = new StringBuffer();
+			Random rnd = new Random();
+			for (int i = 0; i < 7; i++) {
+				int rIndex = rnd.nextInt(3);
+				switch (rIndex) {
+				case 0:
+					// a-z
+					temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+					break;
+				case 1:
+					// A-Z
+					temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+					break;
+				case 2:
+					// 0-9
+					temp.append((rnd.nextInt(10)));
+					break;
+				}
+			}
+			
+			vo.setUserpassword(temp.toString());
+			
+			
+			sql.update(namespace + ".randomPw", vo);
+			
+			
+			title = "Otte 임시 비밀번호 입니다.";
+			
+			
+			content = temp.toString();
+			
+
+			
+			// 메일 보관함에 저장
+			messageHelper.setFrom(fromMail);
+			messageHelper.setTo(useremail);
+			messageHelper.setSubject(title);
+			messageHelper.setText(content);
+
+			
+			
+			mailSender.send(message); // 실제 메일 전송
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		msgFlag = "mailSendOk";
+
+		return "/user/login";
+		
+
+	}
 	
 }
