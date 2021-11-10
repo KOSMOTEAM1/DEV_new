@@ -135,8 +135,17 @@ public class BoardController {
 	}
 	
 	 @RequestMapping(value = "/modify", method = RequestMethod.GET)
-	 public void modify(BoardVO board) throws Exception {
-		 boardService.selectBoardOne(board);
+	 public void modify(BoardVO board, Model model, HttpServletRequest request) throws Exception {
+		 HttpSession session = request.getSession();
+		 
+		 
+		 UserVO userVo = (UserVO) session.getAttribute("login");
+		 BoardVO NewBvo = boardService.selectBoardOne(board);
+		
+	      
+		 logger.info(NewBvo.toString());
+		 model.addAttribute("board", NewBvo);
+		 model.addAttribute("user", userVo);
 	}
 	 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)

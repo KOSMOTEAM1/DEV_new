@@ -202,7 +202,7 @@
  <div class="timeline-item" >
   <span class="time"><i class="fa fa-clock-o"></i>{{comemntdate}}</span>
   <h3 class="timeline-header"><strong>{{comemntnum}}</strong> -{{comemntuser}}</h3>
-	<input class="form-control" type="text" id="intimeuser" value="${User.usernum}" style="display: none;" readonly>
+	<input class="form-control" type="text" id="intimeuser" value="${user.userid}" style="display: none;" readonly>
 	<input class="form-control" type="text" id="disReplyWriter" value="{{comemntuser}}" style="display: none;" readonly>
 	<h4>${comemntuser}</h4>
   <div class="timeline-body">{{comemnttext}}</div>
@@ -248,17 +248,8 @@
 		});
 	}
 
-	$("#modifyModal").on("click", function() {
-
-		var userObj = $("#intimeuser");
-		var disReplyWriterObj = $("#disReplyWriter");
-		var comemntuser = userObj.val();
-		var disReplyWriter = disReplyWriterObj.val();
-		if (comemntuser == disReplyWriter) {
+	$("#modifyModal").on("click", function() {		
 			$("#modifyModal").modal('show');
-		} else {
-			alert("권한이 없는 사용자 입니다.");
-		}
 	});
 
 	var printPaging = function(pageMaker, target) {
@@ -356,49 +347,67 @@
 
 		var comemntnum = $(".modal-title").html();
 		var comemnttext = $("#comemnttext").val();
-
-		$.ajax({
-			type : 'put',
-			url : '/replies/' + comemntnum,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "PUT"
-			},
-			data : JSON.stringify({
-				comemnttext : comemnttext
-			}),
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("수정 되었습니다.");
-					getPage("/replies/" + originnum + "/" + replyPage);
+		
+		
+		var userObj = $("#intimeuser");
+		var disReplyWriterObj = $("#disReplyWriter");
+		var comemntuser = userObj.val();
+		var disReplyWriter = disReplyWriterObj.val();
+		if (comemntuser == disReplyWriter) {
+			$.ajax({
+				type : 'put',
+				url : '/replies/' + comemntnum,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PUT"
+				},
+				data : JSON.stringify({
+					comemnttext : comemnttext
+				}),
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						alert("수정 되었습니다.");
+						getPage("/replies/" + originnum + "/" + replyPage);
+					}
 				}
-			}
-		});
+			});
+			
+		} else {
+			alert("권한이 없는 사용자 입니다.");
+		}
 	});
 
 	$("#replyDelBtn").on("click", function() {
 		alert("시작되었습니다.");
 		var comemntnum = $(".modal-title").html();
 		var comemnttext = $("#comemnttext").val();
-
-		$.ajax({
-			type : 'delete',
-			url : '/replies/' + comemntnum,
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "DELETE"
-			},
-			dataType : 'text',
-			success : function(result) {
-				console.log("result: " + result);
-				if (result == 'SUCCESS') {
-					alert("삭제 되었습니다.");
-					getPage("/replies/" + num + "/" + replyPage);
+		var userObj = $("#intimeuser");
+		var disReplyWriterObj = $("#disReplyWriter");
+		var comemntuser = userObj.val();
+		var disReplyWriter = disReplyWriterObj.val();
+		if (comemntuser == disReplyWriter) {
+			$.ajax({
+				type : 'delete',
+				url : '/replies/' + comemntnum,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "DELETE"
+				},
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						alert("삭제 되었습니다.");
+						getPage("/replies/" + num + "/" + replyPage);
+					}
 				}
-			}
-		});
+			});
+		}else{
+			alert("권한이 없는 사용자 입니다.");
+		}
+		
 	});
 </script>
 
@@ -409,7 +418,7 @@
 		var formObj = $("form[role='form']");
 
 		console.log(formObj);
-
+		
 		$("#modifyBtn").on("click", function() {
 			alert("게시글을 수정합니다.");
 		});
@@ -421,7 +430,6 @@
 		$("#goListBtn ").on("click", function() {
 			alert("목록으로 돌아갑니다.");
 		});
-
 	});
 
 	$(".uploadedList").on("click", ".mailbox-attachment-info a",

@@ -69,7 +69,7 @@
 				<div class="col-lg-12 text-center">
 					<div class="normal__breadcrumb__text">
 						<h2>Login</h2>
-						<p>Welcome to the official Anime��blog.</p>
+						<p>Welcome to the official Animeï¿½ï¿½blog.</p>
 					</div>
 				</div>
 			</div>
@@ -84,15 +84,14 @@
 					<div class="card border-primary mb-3"
 						style="max-width: 80rem; margin: auto;">
 						<div class="card-header">
-							<input name="num" value="${boardVO.num}" style="display: none;" readonly>
-							<input type="text" name="title" class="form-control" value="${boardVO.title}" placeholder="${boardVO.title}">
-							<input type="text" name="name" value="${User.userid}" style="display: none;" readonly>
+							<input name="num" value="${board.num}" style="display: none;" readonly>
+							<input type="text" name="title" class="form-control" value="${board.title}" placeholder="${board.title}" readonly>
+							<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
 						</div>
 						<div class="card-body">
 							<h4 class="card-title"></h4>
-								<img src="../../resources/img/board/${boardVO.filename}" style="max-width:100%; height:auto" alt="Attachment" id="thumbnail${item.num}">
 							<p class="card-text">
-								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" value="${board.content}">dddddd</textarea><!-- 원본불러오기 -->
+								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" placeholder="${board.content}" value="${board.content}" ></textarea><!-- ìë³¸ë¶ë¬ì¤ê¸° -->
 							</p>
 							<div class="box-body">
 								<div class="form-group" id="filedropHere">
@@ -108,7 +107,7 @@
 								</div>
 							</div>
 							<p>
-								<button class="btn btn-secondary my-2 my-sm-0" type="submit">등록</button>
+								<button class="btn btn-secondary my-2 my-sm-0" type="submit">수정하기</button>
 							</p>
 						</div>
 					</div>
