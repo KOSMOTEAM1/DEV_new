@@ -101,7 +101,8 @@
 										<a href="#"><i class="fa fa-star-half-o"></i></a>
 									</c:if>
 								</div>
-								<span>${reviewcnt.reviewcnt} Votes - ${avgScore.avgScore} / 5.0</span>
+								<span>${reviewcnt.reviewcnt} Votes - ${avgScore.avgScore}
+									/ 5.0</span>
 							</div>
 							<p>${view.contentssummary}</p>
 							<div class="anime__details__widget">
@@ -146,17 +147,17 @@
 
 
 						<!-- 댓글 시작 -->
-						<c:forEach var="viewReply" items="${viewReply}">
-							<div class="anime__review__item">
-								<div class="anime__review__item__pic">
-									<img src="img/anime/review-2.jpg" alt="">
-								</div>
-								<div class="anime__review__item__text">
-									<h6>${viewReply.userid}</h6>
-									<p>${viewReply.reviewnatter}</p>
-								</div>
-							</div>
-						</c:forEach>
+                  <c:forEach var="viewReply" items="${viewReply}">
+                     <div class="anime__review__item">
+                        <div class="anime__review__item__pic">
+                           <img src="img/anime/review-2.jpg" alt="">
+                        </div>
+                        <div class="anime__review__item__text">
+                           <h6>${viewReply.userid}</h6>
+                           <p>${viewReply.reviewnatter}</p>
+                        </div>
+                     </div>
+                  </c:forEach>
 						<!-- 댓글 끝 -->
 
 

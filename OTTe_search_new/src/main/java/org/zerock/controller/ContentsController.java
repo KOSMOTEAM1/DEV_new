@@ -34,9 +34,6 @@ public class ContentsController {
 		ContentsVO avgScore = contentsService.selectAvgscore(contentsid);
 		ContentsVO reviewcnt = contentsService.selectReviewcnt(contentsid);
 		
-		
-		
-		//logger.info("/* avgScore="+avgScore.toString());
 		model.addAttribute("reviewcnt",reviewcnt);
 		model.addAttribute("avgScore",avgScore);
 		model.addAttribute("viewReply",viewReply);
