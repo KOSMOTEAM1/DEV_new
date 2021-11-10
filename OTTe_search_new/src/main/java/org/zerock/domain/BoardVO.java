@@ -1,5 +1,6 @@
 package org.zerock.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
@@ -13,8 +14,8 @@ public class BoardVO {
 	private Integer readCount;
 	private Date writeDate;
 
-	private String[] filename;
-	private String[] testname;
+	private String[] filenames;
+	private String filename;
 	
 	public Integer getNum() {
 		return num;
@@ -52,17 +53,22 @@ public class BoardVO {
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
 	}
-	
-	public String[] getFilename() {
+	public String[] getFilenames() {
+		return filenames;
+	}
+	public void setFilenames(String[] filenames) {
+		this.filenames = filenames;
+	}
+	public String getFilename() {
 		return filename;
 	}
-	public void setFilename(String[] filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardVO [num=" + num + ", name=" + name + ", title=" + title + ", content=" + content + ", readCount="
-				+ readCount + ", writeDate=" + writeDate + ", filename=" + filename + "]";
+				+ readCount + ", writeDate=" + writeDate + ", filenames=" + Arrays.toString(filenames) + ", filename="
+				+ filename + "]";
 	}
 }

@@ -91,10 +91,8 @@
 							<div class="anime__review__item">
 								<c:forEach items="${list}" var="item">
 									<tr>
-										<a
-											href='/board/view2${pageMaker.makeSearch(pageMaker.cri.page) }&num=${item.num}'>
-											<div class="card border-primary mb-3"
-												style="max-width: 80rem; margin: auto;">
+										<a href='/board/view2${pageMaker.makeSearch(pageMaker.cri.page) }&num=${item.num}'>
+											<div class="card border-primary mb-3" style="max-width: 80rem; margin: auto;">
 												<div class="card-header"><!-- 게시물 번호 / 제목 / 작성일 -->
 													<div class="row">
 														<div class="col-md-10" style="vertical-align:center;">
@@ -110,13 +108,16 @@
 												</div>
 												<div class="card-body"><!-- 게시물 요약  -->
 													<div class="row">
+														<c:set var="I1" value="${item.filename}" />
+														<c:set var="I2" value=" " />
+														<c:if test="${I1 != I2}">
 														<div class="col-md-4"><!-- 게시물 대표 이미지 -->
-															<img src="../../resources/img/board${item.filename}"
-																width="200" alt="Attachment" id="thumbnail${item.num}">
+															<img src="<c:url value="/imgfile${item.filename}"/>"" height="150" style="margin: auto;" id="thumbnail${item.num}"/>
 														</div>
 														<div class="col-md-8" style="text-align: left"><!-- 게시물 내용 -->
 															<p class="card-text">${item.content}</p>
 														</div>
+														</c:if>
 													</div>
 												</div>
 											</div>
@@ -126,14 +127,12 @@
 							</div>
 					</div>
 				</div>
-				
 				<!--  불러온 게시물 하나씩 보기 -->
 				<!-- 게시물 목록 보기 끝 -->
 				<!-- 페이징 처리 시작 -->
 				<div class="product__pagination">
-				<div style="width: 90%; float: none; margin: 0 auto">
-					<div class="text-center">
-						<ul class="pagination">
+					
+
 						<c:if test="${pageMaker.prev}">
 							<ul class="fa fa-angle-double-left"><a
 								href="list2${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></ul>
@@ -142,21 +141,18 @@
 
 						<c:forEach begin="${pageMaker.startPage }"
 							end="${pageMaker.endPage }" var="idx">
-							<ul
-								<c:out value="${pageMaker.cri.page == idx?'class=current-page':''}"/>>
-								<a href="list2${pageMaker.makeSearch(idx)}">${idx}</a>
+							<ul>
+								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>
+								<a href="list2${pageMaker.makeSearch(idx)}" class="current-page">${idx}</a>
 
 							</ul>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<i class="fa fa-angle-double-right"><a 
-								href="list2${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></i>
+							<ul class="fa fa-angle-double-right"><a
+								href="list2${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></ul>
 						</c:if>
-						</ul>
-						</div>
 					
-				</div>
 				</div>
 			</div>
 		</div>

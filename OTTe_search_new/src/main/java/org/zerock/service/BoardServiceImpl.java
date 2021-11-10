@@ -32,7 +32,7 @@ public class BoardServiceImpl implements BoardService {
 	public void insertBoard(BoardVO board) throws Exception {
 		// TODO Auto-generated method stub
 		boardMapper.insertBoard(board);
-	    String[] files = board.getFilename();
+	    String[] files = board.getFilenames();
 	    String[] nuwName = {" "};
 	    if(files == null) {
 	    	for (String fileName : nuwName) {

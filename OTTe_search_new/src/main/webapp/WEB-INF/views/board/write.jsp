@@ -154,7 +154,7 @@
   <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	<input type="text" name="filename" value="{{fullName}}" style="display: none;" readonly>
+	<input type="text" name="filenames" value="{{fullName}}" style="display: none;" readonly>
 	<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
 	</span>
   </div>

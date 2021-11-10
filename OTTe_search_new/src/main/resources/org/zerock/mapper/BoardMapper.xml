@@ -96,6 +96,7 @@
  limit #{page}, 10
  ]]>
 	</select>
+	
 
 	<select id="listCriteria" resultType="org.zerock.domain.BoardVO">
  <![CDATA[
@@ -106,8 +107,6 @@
   WHERE SEQ >= #{pageStart} ) WHERE ROWNUM <= #{perPageNum}
  ]]>
 	</select>
-
-
 
 	<select id="countPaging" resultType="int">
  <![CDATA[
