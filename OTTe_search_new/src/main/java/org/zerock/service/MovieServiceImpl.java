@@ -33,6 +33,7 @@ public class MovieServiceImpl implements MovieService {
 	public void insertMovieImg(Integer contentsid, String[] moviefilenames) throws Exception {
 
 		for (String fileName : moviefilenames) {
+			fileName = fileName.replace("/s_", "/");
 			movieMapper.insertMovieImg(contentsid,fileName);
 	    }
 	}
