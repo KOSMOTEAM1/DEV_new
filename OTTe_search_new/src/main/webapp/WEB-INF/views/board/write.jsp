@@ -1,3 +1,4 @@
+<%@ include file="../include/header.jspf"%><!-- 헤더 추가 -->
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
@@ -42,7 +43,8 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 
 
@@ -57,118 +59,93 @@
 	margin: auto;
 }
 </style>
-	<%
-	HttpSession httpSession = request.getSession(false);
-	if (httpSession != null && httpSession.getAttribute("User") != null) {
-	%>
-	"세션이 있습니다."
-	<%
-	} else {
-	%>
-	"세션이 없습니다."
-	<%
-	}
-	%>
+
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
 
-	<!-- Header Section Begin -->
-	<header class="header">
+<!-- 기존 헤더 섹션 삭제 -->
+
+	<!-- Breadcrumb Begin / 최상단 Home->자유게시판 -->
+	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-2">
-					<div class="header__logo">
-						<a href="./index.html"> </a>
-					</div>
-				</div>
-				<div class="col-lg-8">
-					<div class="header__nav">
-						<nav class="header__menu mobile-menu">
-							<ul>
-								<li><a href="./index.html">Homepage</a></li>
-								<li><a href="./categories.html">Categories <span
-										class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="./categories.html">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-										<li><a href="./signup.html">Sign Up</a></li>
-										<li><a href="./login.html">Login</a></li>
-									</ul></li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="col-lg-2">
-					<div class="header__right">
-						<a href="#" class="search-switch"><span class="icon_search"></span></a>
-						<a href="./login.html"><span class="icon_profile"></span></a>
+				<div class="col-lg-12">
+					<div class="breadcrumb__links">
+						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>자유게시판</span>
 					</div>
 				</div>
 			</div>
-			<div id="mobile-menu-wrap"></div>
 		</div>
-	</header>
-	<!-- Header End -->
-
-	<!-- Normal Breadcrumb Begin -->
-	<section class="normal-breadcrumb set-bg">
+	</div>
+	<!-- Breadcrumb End -->
+	
+	<!-- write 기능 구성 -->
+	<section class="product-page spad">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="normal__breadcrumb__text">
-						<h2>Login</h2>
-						<p>Welcome to the official Anime��blog.</p>
+			<div class="col-lg-12">
+				<div class="product__page__content">
+					<!-- 페이지 제목+검색기능 시작-->
+					<div class="product__page__title">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="section-title">
+									<h4>자유게시판</h4>
+								</div>
+								<br></br>
+							</div>
+
+							<div class="row text-center" style="width: 100%">
+
+								<div style="width: 85%; float: none; margin: 0 auto">
+									<tr>
+										<form id='registerForm' action="/board/write" method="post">
+											<div class="card border-primary mb-3"
+												style="max-width: 80rem; margin: auto;">
+												<div class="card-header">
+													<input type="text" name="title" class="form-control"
+														placeholder="제목을 입력해 주세요"> <input type="text"
+														name="name" value="${user.userid}" style="display: none;"
+														readonly>
+												</div>
+												<div class="card-body">
+													<h4 class="card-title"></h4>
+													<p class="card-text">
+														<textarea class="form-control" name="content"
+															id="exampleTextarea" rows="20"></textarea>
+													</p>
+													<div class="box-body">
+														<div class="form-group" id="filedropHere">
+															<label for="exampleInputEmail1">File DROP Here</label>
+															<div class="fileDrop"></div>
+														</div>
+														<div class="box-footer">
+															<div>
+																<hr>
+															</div>
+															<ul class="mailbox-attachments clearfix uploadedList">
+															</ul>
+														</div>
+													</div>
+													<p>
+														<button class="btn btn-secondary my-2 my-sm-0"
+															type="submit">등록</button>
+													</p>
+												</div>
+											</div>
+										</form>
+									</tr>
+								</div>
+								<!-- /.box-body -->
+
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Normal Breadcrumb End -->
-	<div class="row text-center" style="width: 100%">
 
-		<div style="width: 70%; float: none; margin: 0 auto">
-			<tr>
-				<form id='registerForm' action="/board/write" method="post">
-					<div class="card border-primary mb-3"
-						style="max-width: 80rem; margin: auto;">
-						<div class="card-header">
-							<input type="text" name="title" class="form-control" placeholder="제목을 입력해 주세요">
-							<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
-						</div>
-						<div class="card-body">
-							<h4 class="card-title"></h4>
-							<p class="card-text">
-								<textarea class="form-control" name="content" id="exampleTextarea" rows="20"></textarea>
-							</p>
-							<div class="box-body">
-								<div class="form-group" id="filedropHere">
-									<label for="exampleInputEmail1">File DROP Here</label>
-									<div class="fileDrop" ></div>
-								</div>
-								<div class="box-footer">
-									<div>
-										<hr>
-									</div>
-									<ul class="mailbox-attachments clearfix uploadedList">
-									</ul>
-								</div>
-							</div>
-							<p>
-								<button class="btn btn-secondary my-2 my-sm-0" type="submit">등록</button>
-							</p>
-						</div>
-					</div>
-				</form>
-			</tr>
-		</div>
-		<!-- /.box-body -->
-
-	</div>
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
@@ -215,38 +192,44 @@
 			}
 		});
 	});
-	
-	$(".uploadedList").on("click", "small", function(event){
-		
-		 var that = $(this);
-	
-	   $.ajax({
-		   url:"deleteFile",
-		   type:"post",
-		   data: {fileName:$(this).attr("data-src")},
-		   dataType:"text",
-		   success:function(result){
-			   if(result == 'deleted'){
-				   that.parent("div").remove();
-			   }
-		   }
-	   });
-	}); 
-	
-	$("#registerForm").submit(function(event){
-		event.preventDefault();
-		
-		var that = $(this);
-		
-		var str ="";
-		$(".uploadedList .delbtn").each(function(index){
-			 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
-		});
-		
-		that.append(str);
 
-		that.get(0).submit();
+	$(".uploadedList").on("click", "small", function(event) {
+
+		var that = $(this);
+
+		$.ajax({
+			url : "deleteFile",
+			type : "post",
+			data : {
+				fileName : $(this).attr("data-src")
+			},
+			dataType : "text",
+			success : function(result) {
+				if (result == 'deleted') {
+					that.parent("div").remove();
+				}
+			}
+		});
 	});
+
+	$("#registerForm").submit(
+			function(event) {
+				event.preventDefault();
+
+				var that = $(this);
+
+				var str = "";
+				$(".uploadedList .delbtn").each(
+						function(index) {
+							str += "<input type='hidden' name='files[" + index
+									+ "]' value='" + $(this).attr("href")
+									+ "'> ";
+						});
+
+				that.append(str);
+
+				that.get(0).submit();
+			});
 </script>
 
 <%@ include file="../include/footer.jspf"%>

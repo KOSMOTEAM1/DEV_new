@@ -126,12 +126,14 @@
 							</div>
 					</div>
 				</div>
+				
 				<!--  불러온 게시물 하나씩 보기 -->
 				<!-- 게시물 목록 보기 끝 -->
 				<!-- 페이징 처리 시작 -->
 				<div class="product__pagination">
-					
-
+				<div style="width: 90%; float: none; margin: 0 auto">
+					<div class="text-center">
+						<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
 							<ul class="fa fa-angle-double-left"><a
 								href="list2${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></ul>
@@ -140,18 +142,21 @@
 
 						<c:forEach begin="${pageMaker.startPage }"
 							end="${pageMaker.endPage }" var="idx">
-							<ul>
-								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>
-								<a href="list2${pageMaker.makeSearch(idx)}" class="current-page">${idx}</a>
+							<ul
+								<c:out value="${pageMaker.cri.page == idx?'class=current-page':''}"/>>
+								<a href="list2${pageMaker.makeSearch(idx)}">${idx}</a>
 
 							</ul>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<ul class="fa fa-angle-double-right"><a
-								href="list2${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></ul>
+							<i class="fa fa-angle-double-right"><a 
+								href="list2${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></i>
 						</c:if>
+						</ul>
+						</div>
 					
+				</div>
 				</div>
 			</div>
 		</div>
