@@ -16,12 +16,18 @@
 <title>Home</title>
 
 
-<link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet"
+	type="text/css" />
 <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-<link href="../resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="../resources/dist/css/skins/_all-skins.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css"
@@ -41,55 +47,14 @@
 </head>
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
-
-	<!-- Header Section Begin -->
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2">
-					<div class="header__logo">
-						<a href="./index.html"> </a>
-					</div>
-				</div>
-				<div class="col-lg-8">
-					<div class="header__nav">
-						<nav class="header__menu mobile-menu">
-							<ul>
-								<li><a href="./index.html">Homepage</a></li>
-								<li><a href="./categories.html">Categories <span
-										class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="./categories.html">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-										<li><a href="./signup.html">Sign Up</a></li>
-										<li><a href="./login.html">Login</a></li>
-									</ul></li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="col-lg-2">
-					<div class="header__right">
-						<a href="#" class="search-switch"><span class="icon_search"></span></a>
-						<a href="./login.html"><span class="icon_profile"></span></a>
-					</div>
-				</div>
-			</div>
-			<div id="mobile-menu-wrap"></div>
-		</div>
-	</header>
-	<!-- Header End -->
 
 	<!-- Normal Breadcrumb Begin -->
 	<div class="breadcrumb-option">
@@ -104,130 +69,126 @@
 		</div>
 	</div>
 	<!-- Normal Breadcrumb End -->
-	<div class="row" style="width: 100%">
-		<div style="width: 70%; float: none; margin: auto">
-			<tr>
-	<!-- 			<div class="card border-primary mb-3" style="max-width: 70rem; margin: auto;"> -->
-					<div class="card-header">게시물번호 = ${boardVO.num}</div> 
-					<%-- 						<input type="text" name="num" value="${RT.num}"
-							style="display: none;" readonly> --%>
-							
-					<div>
- 						<c:forEach items="${filename}" var="item">
-							<img src="<c:url value="/imgfile${item.filename}"/>"" height="150" style="margin: auto;" />
-						</c:forEach>
-					</div>
-					<div class="card-body">
-						<h4 class="card-title" style="color:white;">${boardVO.title}</h4>
-						<p class="card-text" style="color:white;">게시물번호 = ${boardVO.num}</p>
-						<p class="card-text" style="color:white;">작성자 = ${boardVO.name}</p>
-						<p class="card-text" style="color:white;">${boardVO.content}</p>
-						<p>
-							<c:set var="I1" value="${user.userid}" />
-							<c:set var="I2" value="${boardVO.name}" />
-							<c:if test="${I1 eq I2}">
-								<form action="/board/modify" method="Get" style="display: inline">
-									<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
-									<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
-								</form>
-								<form action="/board/delete" method="post" style="display: inline">
-									<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
-									<input type="text" name="originnum" value="${boardVO.num}" style="display: none;" readonly>
-									<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-								</form>
-							</c:if>
-							<form action="/board/list2" method="Get" style="display: inline">
-								<button type="submit" class="btn btn-primary" id="goListBtn">GO LIST</button>
-							</form> 
-						</p>
-					</div>
-					<div>
- 						<c:forEach items="${filename}" var="item">
-							<img src="<c:url value="/imgfile${item.filename}"/>"" height="150" style="margin: auto;" />
-						</c:forEach>
-					</div>
-					<%-- 
-				<c:set var="I1" value="${User.userid}" />
-				<c:set var="I2" value="${RT.name}" />
-				<c:if test="${I1 eq I2}">
-				<form action="/board/viewComent " method="post">
-					<div class="row" style="width: 100%">
-						<div style="width: 100%; length: 50%; float: none; margin: 0 auto">
-							<tr>
-								<div class="card border-primary mb-3"
-									style="max-width: 80rem; margin: auto;">
-									<div class="card-body">
-										<!-- 여기에 고정적인 접속 유저 값을 받아오는 문구 정리 -->
-										<input type="text" name="originnum" value="${RT.num}" style="display: none;" readonly>
-										<input type="text" name="comemntuser" value="${User.usernum}" style="display: none;" readonly>
-										<input type="text" name="comemnttext" class="form-control" style="width: 80%;" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="댓글을 입력해 주세요">
-										<button class="btn btn-secondary my-2 my-sm-0" type="submit">등록</button>
-									</div>
-								</div>
-							</tr>
-						</div>
-					</div>
-				</form>
-				</c:if> --%>
 
-					<div class="col-md-12">
-						<c:set var="I1" value="${user.userid}" />
-						<c:if test="${I1 != null }">
-							<div class="box box-success">
-								<div class="box-header">
-									<h3 class="box-title">ADD NEW REPLY</h3>
-								</div>
-								<div class="box-body">
-									<label for="exampleInputEmail1">Writer</label>
-									<input class="form-control" type="text" id="newReplyWriter" value="${user.userid}" style="display: none;" readonly>
-									<input class="form-control" type="text" placeholder="${user.userid}" readonly>
-									<label for="exampleInputEmail1">Reply Text</label>
-									<input class="form-control" type="text" placeholder="REPLY TEXT" id="newcomemnttext">
-								</div>
-								<!-- /.box-body -->
-								<div>
-									<ul class="mailbox-attachments clearfix uploadedList">
-							    	</ul>
-								</div>
-								<div class="box-footer">
-									<button type="button" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
-								</div>
-							</div>
-						</c:if>
-						<ul class="timeline" style="position: relative; z-index: 2;" >
-							<button type="button" class="btn btn-primary" id="repliesDiv" style="position: relative; z-index: 2;" >RepliesList</button>
-							<!-- <li class="time-label" id="repliesDiv"><span class="bg-green">RepliesList</span></li> -->
-						</ul>
-						<div class='text-center'>
-							<ul id="pagination" class="pagination pagination-sm no-margin ">
-							</ul>
-						</div>
-				<!-- 	</div> -->
-			</tr>
-			<!-- Modal -->
-			<div id="modifyModal" class="modal modal-primary fade" role="dialog">
-				<div class="modal-dialog">
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title"></h4>
-						</div>
-						<div class="modal-body" data-rno>
+	<section class="blog-details spad">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-8">
+					<!-- 제목 -->
+					<div class="blog__details__title">
+						<h6>
+							${boardVO.num} - ${boardVO.name} <span> - <fmt:formatDate
+									value="${boardVO.writeDate}" pattern="yy-MM-dd" /><span>
+						</h6>
+						<h2>${boardVO.title}</h2>
+					</div>
+					<div>
+						<c:forEach items="${filename}" var="item">
+							<img src="<c:url value="/imgfile${item.filename}"/>"
+								" style="max-width:100%; height: auto; margin: auto;" />
+						</c:forEach>
+					</div>
+				</div>
+				<div class="col-lg-10">
+					<div class="blog__details__content">
+						<div class="blog__details__text">
+							<p>${boardVO.content}</p>
 							<p>
-								<input type="text" id="comemnttext" class="form-control">
+								<c:set var="I1" value="${user.userid}" />
+								<c:set var="I2" value="${boardVO.name}" />
+								<c:if test="${I1 eq I2}">
+									<form action="/board/modify" method="Get"
+										style="display: inline">
+										<input type="text" name="num" value="${boardVO.num}"
+											style="display: none;" readonly>
+										<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
+									</form>
+									<form action="/board/delete" method="post"
+										style="display: inline">
+										<input type="text" name="num" value="${boardVO.num}"
+											style="display: none;" readonly> <input type="text"
+											name="originnum" value="${boardVO.num}"
+											style="display: none;" readonly>
+										<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
+									</form>
+								</c:if>
+							<form action="/board/list2" method="Get" style="display: inline">
+								<button type="submit" class="btn btn-primary" id="goListBtn">GO
+									LIST</button>
+							</form>
 							</p>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
-							<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+				<div class="col-lg-10">
+					<c:set var="I1" value="${user.userid}" />
+					<c:if test="${I1 != null }">
+						<div class="box box-success">
+							<div class="box-header">
+								<h3 class="box-title">ADD NEW REPLY</h3>
+							</div>
+							<div class="box-body">
+								<label for="exampleInputEmail1">Writer</label> <input
+									class="form-control" type="text" id="newReplyWriter"
+									value="${user.userid}" style="display: none;" readonly>
+								<input class="form-control" type="text"
+									placeholder="${user.userid}" readonly> <label
+									for="exampleInputEmail1">Reply Text</label> <input
+									class="form-control" type="text" placeholder="REPLY TEXT"
+									id="newcomemnttext">
+							</div>
+							<!-- /.box-body -->
+							<div>
+
+								<ul class="mailbox-attachments clearfix uploadedList">
+								</ul>
+							</div>
+							<div class="box-footer">
+								<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
+									REPLY</button>
+							</div>
 						</div>
+					</c:if>
+					<ul class="timeline" style="position: relative; z-index: 2;">
+						<button type="button" class="btn btn-primary" id="repliesDiv"
+							style="position: relative; z-index: 2;">RepliesList</button>
+						<!-- <li class="time-label" id="repliesDiv"><span class="bg-green">RepliesList</span></li> -->
+					</ul>
+					<div class='text-center'>
+						<ul id="pagination" class="pagination pagination-sm no-margin ">
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
+	</section>
+
+
+
+	<!-- Modal -->
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body" data-rno>
+					<p>
+						<input type="text" id="comemnttext" class="form-control">
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+					<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
+	<!-- Modal -->
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
@@ -243,6 +204,9 @@
 	<input class="form-control" type="text" id="disReplyWriter" value="{{comemntuser}}" style="display: none;" readonly>
 	<h4>${comemntuser}</h4>
   <div class="timeline-body">{{comemnttext}}</div>
+  <div class="timeline-footer">
+     <a class="btn btn-primary btn-xs" 
+       data-toggle="modal" data-target="#modifyModal">Modify</a>
   </div>			
 </li>
 {{/each}}
@@ -267,10 +231,13 @@
 
 	}
 
-	var originnum = ${boardVO.num};
+	var originnum = $
+	{
+		boardVO.num
+	};
 
 	var replyPage = 1;
-	
+
 	function getPage(pageInfo) {
 
 		$.getJSON(pageInfo, function(data) {
@@ -283,15 +250,15 @@
 	}
 
 	$("#modifyModal").on("click", function() {
-		
+
 		var userObj = $("#intimeuser");
 		var disReplyWriterObj = $("#disReplyWriter");
 		var comemntuser = userObj.val();
 		var disReplyWriter = disReplyWriterObj.val();
-		if(comemntuser == disReplyWriter){
-			$("#modifyModal").modal('show'); 
-		}else{
-			alert("권한이 없는 사용자 입니다.");	
+		if (comemntuser == disReplyWriter) {
+			$("#modifyModal").modal('show');
+		} else {
+			alert("권한이 없는 사용자 입니다.");
 		}
 	});
 
@@ -411,7 +378,7 @@
 			}
 		});
 	});
-	
+
 	$("#replyDelBtn").on("click", function() {
 		alert("시작되었습니다.");
 		var comemntnum = $(".modal-title").html();
@@ -457,30 +424,31 @@
 		});
 
 	});
-	
-	$(".uploadedList").on("click", ".mailbox-attachment-info a", function(event){
-		
-		var fileLink = $(this).attr("href");
-		
-		if(checkImageType(fileLink)){
-			
-			event.preventDefault();
-					
-			var imgTag = $("#popup_img");
-			imgTag.attr("src", fileLink);
-			
-			console.log(imgTag.attr("src"));
-					
-			$(".popup").show('slow');
-			imgTag.addClass("show");		
-		}	
-	});
-	
-	$("#popup_img").on("click", function(){
-		
+
+	$(".uploadedList").on("click", ".mailbox-attachment-info a",
+			function(event) {
+
+				var fileLink = $(this).attr("href");
+
+				if (checkImageType(fileLink)) {
+
+					event.preventDefault();
+
+					var imgTag = $("#popup_img");
+					imgTag.attr("src", fileLink);
+
+					console.log(imgTag.attr("src"));
+
+					$(".popup").show('slow');
+					imgTag.addClass("show");
+				}
+			});
+
+	$("#popup_img").on("click", function() {
+
 		$(".popup").hide('slow');
-		
-	});	
+
+	});
 </script>
 
 <%@ include file="../include/footer.jspf"%>
