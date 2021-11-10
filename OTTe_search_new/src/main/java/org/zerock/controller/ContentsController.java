@@ -36,7 +36,7 @@ public class ContentsController {
 		
 		
 		
-		logger.info("/* avgScore="+avgScore.toString());
+		//logger.info("/* avgScore="+avgScore.toString());
 		model.addAttribute("reviewcnt",reviewcnt);
 		model.addAttribute("avgScore",avgScore);
 		model.addAttribute("viewReply",viewReply);
