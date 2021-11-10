@@ -97,12 +97,11 @@
 									<c:forEach var="i" begin="1" end="${avgScore.avgScore}">
 										<a href="#"><i class="fa fa-star"></i></a>
 									</c:forEach>
-									<c:if test="true">
+									<c:if test="${avgScore.halfstar == 10}">
 										<a href="#"><i class="fa fa-star-half-o"></i></a>
 									</c:if>
 								</div>
-								<span>${reviewcnt.reviewcnt} Votes - ${avgScore.avgScore}
-									/ 5.0</span>
+								<span>${reviewcnt.reviewcnt} Votes - ${avgScore.avgScore} / 5.0</span>
 							</div>
 							<p>${view.contentssummary}</p>
 							<div class="anime__details__widget">

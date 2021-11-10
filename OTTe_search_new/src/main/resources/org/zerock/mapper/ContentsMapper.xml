@@ -64,11 +64,18 @@
 			     where r.contentsid= #{CONTENTSID} and R.usernum=U.usernum]]>
 	</select>
 	
-		<select id="selectAvgscore"
+	<!-- 	<select id="selectAvgscore"
 		resultType="org.zerock.domain.ContentsVO">
 		<![CDATA[ select Round(avg(nvl(reviewscore,0)),1) avgScore from review_t where contentsid=#{CONTENTSID}]]>
 	</select>
-	
+	 -->
+	 
+	 <select id="selectAvgscore"
+		resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[ select * from (select Round(avg(NVL(reviewscore,0)),1)avgscore, round(mod(Round(avg(NVL(reviewscore,0)),1)*10,10), -1) halfstar 
+								 from review_t 
+								 where contentsid=#{CONTENTSID})]]>
+	</select>
 			<select id="selectReviewcnt"
 		resultType="org.zerock.domain.ContentsVO">
 		<![CDATA[select count(*)reviewcnt from review_t where contentsid=#{CONTENTSID}]]>

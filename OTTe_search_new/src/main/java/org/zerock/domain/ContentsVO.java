@@ -28,6 +28,7 @@ public @Data class ContentsVO {
 	private String userid;
 	private Float avgScore;
 	private Integer reviewcnt;
+	private Integer halfstar;
 	
 	
 	/*
