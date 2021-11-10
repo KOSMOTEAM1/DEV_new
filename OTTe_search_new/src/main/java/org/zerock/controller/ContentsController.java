@@ -21,7 +21,7 @@ import org.zerock.service.ContentsService;
 @RequestMapping(value = "/contents")
 public class ContentsController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ContentsController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(ContentsController.class);
 
 	@Inject
 	private ContentsService contentsService;

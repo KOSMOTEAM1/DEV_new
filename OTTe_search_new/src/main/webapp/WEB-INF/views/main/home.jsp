@@ -67,12 +67,12 @@
 									OnClick="location.href ='/contents/view?contentsid=${top.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${top.imgname}.jpg">
 
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
+										<!-- <div class="comment">
+											<i class="fa fa-comments"></i> ${reviewcnt.reviewcnt}
 										</div>
 										<div class="view">
 											<i class="fa fa-eye"></i> 9141
-										</div>
+										</div> -->
 									</div>
 									<div class="product__item__text">
 										<ul>
@@ -115,12 +115,12 @@
 									OnClick="location.href ='/contents/view?contentsid=${korean.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${korean.imgname}.jpg">
 
-										<div class="comment">
+										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> 11
 										</div>
 										<div class="view">
 											<i class="fa fa-eye"></i> 9141
-										</div>
+										</div> -->
 									</div>
 									<div class="product__item__text">
 										<ul>
@@ -161,12 +161,12 @@
 									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
 										data-setbg="../../../../resources/img/poster/${latest.imgname}.jpg">
 
-										<div class="comment">
+										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> 11
 										</div>
 										<div class="view">
 											<i class="fa fa-eye"></i> 9141
-										</div>
+										</div> -->
 									</div>
 									<div class="product__item__text">
 										<ul>
