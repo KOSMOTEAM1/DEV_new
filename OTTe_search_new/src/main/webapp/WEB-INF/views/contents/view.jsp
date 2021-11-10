@@ -129,8 +129,12 @@
 								</div>
 							</div>
 							<div class="anime__details__btn">
-								<a class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a> <a
-									href="#" target="_blank" class="watch-btn"><span>Watch
+								<a class="follow-btn" id="follow"><i class="fa fa-heart-o"></i>Follow</a> 
+								
+								
+								
+								
+								<a href="#" target="_blank" class="watch-btn"><span>Watch
 										Now</span> <i class="fa fa-angle-right"></i></a>
 							</div>
 						</div>
@@ -147,53 +151,91 @@
 
 
 						<!-- 댓글 시작 -->
-                  <c:forEach var="viewReply" items="${viewReply}">
-                     <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                           <img src="img/anime/review-2.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                           <h6>${viewReply.userid}</h6>
-                           <p>${viewReply.reviewnatter}</p>
-                        </div>
-                     </div>
-                  </c:forEach>
+						<c:forEach var="viewReply" items="${viewReply}">
+							<div class="anime__review__item">
+								<div class="anime__review__item__pic">
+									<img src="img/anime/review-2.jpg" alt="">
+								</div>
+								<div class="anime__review__item__text">
+									<h6>${viewReply.userid}</h6>
+									<p>${viewReply.reviewnatter}</p>
+								</div>
+							</div>
+						</c:forEach>
 						<!-- 댓글 끝 -->
-
-
-
 					</div>
-				</div>
-				<div class="anime__details__form">
-					<div class="section-title">
-						<h5>Your Comment</h5>
+
+					<!-- 리뷰남기는창 시작-->
+					<div class="anime__details__form">
+						<div class="section-title">
+							<h5>Your Comment</h5>
+						</div>
+						<form>
+							<textarea placeholder="Your Comment" id="reviewtext" ></textarea>
+							<button type="submit" id="reviewAdd">
+								<i class="fa fa-location-arrow"></i> Review
+							</button>
+						</form>
 					</div>
-					<form action="#">
-						<textarea placeholder="Your Comment"></textarea>
-						<button type="submit">
-							<i class="fa fa-location-arrow"></i> Review
-						</button>
-					</form>
+					<!-- 리뷰남기는창 끝 -->
+					
+					
 				</div>
 			</div>
-		</div>
 		</div>
 	</section>
 	<!-- Anime Section End -->
 
 	<!-- Js Plugins -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/player.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/mixitup.min.js"></script>
-	<script src="js/jquery.slicknav.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/main.js"></script>
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script>
 
-</body>
 
-</html>
+
+// 팔로우버튼
+$("#follow").on("click", function(){
+  	$.ajax({
+		url: "/contents/follow",
+		type: "POST",
+		datatype:'text',
+		data:{contentsid:'${view.contentsid}'},
+		success: function() {
+			alert("등록 되었습니다.");
+			// recCount();
+		},
+	})   
+});
+
+// 리뷰제출버튼
+$("#reviewAdd").on("click",function(){
+
+	 var reviewtext = reviewtextObj.val();
+	 
+	  $.ajax({
+			type:'post',
+			url:'/contents/replies/',
+			headers: { 
+			      "Content-Type": "application/json",
+			      "X-HTTP-Method-Override": "POST" },
+			dataType:'text',
+			data: JSON.stringify({contentsid:contentsid, replytext:replytext}),
+			success:function(result){
+				console.log("result: " + result);
+				if(result == 'SUCCESS'){
+					alert("등록 되었습니다.");
+					replyPage = 1;
+					getPage("/replies/"+bno+"/"+replyPage );
+					replyerObj.val("");
+					replytextObj.val("");
+				}
+		}});
+});
+
+</script>
+
+
+
+
 
 
 <%@ include file="../include/footer.jspf"%>
