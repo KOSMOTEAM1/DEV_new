@@ -29,7 +29,7 @@
                             <ul>
                                 <li class="active"><a href="../">홈</a></li>
                                 <li><a href="../main/recommend">취향저격 콘텐츠</a></li>
-                                <li><a href="../main/latest">New 콘텐츠</a></li>
+                                <li><a href="../main/latest">최신 콘텐츠</a></li>
                                 <li><a href="../main/wishlist">내가 찜한 콘텐츠</a></li>
                                 <li><a href="../board/list2">자유게시판</a></li>
                             </ul>
