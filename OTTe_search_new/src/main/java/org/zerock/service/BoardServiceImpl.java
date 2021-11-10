@@ -40,6 +40,7 @@ public class BoardServiceImpl implements BoardService {
 		    }
 	    } else {
 	    	for (String fileName : files) {
+	    		fileName = fileName.replace("/s_", "/");
 				boardMapper.addAttach(fileName);
 		    }
 	    }
