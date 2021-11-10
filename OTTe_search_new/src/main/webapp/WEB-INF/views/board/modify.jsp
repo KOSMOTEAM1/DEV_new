@@ -1,4 +1,5 @@
 <%@ include file="../include/header.jspf"%>
+
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -63,22 +64,36 @@
 
 
 	<!-- Normal Breadcrumb Begin -->
-	<section class="normal-breadcrumb set-bg">
+	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="normal__breadcrumb__text">
-						<h2>Login</h2>
-						<p>Welcome to the official Animeï¿½ï¿½blog.</p>
+				<div class="col-lg-12">
+					<div class="breadcrumb__links">
+						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>자유게시판</span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 	<!-- Normal Breadcrumb End -->
+	
+	<section class="product-page spad">
+		<div class="container">
+			<div class="col-lg-12">
+				<div class="product__page__content">
+					<!-- 페이지 제목+검색기능 시작-->
+					<div class="product__page__title">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="section-title">
+									<h4>자유게시판</h4>
+								</div>
+								<br></br>
+							</div>
+							
 	<div class="row text-center" style="width: 100%">
 
-		<div style="width: 70%; float: none; margin: 0 auto">
+		<div style="width: 85%; float: none; margin: 0 auto">
 			<tr>
 				<form action="/board/modify" method="post">
 					<div class="card border-primary mb-3"
@@ -117,6 +132,12 @@
 		<!-- /.box-body -->
 
 	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</section>
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
