@@ -4622,6 +4622,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding-left: 0;
   margin: 20px 0;
   border-radius: 4px;
+  text-align: center;
 }
 .pagination > li {
   display: inline;
@@ -4629,7 +4630,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > a,
 .pagination > li > span {
   position: relative;
-  float: left;
+  float: none;
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
