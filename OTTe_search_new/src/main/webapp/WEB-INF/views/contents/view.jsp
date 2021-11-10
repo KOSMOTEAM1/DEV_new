@@ -134,10 +134,14 @@
 							
 							<div class="anime__details__btn">
 								<c:if test="${checkfollow.count == 0}">
-									<a class="follow-btn" id="follow"><i class="fa fa-heart-o"></i>Follow</a> 
+									<a class="follow-btn" id="follow" >
+									<input type="number" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint" style="display: none;" readonly">
+									<i class="fa fa-heart-o"  id="follow-btn"></i>Follow</a> 
 								</c:if>
 								<c:if test="${checkfollow.count != 0}">
-									<a class="follow-btn" id="follow"><i class="fa fa-heart"></i>Follow</a> 
+									<a class="follow-btn" id="follow">
+									<input type="number" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint" style="display: none;" readonly">
+									<i class="fa fa-heart"  id="follow-btn"></i>Follow</a> 
 								</c:if>
 								<a href="#" target="_blank" class="watch-btn"><span>Watch
 										Now</span> <i class="fa fa-angle-right"></i></a>
@@ -199,18 +203,25 @@
 
 // 팔로우버튼
 $("#follow").on("click", function(){
-  	$.ajax({
-		url: "/contents/follow",
-		type: "POST",
-		datatype:'text',
-		data:{contentsid:'${view.contentsid}'},
-		success: function() {
-			alert("등록 되었습니다.");
-			// recCount();
-		},
-	})   
-});
+		var count = $("#countint").val;
 
+		if(count == 0){
+			$.ajax({
+				url: "/contents/follow",
+				type: "POST",
+				datatype:'text',
+				data:{contentsid:'${view.contentsid}'},
+				success: function() {
+					alert("등록 되었습니다.");
+					// recCount();
+				}
+			})
+			$("#follow-btn").attr('class','fa fa-heart');
+		}else{
+			alert("구독 취소");
+			$("#follow-btn").attr('class','fa fa-heart-o');
+		}
+});
 
 // 리뷰제출버튼
 $("#reviewAdd").on("click",function(){

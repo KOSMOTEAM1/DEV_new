@@ -70,6 +70,22 @@ public class ContentsController {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		return entity;
+	}
+	
+	@RequestMapping(value = "/unfollow", method = RequestMethod.POST)
+	public ResponseEntity<String> unfollow(@RequestParam("contentsid") int contentsid, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
 
+		ResponseEntity<String> entity = null;
+		try {
+			followService.addFollow(contentsid, userVo.getUsernum());
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
 	}
 }
