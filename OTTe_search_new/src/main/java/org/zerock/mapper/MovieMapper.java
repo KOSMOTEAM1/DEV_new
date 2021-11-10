@@ -2,12 +2,16 @@ package org.zerock.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.MovieFileVO;
 import org.zerock.domain.MovieVO;
 import org.zerock.domain.PagingVO;
 
 public interface MovieMapper {
 	// 영상 등록
 	public void insertMovie(MovieVO vo) throws Exception;
+	
+	public void insertMovieImg(@Param("contentsid") Integer contentsid, @Param("moviefilename") String fileName) throws Exception;
 
 	public void deleteMovie(MovieVO vo) throws Exception;
 
