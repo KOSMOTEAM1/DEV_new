@@ -1,3 +1,5 @@
+<!-- 자동줄정렬 하지 말것 -->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -120,7 +122,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-10">
+				<div class="col-md-10">
 					<c:set var="I1" value="${user.userid}" />
 					<c:if test="${I1 != null }">
 						<div class="box box-success">
@@ -231,10 +233,7 @@
 
 	}
 
-	var originnum = $
-	{
-		boardVO.num
-	};
+	var originnum = ${boardVO.num};
 
 	var replyPage = 1;
 

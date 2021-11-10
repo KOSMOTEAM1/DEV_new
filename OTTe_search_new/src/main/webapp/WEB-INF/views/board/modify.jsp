@@ -92,7 +92,7 @@
 							<h4 class="card-title"></h4>
 								<img src="../../resources/img/board/${boardVO.filename}" style="max-width:100%; height:auto" alt="Attachment" id="thumbnail${item.num}">
 							<p class="card-text">
-								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" value="${boardVO.content}" placeholder="${boardVO.content}"></textarea>
+								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" value="${board.content}">dddddd</textarea><!-- 원본불러오기 -->
 							</p>
 							<div class="box-body">
 								<div class="form-group" id="filedropHere">
