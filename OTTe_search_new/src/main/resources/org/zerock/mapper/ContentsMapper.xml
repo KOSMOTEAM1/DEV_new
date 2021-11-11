@@ -64,11 +64,10 @@
 			     where r.contentsid= #{CONTENTSID} and R.usernum=U.usernum]]>
 	</select>
 	
-	<!-- 	<select id="selectAvgscore"
-		resultType="org.zerock.domain.ContentsVO">
-		<![CDATA[ select Round(avg(nvl(reviewscore,0)),1) avgScore from review_t where contentsid=#{CONTENTSID}]]>
-	</select>
-	 -->
+	<insert id="addReview">
+		<![CDATA[INSERT INTO REVIEW_T(reviewid, usernum, contentsid,reviewnatter,reviewdate) 
+				 VALUES(review_seq.nextval, #{usernum}, #{contentsid}, #{reviewnatter}, SYSDATE)]]>
+	</insert>
 	 
 	 <select id="selectAvgscore"
 		resultType="org.zerock.domain.ContentsVO">

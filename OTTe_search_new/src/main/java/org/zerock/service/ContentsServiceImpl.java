@@ -14,16 +14,15 @@ import org.zerock.mapper.ContentsMapper;
 //@Repository
 public class ContentsServiceImpl implements ContentsService {
 
-	/*@Inject
-	private SqlSession sql;
-	private static String namespace = "org.zerock.mapper.contentsMapper";
-	
-	@Override
-	public ContentsVO read(Integer contents_id) throws Exception {
-		return sql.selectOne(namespace + ".read", contents_id);*/
+	/*
+	 * @Inject private SqlSession sql; private static String namespace =
+	 * "org.zerock.mapper.contentsMapper";
+	 * 
+	 * @Override public ContentsVO read(Integer contents_id) throws Exception {
+	 * return sql.selectOne(namespace + ".read", contents_id);
+	 */
 	@Autowired
 	private ContentsMapper ContentsMapper;
-
 
 	@Transactional
 	@Override
@@ -45,33 +44,35 @@ public class ContentsServiceImpl implements ContentsService {
 	public ContentsVO view(Integer contentsid) throws Exception {
 		return ContentsMapper.view(contentsid);
 	}
-	
+
 	@Override
 	public List<ContentsVO> selectSearch(SearchCriteria cri) throws Exception {
 		return ContentsMapper.selectSearch(cri);
 	}
-	
+
 	@Override
 	public List<ContentsVO> selectWishlist(UserVO userVo) throws Exception {
 		return ContentsMapper.selectWishlist(userVo);
 	}
-	
+
 	@Override
 	public List<ContentsVO> selectViewReply(Integer contentsid) throws Exception {
 		return ContentsMapper.selectViewReply(contentsid);
 	}
-	
+
 	@Override
 	public ContentsVO selectAvgscore(Integer contentsid) throws Exception {
 		return ContentsMapper.selectAvgscore(contentsid);
 	}
-	
+
 	@Override
 	public ContentsVO selectReviewcnt(Integer contentsid) throws Exception {
 		return ContentsMapper.selectReviewcnt(contentsid);
 	}
-	
-	
-	
-	
+
+	@Override
+	public void addReview(ContentsVO vo) {
+		ContentsMapper.addReview(vo);
+	}
+
 }

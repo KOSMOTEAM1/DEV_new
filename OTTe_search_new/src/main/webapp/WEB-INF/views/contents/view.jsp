@@ -43,19 +43,10 @@
 	</div>
 
 	<input type='hidden' name='contentsid' value="${contentsid}">
-	<!-- Normal Breadcrumb Begin -->
-	<!-- <section class="normal-breadcrumb set-bg">
-      <div class="container">
-         <div class="row">
-
-            <div class="col-lg-12 text-center">
-            
-         </div>
-      </div>
-   </section> -->
 
 
-	<!-- Breadcrumb Begin -->
+
+<!-- 	<!-- Breadcrumb Begin -->
 	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
@@ -68,7 +59,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Breadcrumb End -->
+	Breadcrumb End -->
 
 	<!-- Anime Section Begin -->
 	<section class="anime-details spad">
@@ -162,7 +153,7 @@
 
 
 
-						<!-- 댓글 시작 -->
+						<!-- 리뷰보기 시작 -->
 						<c:forEach var="viewReply" items="${viewReply}">
 							<div class="anime__review__item">
 								<div class="anime__review__item__pic">
@@ -174,22 +165,23 @@
 								</div>
 							</div>
 						</c:forEach>
-						<!-- 댓글 끝 -->
+						<!-- 리뷰보기 끝 -->
 					</div>
 
-					<!-- 리뷰남기는창 시작-->
+					<!-- 리뷰남기기 시작-->
 					<div class="anime__details__form">
 						<div class="section-title">
 							<h5>Your Comment</h5>
 						</div>
 						<form>
-							<textarea placeholder="Your Comment" id="reviewtext" ></textarea>
-							<button type="submit" id="reviewAdd">
+							<input type="hidden" name="contentsid" value="${view.contentsid}">
+							<textarea placeholder="Your Comment" id="newReviewNatter"></textarea>
+							<button id="addReview">
 								<i class="fa fa-location-arrow"></i> Review
 							</button>
 						</form>
 					</div>
-					<!-- 리뷰남기는창 끝 -->
+					<!-- 리뷰남기기 끝 -->
 					
 					
 				</div>
@@ -202,7 +194,7 @@
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script>
 
-
+var rcontentsid='${view.contentsid}';
 
 // 팔로우버튼
 $("#follow").on("click", function(){
@@ -235,29 +227,19 @@ $("#follow").on("click", function(){
 		}
 });
 
-// 리뷰제출버튼
-$("#reviewAdd").on("click",function(){
-
-	 var reviewtext = reviewtextObj.val();
-	 
-	  $.ajax({
-			type:'post',
-			url:'/contents/replies/',
-			headers: { 
-			      "Content-Type": "application/json",
-			      "X-HTTP-Method-Override": "POST" },
-			dataType:'text',
-			data: JSON.stringify({contentsid:contentsid, replytext:replytext}),
-			success:function(result){
-				console.log("result: " + result);
-				if(result == 'SUCCESS'){
-					alert("등록 되었습니다.");
-					replyPage = 1;
-					getPage("/replies/"+bno+"/"+replyPage );
-					replyerObj.val("");
-					replytextObj.val("");
-				}
-		}});
+//리뷰제출버튼
+$("#addReview").on("click", function(){
+	var reviewNatter = $("#newReviewNatter").val();
+  	$.ajax({
+		url: "/contents/replies",
+		type: "POST",
+		datatype:'text',
+		data :{rcontentsid:rcontentsid,
+				reviewnatter : reviewNatter},
+		success: function() {
+			alert("등록 되었습니다");
+		}
+	}) 
 });
 
 </script>

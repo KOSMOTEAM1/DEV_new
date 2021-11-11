@@ -29,35 +29,36 @@ public class ContentsController {
 	private static final Logger logger = LoggerFactory.getLogger(ContentsController.class);
 
 	@Inject
+	@Autowired
 	private ContentsService contentsService;
-	//private FollowService followService;
 	@Autowired
 	private FollowService followService;
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public void read(@RequestParam("contentsid") int contentsid, Model model, HttpServletRequest request) throws Exception {
-		
+	public void read(@RequestParam("contentsid") int contentsid, Model model, HttpServletRequest request)
+			throws Exception {
+
 		HttpSession session = request.getSession();
 		UserVO userVo = (UserVO) session.getAttribute("login");
-		
+
 		ContentsVO view = contentsService.view(contentsid);
 		List<ContentsVO> viewReply = contentsService.selectViewReply(contentsid);
 		ContentsVO avgScore = contentsService.selectAvgscore(contentsid);
 		ContentsVO reviewcnt = contentsService.selectReviewcnt(contentsid);
 		FollowVO checkfollow = followService.checkFollow(contentsid, userVo.getUsernum());
-		
-		logger.info("/* checkfollow="+checkfollow.toString());
-		model.addAttribute("checkfollow",checkfollow);
-		model.addAttribute("reviewcnt",reviewcnt);
-		model.addAttribute("avgScore",avgScore);
-		model.addAttribute("viewReply",viewReply);
-		model.addAttribute("view",view);
-		
+
+		logger.info("/* checkfollow=" + checkfollow.toString());
+		model.addAttribute("checkfollow", checkfollow);
+		model.addAttribute("reviewcnt", reviewcnt);
+		model.addAttribute("avgScore", avgScore);
+		model.addAttribute("viewReply", viewReply);
+		model.addAttribute("view", view);
+
 	}
-	
+
 	@RequestMapping(value = "/follow", method = RequestMethod.POST)
-	public ResponseEntity<String> follow(@RequestParam("contentsid") int contentsid, HttpServletRequest request){
-		
+	public ResponseEntity<String> follow(@RequestParam("contentsid") int contentsid, HttpServletRequest request) {
+
 		HttpSession session = request.getSession();
 		UserVO userVo = (UserVO) session.getAttribute("login");
 
@@ -71,10 +72,10 @@ public class ContentsController {
 		}
 		return entity;
 	}
-	
+
 	@RequestMapping(value = "/unfollow", method = RequestMethod.POST)
-	public ResponseEntity<String> unfollow(@RequestParam("contentsid") int contentsid, HttpServletRequest request){
-		
+	public ResponseEntity<String> unfollow(@RequestParam("contentsid") int contentsid, HttpServletRequest request) {
+
 		HttpSession session = request.getSession();
 		UserVO userVo = (UserVO) session.getAttribute("login");
 
@@ -88,4 +89,30 @@ public class ContentsController {
 		}
 		return entity;
 	}
+
+	@RequestMapping(value = "/replies", method = RequestMethod.POST)
+	public ResponseEntity<String> replies(@RequestParam Integer rcontentsid, String reviewnatter,
+			HttpServletRequest request) throws Exception {
+
+		HttpSession session = request.getSession();
+		UserVO uservo = (UserVO) session.getAttribute("login");
+
+		System.out.println("test########" + rcontentsid);
+
+		ContentsVO newconvo = new ContentsVO();
+		newconvo.setContentsid(rcontentsid);
+		newconvo.setReviewnatter(reviewnatter);
+		newconvo.setUsernum(uservo.getUsernum());
+
+		ResponseEntity<String> entity = null;
+		try {
+			contentsService.addReview(newconvo);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+
 }
