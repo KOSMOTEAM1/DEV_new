@@ -72,7 +72,6 @@
 		}
 
 		$('#searchBtn').on( "click", function(event) {
-						alert("버튼을 눌렀습니다~");
 						self.location = "/search/result?"
 								+ '${pageMaker.makeQuery(1)}'
 								+ "&keyword=" + $('#search-input').val();

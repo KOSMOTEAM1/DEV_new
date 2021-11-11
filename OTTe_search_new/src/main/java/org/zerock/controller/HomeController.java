@@ -36,7 +36,12 @@ public class HomeController {
 	private ContentsService contentsService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String gohomepage(Model model) throws Exception {
+	public String gohomepage(Model model, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		
+		model.addAttribute("user", userVo);
 		List<ContentsVO> top = contentsService.selectTopOrder();
 		model.addAttribute("top", top);
 
@@ -50,16 +55,18 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "main/home", method = RequestMethod.GET)
-	public String gohome(Model model) throws Exception {
+	public String gohome(Model model, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		
+		model.addAttribute("user", userVo);
 		List<ContentsVO> top = contentsService.selectTopOrder();
 		model.addAttribute("top", top);
-
 		List<ContentsVO> korean = contentsService.selectKoreanOrder();
-		model.addAttribute("korean", korean );
-		 
+		model.addAttribute("korean", korean ); 
 		List<ContentsVO> latest = contentsService.selectLatestOrder();
 		model.addAttribute("latest", latest );
-
 		return "/main/home";
 	}
 
@@ -81,11 +88,9 @@ public class HomeController {
 
 	@RequestMapping(value = "main/wishlist", method = RequestMethod.GET)
 	public String gowishlist(LoginDTO usernum, Model model, HttpServletRequest request) throws Exception {
-		
+
 		HttpSession session = request.getSession();
-		
 		UserVO userVo = (UserVO) session.getAttribute("login");
-		
 		logger.info("/* userVo="+userVo.toString());
 		List<ContentsVO> wish = contentsService.selectWishlist(userVo);
 		model.addAttribute("wish", wish);
