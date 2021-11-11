@@ -41,10 +41,10 @@
 			<div class="search-close-switch">
 				<a href="main/home" class="icon_close"></a>
 			</div>
-			<form class="search-model-form">
-				<input type="text" name='keyword' id="search-input" placeholder="Search here....."value='${cri.keyword }'>
-			</form>
+			<form action="/search/result" class="search-model-form" method="get">
+				<input onkeyup="enterkey();" type="text" name='keyword' id="search-input" placeholder="Search here....."value='${cri.keyword}'>
 				<button class="icon_search" id='searchBtn'></button>
+			</form>	
 		</div>
 	<!-- Search model end -->
 
@@ -61,20 +61,25 @@
 	
 	<!-- 서치버튼 -->
 	<script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
+				
+		function enterkey() {
+	  	      if (window.event.keyCode == 13) {
+	 
+	             // 엔터키가 눌렸을 때 실행하는 반응
+	  	           $("#search-model-form").submit();
+	  	      }
+		}
 
-				$('#searchBtn').on(
-						"click",
-						function(event) {
+		$('#searchBtn').on( "click", function(event) {
+						alert("버튼을 눌렀습니다~");
+						self.location = "/search/result?"
+								+ '${pageMaker.makeQuery(1)}'
+								+ "&keyword=" + $('#search-input').val();
+		});
 
-							self.location = "/search/result?"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&keyword=" + $('#search-input').val();
-
-						});
-
-			});
+	});
+	
 	<!-- 서치버튼 -->
 </script>
 

@@ -37,7 +37,7 @@ public class SearchController {
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public String SearchPost(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public String Searchget(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
 		logger.info("/* cri="+cri.toString());
 		List<ContentsVO> search = contentsService.selectSearch(cri);
@@ -53,5 +53,4 @@ public class SearchController {
 
 		return "/search/result";
 	}
-
 }

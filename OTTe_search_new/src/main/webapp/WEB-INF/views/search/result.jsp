@@ -77,8 +77,7 @@
 											<li>${search.classname}</li>
 										</ul>
 										<h5>
-											<a href="/contents/view?contentsid=${search.contentsid}">
-										${search.contentstitle}</a>
+											<a href="/contents/view?contentsid=${search.contentsid}"> ${search.contentstitle}</a>
 										</h5>
 									</div>
 								</div>
