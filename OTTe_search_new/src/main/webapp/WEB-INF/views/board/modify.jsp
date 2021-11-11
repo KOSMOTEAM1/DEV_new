@@ -106,7 +106,7 @@
 						<div class="card-body">
 							<h4 class="card-title"></h4>
 							<p class="card-text">
-								<input type="text" name="title" class="form-control" value="${board.content}" placeholder="${board.content}">
+								<input type="text" name="content" class="form-control" value="${board.content}" placeholder="${board.content}">
 							</p>
 							<div class="box-body">
 							<!-- 	<div class="form-group" id="filedropHere">
