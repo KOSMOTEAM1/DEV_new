@@ -153,10 +153,10 @@ public class BoardController {
 		logger.info("// /board/modify");
 		System.out.println(board);
 		if(board.getFilename() == null) {
-			logger.info("������� ����Ǿ����ϴ�/updateB");
+			logger.info("다음을 실행합니다./updateB");
 			boardService.updateB(board);
 		}else {
-			logger.info("������� ����Ǿ����ϴ�/updateA");
+			logger.info("다음을 실행합니다/updateA");
 			boardService.updateA(board);
 		}
 		System.out.println(board);
@@ -190,7 +190,6 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		      
 		UserVO userVo = (UserVO) session.getAttribute("login");
-		    //userid 가져오기 
 		model.addAttribute("user", userVo);//userid 가져오기
 		return null;
 	}
@@ -202,12 +201,5 @@ public class BoardController {
 		System.out.println(board);
 		boardService.insertBoard(board);
 		return "redirect:/board/list2";
-	}
-
-
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void joinGET() {
-		logger.info("�α��� ������ ����");
 	}
 }

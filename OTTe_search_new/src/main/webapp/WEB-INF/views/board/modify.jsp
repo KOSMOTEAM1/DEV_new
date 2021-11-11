@@ -1,5 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="../include/header.jspf"%>
-
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -106,10 +106,10 @@
 						<div class="card-body">
 							<h4 class="card-title"></h4>
 							<p class="card-text">
-								<textarea class="form-control" name="content" id="exampleTextarea" rows="20" placeholder="${board.content}" value="${board.content}" ></textarea><!-- ìë³¸ë¶ë¬ì¤ê¸° -->
+								<input type="text" name="content" class="form-control" value="${board.content}" placeholder="${board.content}">
 							</p>
 							<div class="box-body">
-								<div class="form-group" id="filedropHere">
+							<!-- 	<div class="form-group" id="filedropHere">
 									<label for="exampleInputEmail1">File DROP Here</label>
 									<div class="fileDrop" ></div>
 								</div>
@@ -120,7 +120,7 @@
 									<ul class="mailbox-attachments clearfix uploadedList">
 									</ul>
 								</div>
-							</div>
+							</div> -->
 							<p>
 								<button class="btn btn-secondary my-2 my-sm-0" type="submit">수정하기</button>
 							</p>
@@ -154,54 +154,89 @@
 </script>
 
 <script>
-	var template = Handlebars.compile($("#template").html());
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script id="template" type="text/x-handlebars-template">
+<li>
+<span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
+<div class="mailbox-attachment-info">
+<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
+<input type="text" name="filenames" value="{{fullName}}" style="display: none;" readonly>
+<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+</span>
+</div>
+</li>                
+</script>
 
-	$(".fileDrop").on("dragenter dragover", function(event) {
-		event.preventDefault();
+<script>
+var template = Handlebars.compile($("#template").html());
+
+$(".fileDrop").on("dragenter dragover", function(event) {
+	event.preventDefault();
+});
+
+$(".fileDrop").on("drop", function(event) {
+	event.preventDefault();
+	alert("목록으로 돌아갑니다.");
+	var files = event.originalEvent.dataTransfer.files;
+	var file = files[0];
+	var formData = new FormData();
+	formData.append("file", file);
+	$.ajax({
+		url : '/uploadAjax',
+		data : formData,
+		dataType : 'text',
+		processData : false,
+		contentType : false,
+		type : 'POST',
+		success : function(data) {
+
+			var fileInfo = getFileInfo(data);
+
+			var html = template(fileInfo);
+
+			$(".uploadedList").append(html);
+		}
 	});
+});
 
-	$(".fileDrop").on("drop", function(event) {
-		event.preventDefault();
-		S
-		var files = event.originalEvent.dataTransfer.files;
-		var file = files[0];
-		var formData = new FormData();
-		formData.append("file", file);
-		$("#filedropHere").hide();
-		$.ajax({
-			url : '/uploadAjax',
-			data : formData,
-			dataType : 'text',
-			processData : false,
-			contentType : false,
-			type : 'POST',
-			success : function(data) {
+$(".uploadedList").on("click", "small", function(event) {
 
-				var fileInfo = getFileInfo(data);
+	var that = $(this);
 
-				var html = template(fileInfo);
-
-				$(".uploadedList").append(html);
+	$.ajax({
+		url : "deleteFile",
+		type : "post",
+		data : {
+			fileName : $(this).attr("data-src")
+		},
+		dataType : "text",
+		success : function(result) {
+			if (result == 'deleted') {
+				that.parent("div").remove();
 			}
-		});
+		}
 	});
-	
-	$(".uploadedList").on("click", "small", function(event){
-		
-		 var that = $(this);
-	
-	   $.ajax({
-		   url:"deleteFile",
-		   type:"post",
-		   data: {fileName:$(this).attr("data-src")},
-		   dataType:"text",
-		   success:function(result){
-			   if(result == 'deleted'){
-				   that.parent("div").remove();
-			   }
-		   }
-	   });
-}); 
+});
+
+$("#registerForm").submit(
+		function(event) {
+			event.preventDefault();
+
+			var that = $(this);
+
+			var str = "";
+			$(".uploadedList .delbtn").each(
+					function(index) {
+						str += "<input type='hidden' name='files[" + index
+								+ "]' value='" + $(this).attr("href")
+								+ "'> ";
+					});
+
+			that.append(str);
+
+			that.get(0).submit();
+		});
 </script>
 
 <%@ include file="../include/footer.jspf"%>
