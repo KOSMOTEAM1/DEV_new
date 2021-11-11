@@ -44,23 +44,6 @@
 
 	<input type='hidden' name='contentsid' value="${contentsid}">
 
-
-
-<!-- 	<!-- Breadcrumb Begin -->
-	<div class="breadcrumb-option">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb__links">
-						<a href="../../"><i class="fa fa-home"></i> Home</a> <a
-							href="./categories.html">Categories</a> <span>Romance</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	Breadcrumb End -->
-
 	<!-- Anime Section Begin -->
 	<section class="anime-details spad">
 		<div class="container">
@@ -86,10 +69,10 @@
 							<div class="anime__details__rating">
 								<div class="rating">
 									<c:forEach var="i" begin="1" end="${avgScore.avgScore}">
-										<a href="#"><i class="fa fa-star"></i></a>
+										<i class="fa fa-star"></i>
 									</c:forEach>
 									<c:if test="${avgScore.halfstar == 10}">
-										<a href="#"><i class="fa fa-star-half-o"></i></a>
+										<i class="fa fa-star-half-o"></i>
 									</c:if>
 								</div>
 								<span>${reviewcnt.reviewcnt} Votes - ${avgScore.avgScore}
@@ -103,7 +86,7 @@
 											<li><span>Type: </span> ${view.classname}</li>
 											<li><span>Release Date: </span> ${view.contentsstart}</li>
 											<li><span>Genre: </span> ${view.classname}</li>
-											<%-- <li><span>Nation: </span> ${view.nationcode}</li> --%>
+											<li><span>Nation: </span> ${view.nationname}</li>
 											<li><span>서비스중인 OTT: </span> ${view.ottname}</li>
 										</ul>
 									</div>
@@ -121,22 +104,17 @@
 							</div>
 							
 							
-							
-							
 							<div class="anime__details__btn">
 								<c:if test="${checkfollow.count == 0}">
 									<a class="follow-btn" id="follow" >
-									<input type="number" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint" style="display: none;" readonly">
+									<input type="hidden" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint">
 									<i class="fa fa-heart-o"  id="follow-btn"></i>Follow</a> 
 								</c:if>
 								<c:if test="${checkfollow.count != 0}">
 									<a class="follow-btn" id="follow">
-									<input type="number" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint" style="display: none;" readonly">
+									<input type="hidden" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint">
 									<i class="fa fa-heart"  id="follow-btn"></i>Follow</a> 
 								</c:if>
-								
-								
-								
 								
 								<a href="#" target="_blank" class="watch-btn"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
 							</div>
@@ -237,7 +215,6 @@ $("#addReview").on("click", function(){
 		data :{rcontentsid:rcontentsid,
 				reviewnatter : reviewNatter},
 		success: function() {
-			alert("등록 되었습니다");
 		}
 	}) 
 });
