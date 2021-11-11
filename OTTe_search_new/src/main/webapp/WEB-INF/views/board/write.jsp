@@ -64,9 +64,7 @@
 		<div class="loader"></div>
 	</div>
 
-<!-- 기존 헤더 섹션 삭제 -->
-
-	<!-- Breadcrumb Begin / 최상단 Home->자유게시판 -->
+	<!-- 최상단 Home->자유게시판 -->
 	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
@@ -78,15 +76,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- Breadcrumb End -->
+	<!-- 최상단 Home->자유게시판 -->
 	
-	<!-- write 기능 구성 -->
+	<!-- write -->
 	<section class="product-page spad">
 		<div class="container">
 			<div class="col-lg-12">
 				<div class="product__page__content">
 					<!-- 페이지 제목+검색기능 시작-->
-					<div class="product__page__title">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="section-title">
@@ -94,25 +91,22 @@
 								</div>
 								<br></br>
 							</div>
-
 							<div class="row text-center" style="width: 100%">
-
 								<div style="width: 85%; float: none; margin: 0 auto">
 									<tr>
 										<form id='registerForm' action="/board/write" method="post">
-											<div class="card border-primary mb-3"
-												style="max-width: 80rem; margin: auto;">
+											<div class="card border-primary mb-3" style="max-width: 80rem; margin: auto;">
 												<div class="card-header">
 													<input type="text" name="title" class="form-control" placeholder="제목을 입력해 주세요">
 													<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
 												</div>
+												
 												<div class="card-body">
 													<h4 class="card-title"></h4>
-													<p class="card-text">
-														<textarea class="form-control" name="content"
-															id="exampleTextarea" rows="20"></textarea>
+													<p class="card-text"><!-- 게시물 작성 -->
+														<textarea class="form-control" name="content" id="exampleTextarea" rows="20"></textarea>
 													</p>
-													<div class="box-body">
+													<div class="box-body"><!-- 파일첨부 -->
 														<div class="form-group" id="filedropHere">
 															<label for="exampleInputEmail1">File DROP Here</label>
 															<div class="fileDrop"></div>
@@ -121,11 +115,10 @@
 															<div>
 																<hr>
 															</div>
-															<ul class="mailbox-attachments clearfix uploadedList">
-															</ul>
+															<ul class="mailbox-attachments clearfix uploadedList"></ul>
 														</div>
 													</div>
-													<p>
+													<p> <!-- 작성완료 제출 -->
 														<button class="btn btn-secondary my-2 my-sm-0" type="submit">등록</button>
 													</p>
 												</div>
@@ -133,8 +126,6 @@
 										</form>
 									</tr>
 								</div>
-								<!-- /.box-body -->
-
 							</div>
 						</div>
 					</div>
@@ -142,8 +133,8 @@
 			</div>
 		</div>
 	</section>
-
 </body>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">

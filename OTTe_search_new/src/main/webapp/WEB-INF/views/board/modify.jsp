@@ -49,21 +49,20 @@
 <body>
 	<!-- Page Preloder -->
 	<style>
-.fileDrop {
+	.fileDrop {
 	width: 80%;
 	height: 100px;
 	border: 1px dotted gray;
 	background-color: lightslategrey;
 	margin: auto;
-}
-</style>
+	}
+	</style>
 	
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
 
-
-	<!-- Normal Breadcrumb Begin -->
+	<!-- 최상단 Home->자유게시판 -->
 	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
@@ -75,14 +74,15 @@
 			</div>
 		</div>
 	</div>
-	<!-- Normal Breadcrumb End -->
+	<!-- 최상단 Home->자유게시판 -->
 	
+	<!-- Modify -->
 	<section class="product-page spad">
 		<div class="container">
 			<div class="col-lg-12">
 				<div class="product__page__content">
-					<!-- 페이지 제목+검색기능 시작-->
-					<div class="product__page__title">
+					<!-- 능 시작-->
+					<div class="product__page__title"><!-- 페이지 제목 호출 -->
 						<div class="row">
 							<div class="col-md-6">
 								<div class="section-title">
@@ -90,55 +90,48 @@
 								</div>
 								<br></br>
 							</div>
-							
-	<div class="row text-center" style="width: 100%">
-
-		<div style="width: 85%; float: none; margin: 0 auto">
-			<tr>
-				<form action="/board/modify" method="post">
-					<div class="card border-primary mb-3"
-						style="max-width: 80rem; margin: auto;">
-						<div class="card-header">
-							<input name="num" value="${board.num}" style="display: none;" readonly>
-							<input type="text" name="title" class="form-control" value="${board.title}" placeholder="${board.title}" readonly>
-							<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
-						</div>
-						<div class="card-body">
-							<h4 class="card-title"></h4>
-							<p class="card-text">
-								<input type="text" name="content" class="form-control" value="${board.content}" placeholder="${board.content}">
-							</p>
-							<div class="box-body">
-							<!-- 	<div class="form-group" id="filedropHere">
-									<label for="exampleInputEmail1">File DROP Here</label>
-									<div class="fileDrop" ></div>
+							<div class="row text-center" style="width: 100%">
+								<div style="width: 85%; float: none; margin: 0 auto">
+									<tr>
+										<form action="/board/modify" method="post">
+											<div class="card border-primary mb-3" style="max-width: 80rem; margin: auto;">
+												<div class="card-header"><!--  게시물 정보 호출(게시물번호, 제목, 작성자) -->
+													<input name="num" value="${board.num}" style="display: none;" readonly>
+													<input type="text" name="title" class="form-control" value="${board.title}" placeholder="${board.title}" readonly>
+													<input type="text" name="name" value="${user.userid}" style="display: none;" readonly>
+												</div>
+												<div class="card-body"><!-- 작성된 게시물 호출 -->
+													<h4 class="card-title"></h4>
+													<p class="card-text"><!-- 게시물 호출(text) -->
+														<input type="text" name="content" class="form-control" value="${board.content}" placeholder="${board.content}">
+													</p>
+													<div class="box-body"><!-- 파일 추가 -->
+														<label for="exampleInputEmail1">File DROP Here</label>
+														<div class="fileDrop" ></div>
+													</div>
+													<div class="box-footer">
+														<div>
+															<hr>
+														</div>
+														<ul class="mailbox-attachments clearfix uploadedList"></ul>
+													</div>
+												</div>
+												<p><!-- 수정 완료 후 제출 -->
+													<button class="btn btn-secondary my-2 my-sm-0" type="submit">수정하기</button>
+												</p>
+											</div>
+										</form>
+									</tr>
 								</div>
-								<div class="box-footer">
-									<div>
-										<hr>
-									</div>
-									<ul class="mailbox-attachments clearfix uploadedList">
-									</ul>
-								</div>
-							</div> -->
-							<p>
-								<button class="btn btn-secondary my-2 my-sm-0" type="submit">수정하기</button>
-							</p>
+							</div>
 						</div>
 					</div>
-				</form>
-			</tr>
+				</div>
+			</div>
 		</div>
-		<!-- /.box-body -->
-
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
 	</section>
 </body>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
@@ -168,7 +161,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"><
 </li>                
 </script>
 
-<script>
+<script> //게시물 수정을 위한 Ajax 구간
 var template = Handlebars.compile($("#template").html());
 
 $(".fileDrop").on("dragenter dragover", function(event) {
