@@ -58,7 +58,7 @@
 		<div class="loader"></div>
 	</div>
 
-	<!-- Normal Breadcrumb Begin -->
+	<!-- 최상단 Home->자유게시판 -->
 	<div class="breadcrumb-option">
 		<div class="container">
 			<div class="row">
@@ -70,58 +70,55 @@
 			</div>
 		</div>
 	</div>
-	<!-- Normal Breadcrumb End -->
+	<!-- 최상단 Home->자유게시판 -->
 
+	<!-- view -->
 	<section class="blog-details spad">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-8">
-					<!-- 제목 -->
-					<div class="blog__details__title">
+					<div class="blog__details__title"><!-- 게시물 번호, 작성자, 작성일자, 제목 -->
 						<h6>
-							${boardVO.num} - ${boardVO.name} <span> - <fmt:formatDate
-									value="${boardVO.writeDate}" pattern="yy-MM-dd" /><span>
+							${boardVO.num} - ${boardVO.name} <span> - <fmt:formatDate value="${boardVO.writeDate}" pattern="yy-MM-dd" /><span>
 						</h6>
 						<h2>${boardVO.title}</h2>
 					</div>
-					<div>
+					<div><!--  게시물 대표 이미지 -->
 						<c:forEach items="${filename}" var="item">
-							<img src="<c:url value="/imgfile${item.filename}"/>"
-								" style="max-width:100%; height: auto; margin: auto;" />
+							<img src="<c:url value="/imgfile${item.filename}"/>" style="max-width:100%; height: auto; margin: auto;" />
 						</c:forEach>
 					</div>
 				</div>
+				<!-- 게시물 -->			
 				<div class="col-lg-10">
 					<div class="blog__details__content">
 						<div class="blog__details__text">
 							<p>${boardVO.content}</p>
-							<p>
+							<p><!-- 수정 삭제 권한 부여 -->
 								<c:set var="I1" value="${user.userid}" />
 								<c:set var="I2" value="${boardVO.name}" />
 								<c:if test="${I1 eq I2}">
 									<form action="/board/modify" method="Get"
 										style="display: inline">
-										<input type="text" name="num" value="${boardVO.num}"
-											style="display: none;" readonly>
+										<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
 										<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
 									</form>
 									<form action="/board/delete" method="post"
 										style="display: inline">
-										<input type="text" name="num" value="${boardVO.num}"
-											style="display: none;" readonly> <input type="text"
-											name="originnum" value="${boardVO.num}"
-											style="display: none;" readonly>
+										<input type="text" name="num" value="${boardVO.num}" style="display: none;" readonly>
+										<input type="text" name="originnum" value="${boardVO.num}" style="display: none;" readonly>
 										<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
 									</form>
 								</c:if>
-							<form action="/board/list2" method="Get" style="display: inline">
-								<button type="submit" class="btn btn-primary" id="goListBtn">GO
-									LIST</button>
-							</form>
+								<form action="/board/list2" method="Get" style="display: inline">
+									<button type="submit" class="btn btn-primary" id="goListBtn">GO LIST</button>
+								</form>
 							</p>
+							<!-- 목록으로 돌아가기 -->
 						</div>
 					</div>
 				</div>
+				<!-- 댓글-->
 				<div class="col-md-10">
 					<c:set var="I1" value="${user.userid}" />
 					<c:if test="${I1 != null }">
@@ -129,46 +126,34 @@
 							<div class="box-header">
 								<h3 class="box-title">ADD NEW REPLY</h3>
 							</div>
-							<div class="box-body">
-								<label for="exampleInputEmail1">Writer</label> <input
-									class="form-control" type="text" id="newReplyWriter"
-									value="${user.userid}" style="display: none;" readonly>
-								<input class="form-control" type="text"
-									placeholder="${user.userid}" readonly> <label
-									for="exampleInputEmail1">Reply Text</label> <input
-									class="form-control" type="text" placeholder="REPLY TEXT"
-									id="newcomemnttext">
+							<div class="box-body"><!-- 댓글 작성 -->
+								<label for="exampleInputEmail1">Writer</label>
+								<!-- 작성자 id 호출 -->
+								<input class="form-control" type="text" id="newReplyWriter"	value="${user.userid}" style="display: none;" readonly>
+								<input class="form-control" type="text"	placeholder="${user.userid}" readonly>
+								<label for="exampleInputEmail1">Reply Text</label>
+								<input class="form-control" type="text" placeholder="REPLY TEXT" id="newcomemnttext">
 							</div>
-							<!-- /.box-body -->
 							<div>
-
-								<ul class="mailbox-attachments clearfix uploadedList">
-								</ul>
+								<ul class="mailbox-attachments clearfix uploadedList"></ul>
 							</div>
-							<div class="box-footer">
-								<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
-									REPLY</button>
+							<div class="box-footer"><!-- 댓글 제출 -->
+								<button type="button" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
 							</div>
 						</div>
 					</c:if>
-					<ul class="timeline" style="position: relative; z-index: 2;">
-						<button type="button" class="btn btn-primary" id="repliesDiv"
-							style="position: relative; z-index: 2;">RepliesList</button>
-						<!-- <li class="time-label" id="repliesDiv"><span class="bg-green">RepliesList</span></li> -->
+					<ul class="timeline" style="position: relative; z-index: 2;"><!--  댓글 목록 불러오기 -->
+						<button type="button" class="btn btn-primary" id="repliesDiv" style="position: relative; z-index: 2;">RepliesList</button>
 					</ul>
 					<div class='text-center'>
-						<ul id="pagination" class="pagination pagination-sm no-margin ">
-						</ul>
+						<ul id="pagination" class="pagination pagination-sm no-margin "></ul>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
 	</section>
 
-
-
-	<!-- Modal -->
+	<!-- 댓글 수정, 삭제 시 사용되는 Modal -->
 	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -182,7 +167,7 @@
 						<input type="text" id="comemnttext" class="form-control">
 					</p>
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer"><!-- 댓글 수정 삭제 창닫기 -->
 					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
 					<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -190,8 +175,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
+	<!-- 댓글 수정, 삭제 시 사용되는 Modal -->
 </body>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
