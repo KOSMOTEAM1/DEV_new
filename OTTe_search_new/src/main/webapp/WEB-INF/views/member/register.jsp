@@ -100,8 +100,17 @@
 			}
 			var idChkVal = $("#idChk").val();
 			if (idChkVal == "N") {
-				alert("중복확인 버튼을 눌러주세요.");
+				alert("아이디 중복 확인을 해주세요.");
 			} else if (idChkVal == "Y") {
+				alert("회원가입이 되었습니다.");
+				$("#regForm").submit();
+			}
+			
+			var emailChkVal = $("#emailChkVal").val();
+			if (emailChkVal == "N") {
+				alert("이메일 중복 확인을 해주세요.");
+			} else if (emailChkVal == "Y") {
+				alert("회원가입이 되었습니다.");
 				$("#regForm").submit();
 			}
 		});
@@ -192,7 +201,7 @@
 				<div class="col-lg-6">
 					<div class="login__form">
 						<h3>Register</h3>
-						<form id="regForm" action="/member/register" method="post">							
+						<form id="regForm" action="/member/registpost" method="post">							
 							<div class="input__item">
 								<input type="email" id="useremail" name="useremail"
 									placeholder="ID(Email type)"> <span class="icon_mail"></span>

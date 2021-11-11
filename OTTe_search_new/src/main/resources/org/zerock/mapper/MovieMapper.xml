@@ -31,18 +31,6 @@
 		#{contentsscore},
 		#{contentsduration})
 	</insert>
-	
-	<insert id="insertMovieImg">
-		INSERT INTO MOVIEFILES(
-		CONTENSTID,
-		MOVIEIMGFILE,
-		INSERTDATE)
-		VALUES(
-		#{contentsid},
-		#{moviefilename},
-		SYSDATE)
-	</insert>
-	
 	<select id="selectMovie" resultType="org.zerock.domain.MovieVO">
 		<![CDATA[SELECT *
 		FROM CONTENTS_T

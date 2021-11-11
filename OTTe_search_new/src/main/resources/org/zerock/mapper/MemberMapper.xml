@@ -33,15 +33,19 @@
 		</select> -->
 
 	<!-- 회원정보 수정 -->
-	<update id="memberUpdate"> UPDATE USER_T SET userpassword = #{repassword}
-		WHERE
-		useremail = #{useremail} and userpassword = #{userpassword}
+	<update id="memberUpdate">
+
+		UPDATE USER_T SET userpassword = #{userpassword} WHERE useremail =
+		#{useremail}
 	</update>
 
+
 	<!-- 회원탈퇴 -->
-	<delete id="memberDelete"> DELETE FROM USER_T WHERE useremail = #{useremail}
-		AND userpassword = #{userpassword}
+	<delete id="memberDelete">
+		DELETE FROM USER_T WHERE useremail = #{useremail}
+		<!-- AND userpassword = #{userpassword} -->
 	</delete>
+
 
 	<!-- 패스워드 체크 -->
 	<select id="passChk" resultType="int"> SELECT COUNT(*) FROM
@@ -56,10 +60,12 @@
 		useremail = #{useremail} AND userid = #{userid}
 	</select>
 
-	<!-- 임시 비밀번호 업데이트 -->
-	<update id="randomPw"> UPDATE USER_T SET userpassword = #{userpassword}
-		WHERE
-		useremail = #{useremail} and userid = #{userid}
+
+	<!-- 임시 비밀번호 암호화 -->
+	<update id="randomPw">
+
+		UPDATE USER_T SET userpassword = #{userpassword} WHERE useremail =
+		#{useremail}
 	</update>
 
 
@@ -76,7 +82,24 @@
 		useremail = #{useremail}
 	</select>
 
+	<!-- 선호도 입력 -->
+	<insert id="insertfavorite">
 
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
+		VALUES (#{usernum}, #{favoritesubject}, #{favoritevalue})
+	</insert>
+
+	<insert id="insertactor">
+
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
+		VALUES (#{actorid}, #{actorname}, #{actorvalue})
+	</insert>
+
+	<insert id="insertdirector">
+
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
+		VALUES (#{directorid}, #{directorname}, #{directorvalue})
+	</insert>
 
 
 </mapper>

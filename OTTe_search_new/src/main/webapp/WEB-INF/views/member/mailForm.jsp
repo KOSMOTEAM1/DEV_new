@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 
 <html>
 <meta charset="UTF-8">
@@ -105,6 +104,7 @@ $(document).ready(function() {
 
 				if (data == true) {
 					if (confirm("임시 비밀번호를 전송하시겠습니까?")) {
+						alert("전송 완료.");
 						$("#memChkForm").submit();
 					}
 
@@ -130,7 +130,7 @@ $(document).ready(function() {
 				<div class="col-lg-12 text-center">
 					<div class="normal__breadcrumb__text">
 						<h2>비밀번호 찾기</h2>
-						<p>찾는다 비번 너의</p>
+						<p></p>
 					</div>
 				</div>
 			</div>

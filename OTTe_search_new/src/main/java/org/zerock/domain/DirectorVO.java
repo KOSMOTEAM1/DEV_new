@@ -6,5 +6,5 @@ import lombok.Data;
 public class DirectorVO {
 	private Integer directorid;
 	private String directorname;
-	
+	private String directorvalue;
 }

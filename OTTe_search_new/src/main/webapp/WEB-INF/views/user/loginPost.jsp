@@ -9,7 +9,9 @@
 </head>
 <body>
 	<script type="text/javascript">
-		self.location = "/user/login";
+	
+		alert("${ login.userid } 님 환영합니다.");
+		self.location = "/main/home";
 		
 	</script>
 </body>

@@ -13,4 +13,6 @@ public interface UserService {
   
   public UserVO checkLoginBefore(String value);  
   
+  public void memberUpdate(LoginDTO dto) throws Exception;
+  
 }

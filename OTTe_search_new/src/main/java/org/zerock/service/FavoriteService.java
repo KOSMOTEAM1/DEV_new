@@ -9,11 +9,9 @@ public interface FavoriteService {
 
 	 /* 영상물 조회 */
 
-	List<ActorVO> select()throws Exception;
-	
-	
 	List<GenreVO> selectgenre() throws Exception;
 	
+	List<ActorVO> select()throws Exception;
 	
 	List<DirectorVO> selectdirector() throws Exception;
 }

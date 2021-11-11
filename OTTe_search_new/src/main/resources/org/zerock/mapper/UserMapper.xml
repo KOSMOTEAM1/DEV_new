@@ -7,7 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="login" resultType="org.zerock.domain.UserVO">
 
-		select usernum, useremail, userpassword, userid, admin from user_t where useremail = #{useremail} and userpassword = #{userpassword}
+		select usernum, useremail, userpassword, userid, admin from user_t where useremail = #{useremail} 
+		<!-- and userpassword = #{userpassword} 암호화된 비밀번호를 비교해주기 때문 -->
 		
 	</select>
 

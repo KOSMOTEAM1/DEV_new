@@ -4,6 +4,9 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.zerock.domain.ActorVO;
+import org.zerock.domain.DirectorVO;
+import org.zerock.domain.FavoriteVO;
 import org.zerock.domain.UserVO;
 
 @Service
@@ -76,5 +79,18 @@ public class MemberServiceImpl implements MemberService {
 		int result = sql.selectOne(namespace + ".memChk", vo);
 		return result;
 	}
+	
+	//선호도 입력
+	   @Override
+	   public void insertfavorite(FavoriteVO vo) throws Exception{
+	      sql.insert(namespace + ".insertfavorite", vo);
+	   }
+	   
+	   public void insertactor(ActorVO vo) throws Exception{
+	      sql.insert(namespace + ".insertactor", vo);
+	   }
+	   public void insertdirector(DirectorVO vo) throws Exception{
+	      sql.insert(namespace + ".insertfavorite", vo);
+	   }
 		
 }
