@@ -9,7 +9,7 @@ public interface FollowMapper {
 	
 	void addFollow(Map<String, Integer> paramMap);
 
-	void removeFollow(ContentsVO contentsvo);
+	void removeFollow(Map<String, Integer> paramMap);
 
 	FollowVO checkFollow(Map<String, Integer> paramMap);
 }

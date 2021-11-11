@@ -31,8 +31,15 @@ public class FollowServiceImpl implements FollowService {
 	}
 
 	@Override
-	public void removeFollow(ContentsVO contentsvo) throws Exception {
-		FollowMapper.removeFollow(contentsvo);
+	public void removeFollow(Integer contentsid, Integer usernum) throws Exception {
+		Map<String, Integer> paramMap = new HashMap<>();
+		System.out.println("contentsid");
+		System.out.println("usernum");
+		paramMap.put("contentsid", contentsid);
+		paramMap.put("usernum", usernum);
+		FollowMapper.removeFollow(paramMap);
+		
+		System.out.println("paraMap");
 
 	}
 

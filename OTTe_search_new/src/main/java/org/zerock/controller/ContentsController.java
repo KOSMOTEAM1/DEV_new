@@ -80,7 +80,7 @@ public class ContentsController {
 
 		ResponseEntity<String> entity = null;
 		try {
-			followService.addFollow(contentsid, userVo.getUsernum());
+			followService.removeFollow(contentsid, userVo.getUsernum());
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

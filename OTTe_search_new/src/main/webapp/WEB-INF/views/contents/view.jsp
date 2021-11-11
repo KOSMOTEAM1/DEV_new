@@ -143,8 +143,11 @@
 									<input type="number" placeholder="REPLY TEXT"  value="${checkfollow.count}" id="countint" style="display: none;" readonly">
 									<i class="fa fa-heart"  id="follow-btn"></i>Follow</a> 
 								</c:if>
-								<a href="#" target="_blank" class="watch-btn"><span>Watch
-										Now</span> <i class="fa fa-angle-right"></i></a>
+								
+								
+								
+								
+								<a href="#" target="_blank" class="watch-btn"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -203,23 +206,32 @@
 
 // 팔로우버튼
 $("#follow").on("click", function(){
-		var count = $("#countint").val;
+		var heart = $("#follow-btn").attr('class');
 
-		if(count == 0){
+		if(heart == 'fa fa-heart-o'){
 			$.ajax({
 				url: "/contents/follow",
 				type: "POST",
 				datatype:'text',
 				data:{contentsid:'${view.contentsid}'},
+				async:false,
 				success: function() {
-					alert("등록 되었습니다.");
-					// recCount();
+					alert("찜 목록 추가!");
+					$("#follow-btn").attr('class','fa fa-heart');
 				}
 			})
-			$("#follow-btn").attr('class','fa fa-heart');
 		}else{
-			alert("구독 취소");
-			$("#follow-btn").attr('class','fa fa-heart-o');
+			$.ajax({
+				url: "/contents/unfollow",
+				type: "POST",
+				datatype:'text',
+				data:{contentsid:'${view.contentsid}'},
+				async:false,
+				success: function() {
+					alert("찜에서 삭제!");
+					$("#follow-btn").attr('class','fa fa-heart-o');
+				}
+			})
 		}
 });
 
