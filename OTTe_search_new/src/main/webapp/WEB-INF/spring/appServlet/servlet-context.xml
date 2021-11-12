@@ -48,31 +48,32 @@
 	</beans:bean>
 	
 	
-	<!-- user팀 추가 -->
+	<!-- 인터셉터 beans 추가 -->
 	<beans:bean id="authInterceptor"
 		class="org.zerock.interceptor.AuthInterceptor"></beans:bean>
 
 	<beans:bean id="loginInterceptor"
 		class="org.zerock.interceptor.LoginInterceptor"></beans:bean>
 
+
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
-		<interceptor>
+		<interceptor>  <!-- 로그인하지 않은 유저는 아래의 페이지에 접근하지 못함 -->
 			<mapping path="/" />	
 			<mapping path="/main/home" />
 			<mapping path="/main/recommend" />
 			<mapping path="/main/latest" /> 
 			<mapping path="/main/wishlist" />
 			<mapping path="/user/logout" />
-			<mapping path="/member/profile" />	
+			<mapping path="/member/*" />	
 			<mapping path="/contents/*" />		
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>
-	<!-- user팀 추가 end -->
+	<!-- 인터셉터  -->
 
 	
 </beans:beans>
