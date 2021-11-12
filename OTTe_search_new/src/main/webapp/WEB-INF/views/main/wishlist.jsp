@@ -25,7 +25,7 @@
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/poster/${wish.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${wish.movieimgfile}"/>">
 										
 
 										<!-- <div class="comment">

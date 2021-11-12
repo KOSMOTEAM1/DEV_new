@@ -27,7 +27,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg" style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${korean.contentsid}'"
-										data-setbg="../../../../resources/img/poster/${korean.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${korean.movieimgfile}"/>">
 
 									</div>
 									<div class="product__item__text">

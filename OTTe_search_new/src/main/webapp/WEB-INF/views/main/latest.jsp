@@ -26,7 +26,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg"style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
-										data-setbg="../../../../resources/img/poster/${latest.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${latest.movieimgfile}"/>">
 
 										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> 11
