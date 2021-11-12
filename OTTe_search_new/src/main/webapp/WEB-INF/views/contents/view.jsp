@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="anime__details__pic set-bg"
-							data-setbg="../../../../resources/img/poster/${view.imgname}.jpg">
+							data-setbg="<c:url value="/imgfile${view.movieimgfile}"/>">
 							<div class="comment">
 								<i class="fa fa-comments"></i> 11
 							</div>
