@@ -34,7 +34,7 @@ public class ContentsServiceImpl implements ContentsService {
 	public List<ContentsVO> selectKoreanOrder() throws Exception {
 		return ContentsMapper.selectKoreanOrder();
 	}
-
+	
 	@Override
 	public List<ContentsVO> selectLatestOrder() throws Exception {
 		return ContentsMapper.selectLatestOrder();
@@ -50,6 +50,11 @@ public class ContentsServiceImpl implements ContentsService {
 		return ContentsMapper.selectSearch(cri);
 	}
 
+	@Override
+	public List<ContentsVO> selectRecommend(UserVO userVo) throws Exception {
+		return ContentsMapper.selectRecommend(userVo);
+	}
+	
 	@Override
 	public List<ContentsVO> selectWishlist(UserVO userVo) throws Exception {
 		return ContentsMapper.selectWishlist(userVo);

@@ -77,12 +77,19 @@ public class HomeController {
 
 		return "/main/latest";
 	}
-
+	
 	@RequestMapping(value = "main/recommend", method = RequestMethod.GET)
-	public String gorecommend(Model model) {
+	public String gorecommend(LoginDTO usernum, Model model, HttpServletRequest request) throws Exception {
 
+		HttpSession session = request.getSession();
+		UserVO userVo = (UserVO) session.getAttribute("login");
+		logger.info("/* userVo="+userVo.toString());
+		List<ContentsVO> recommend = contentsService.selectRecommend(userVo);
+		model.addAttribute("recommend", recommend);
 		return "/main/recommend";
 	}
+
+
 	
 	
 

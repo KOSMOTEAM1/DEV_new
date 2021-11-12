@@ -79,6 +79,12 @@
 		resultType="org.zerock.domain.ContentsVO">
 		<![CDATA[select count(*)reviewcnt from review_t where contentsid=#{CONTENTSID}]]>
 	</select>
+	
+	<select id="selectRecommend"
+		resultType="org.zerock.domain.ContentsVO">
+		<![CDATA[select c.* from genrejoin gj, contents_t c, genre_t g, favorite_t f 
+where f.usernum= #{usernum} and f.favoritevalue=g.genrename and gj.genreid=g.genreid and gj.contentsid=c.contentsid order by gj.genreid asc]]>
+	</select>
 
 
 	

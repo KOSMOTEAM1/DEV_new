@@ -14,6 +14,8 @@ public interface ContentsService {
 	List<ContentsVO> selectKoreanOrder() throws Exception;
 
 	List<ContentsVO> selectLatestOrder() throws Exception;
+	
+	List<ContentsVO> selectRecommend(UserVO userVo) throws Exception;
 
 	List<ContentsVO> selectSearch(SearchCriteria cri) throws Exception;
 

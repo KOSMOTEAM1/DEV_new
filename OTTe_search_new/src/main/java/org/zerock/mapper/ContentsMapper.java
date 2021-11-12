@@ -13,6 +13,8 @@ public interface ContentsMapper {
 	List<ContentsVO> selectKoreanOrder();
 
 	List<ContentsVO> selectLatestOrder();
+	
+	List<ContentsVO> selectRecommend(UserVO userVo);
 
 	List<ContentsVO> selectSearch(SearchCriteria cri);
 
