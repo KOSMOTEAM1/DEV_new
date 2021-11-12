@@ -83,7 +83,7 @@ $(document).ready(function() {
 		location.href = "/";
 
 	})
-
+	
 	$("#submit").on("click", function() {
 		if ($("#useremail").val() == "") {
 			alert("이메일을 입력해주세요.");
@@ -95,23 +95,22 @@ $(document).ready(function() {
 			$("#userid").focus();
 			return false;
 		}
-		$.ajax({
-			url : "/member/memChk",
-			type : "POST",
-			dateType : "json",
-			data : $("#memChkForm").serializeArray(),
-			success : function(data) {
+		$.ajax({   // 이메일 아이디가 일치하면 비밀번호 찾기
+			url : "/member/memChk",  
+			type : "POST",			// 매개변수로 명시된 URL을 사용하여 서버에 대한 POST 요청을 전송한다.		
+			dateType : "json",				
+			data : $("#memChkForm").serializeArray(),   // memChkForm에 입력된 모든 속성을 문자열의 데이터에 시리얼라이즈(직렬화) 하고, JSON형식의 데이터 구조로 반환값을 돌려준다. 
+			success : function(data) {				
 
-				if (data == true) {
+				if (data == true) {						
 					if (confirm("임시 비밀번호를 전송하시겠습니까?")) {
 						alert("전송 완료.");
-						$("#memChkForm").submit();
+						$("#memChkForm").submit();    
 					}
 
 				} else {
 					alert("회원 정보가 없습니다.");
 					return;
-
 				}
 			}
 		})
@@ -145,7 +144,6 @@ $(document).ready(function() {
 				<div class="col-lg-6">
 					<div class="login__form">
 						<h3>비밀번호 찾기</h3>
-						<!-- <section id="container"> -->
 						<form action="/member/mailForm" method="post" id="memChkForm">
 							<div class="input__item">
 								<input class="form-control" type="text" id="useremail"
@@ -169,6 +167,5 @@ $(document).ready(function() {
 	</section>
 
 	<!-- Login Section End -->
-
 
 	<%@ include file="../include/footer.jspf"%>

@@ -6,12 +6,13 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		// 취소
-		$(".cencle").on("click", function() {
+		$(".cancle").on("click", function() {
 
 			location.href = "/";
 
 		})
-
+		
+		
 		$("#submit").on("click", function() {
 			
 			if ($("#userpassword").val() == "") {
@@ -23,7 +24,6 @@
 				alert("변경 되었습니다.");
 			}
 		})
-	
 		
 		$("#farewell").on("click", function() {
 			if ($("#userpassword1").val() == "") {
@@ -88,11 +88,6 @@
 									name="useremail" readonly value="${ login.useremail }" /> <span
 									class="icon_mail"></span>
 							</div>
-						<%-- 	<div class="input__item">
-								<input class="form-control" type="text" id="userid"
-									name="useremail" readonly value="${ login.userid }" /> <span
-									class="icon_profile"></span>
-							</div> --%>
 							<div class="input__item">
 								<input class="form-control" type="password" id="userpassword"
 									name="userpassword" placeholder="Enter New Password" /> <span

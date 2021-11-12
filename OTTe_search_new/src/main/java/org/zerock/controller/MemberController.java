@@ -55,7 +55,7 @@ public class MemberController {
 	@Inject
 	private MemberService mservice;
 	
-	@Inject
+	@Inject 
 	BCryptPasswordEncoder pwdEncoder;
 	
 	@Autowired
@@ -77,22 +77,21 @@ public class MemberController {
 		int result = service.emailChk(vo);
 		try {
 			if (result == 1) {
-				return "/member/register";
+				return "/member/register";  // 중복된 이메일 값이 있으면 리턴, 없으면 아래로 
 			} else if (result == 0) {
 
-				String inputPass = vo.getUserpassword();
-				String pwd = pwdEncoder.encode(inputPass);
-				vo.setUserpassword(pwd);
-				logger.info(pwd);
+				String inputPass = vo.getUserpassword();  // 입력한 패스워드 값을 inputpass에 담는다
+				String pwd = pwdEncoder.encode(inputPass); // pwd는 암호화된 inputpass를 받는다.
+				vo.setUserpassword(pwd);			// 암호화된 pwd는 유저의 패스워드로 셋 한다.
+				logger.info(pwd);							// 암호화된 패스워드 보여줌.
 
-				service.register(vo);
+				service.register(vo);						// 암호화된 패스워드를 등록
 			}
-			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
-			// 존재하지 않는다면 -> register
+
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "member/registPost";
+		return "member/registPost";					// 회원가입 후 선호도 등록 페이지로 보냄
 	}
 	
 	
@@ -100,11 +99,11 @@ public class MemberController {
 	@RequestMapping(value = "/registpost", method = RequestMethod.POST)
 	public String postRegistersiginin(UserVO vo,LoginDTO voo, HttpSession session, Model model) throws Exception {
 		logger.info("post register");
-		int result = service.emailChk(vo);
+		int result = service.emailChk(vo);						//	시작
 		try {
 			if (result == 1) {
 				return "/member/register";
-			} else if (result == 0) {
+			} else if (result == 0) {				
 
 				String inputPass = vo.getUserpassword();
 				String pwd = pwdEncoder.encode(inputPass);
@@ -112,26 +111,22 @@ public class MemberController {
 				logger.info(pwd);
 
 				service.register(vo);
-			}
-			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
-			// 존재하지 않는다면 -> register
+			}											
 		} catch (Exception e) {
 			throw new RuntimeException();
-		}
-
-		session.getAttribute("login");
-		UserVO login = uservice.login(voo);
-		session.setAttribute("login", login);
+		}													// 시작부터 여기까지 코드 삭제 예정
+												
+		session.getAttribute("login");						
+		UserVO login = uservice.login(voo);					// 레지스터에서 가져온 값으로 로그인 실행
+		session.setAttribute("login", login);				// 로그인 세션 생성
 		if (voo.isUseCookie()) {
 
 			int amount = 60 * 60 * 24 * 7;
 
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
-			
-			
-			
+		
 		}
-		return "member/registPost";
+		return "member/registPost";		
 	}
 		
 
@@ -141,7 +136,7 @@ public class MemberController {
 	public String memberDelete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 
 		service.memberDelete(vo);
-		session.invalidate();
+		session.invalidate();				
 
 		return "user/login";
 	}
@@ -152,8 +147,8 @@ public class MemberController {
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
 	public boolean passChk(LoginDTO vo) throws Exception {
 
-		UserVO login = uservice.login(vo);
-		boolean pwdChk = pwdEncoder.matches(vo.getUserpassword(), login.getUserpassword());
+		UserVO login = uservice.login(vo);	//로그인한 유저의 pass와 입력한 pass 가져옴
+		boolean pwdChk = pwdEncoder.matches(vo.getUserpassword(), login.getUserpassword()); // 입력한 pass와 암호화된 pass를 비교
 		return pwdChk;
 	}
 
@@ -203,11 +198,11 @@ public class MemberController {
 	public String postprofile(LoginDTO dto, HttpSession session) throws Exception {
 		logger.info("/* post memberUpdate");
 
-		String inputPass = dto.getUserpassword();
+		String inputPass = dto.getUserpassword();		
 		String pwd = pwdEncoder.encode(inputPass);
-		dto.setUserpassword(pwd);
+		dto.setUserpassword(pwd);			// 암호화된 pwd를 dto에 담는다.
 
-		uservice.memberUpdate(dto);
+		uservice.memberUpdate(dto);   // dto를 멤버업데이트 실행
 
 		session.invalidate();
 
@@ -216,6 +211,7 @@ public class MemberController {
 
 
 
+	// 메일 전송 GET
 	private static String namespace = "org.zerock.mapper.MemberMapper";
 
 	@RequestMapping(value = "/mailForm", method = RequestMethod.GET)
@@ -224,6 +220,8 @@ public class MemberController {
 
 	}
 
+	
+	// 비밀번호 찾기 메일 전송 POST
 	String msgFlag = "";
 	@RequestMapping(value = "/mailForm", method = RequestMethod.POST)
 	public String mailFormPost(UserVO vo) {
@@ -234,10 +232,10 @@ public class MemberController {
 
 		try {
 
-			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessage message = mailSender.createMimeMessage(); //
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-			// 인증 번호 생성기
+			// 랜덤 인증 번호 생성기
 			StringBuffer temp = new StringBuffer();
 			Random rnd = new Random();
 			for (int i = 0; i < 7; i++) {
@@ -258,17 +256,17 @@ public class MemberController {
 				}
 			}
 
-			vo.setUserpassword(temp.toString());
+			vo.setUserpassword(temp.toString()); // 임시번호 생성된  temp를 string으로 변환해서 vo에 패스워드 값으로 
 
-			String inputPass = vo.getUserpassword();
+			String inputPass = vo.getUserpassword(); 
 			String pwd = pwdEncoder.encode(inputPass);
-			vo.setUserpassword(pwd);
+			vo.setUserpassword(pwd);			// 임시생성된 비밀번호를 암호화
 
-			sql.update(namespace + ".randomPw", vo);
+			sql.update(namespace + ".randomPw", vo);	// 암호화된 임시생성 번호를 DB에 저장
 
 			title = "Otte 임시 비밀번호 입니다.";
 
-			content = temp.toString();
+			content = temp.toString();			// content="메일 내용" 암호화 전의 랜덤생성된 비밀번호가 메일 내용으로 됨 
 
 			// 메일 보관함에 저장
 			messageHelper.setFrom(fromMail);

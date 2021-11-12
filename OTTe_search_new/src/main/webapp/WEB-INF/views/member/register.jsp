@@ -78,7 +78,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		// 취소
-		$(".cencle").on("click", function() {
+		$(".cancle").on("click", function() {
 			location.href = "/";
 		})
 
@@ -88,25 +88,25 @@
 				$("#useremail").focus();
 				return false;
 			}
-			if ($("#userid").val() == "") {
+			if ($("#userid").val() == "") {  // 입력된 값 없이 submit 버튼을 누르면 입력 요청을 함
 				alert("아이디를 입력해주세요.");
 				$("#userid").focus();
 				return false;
 			}
-			if ($("#userpassword").val() == "") {
+			if ($("#userpassword").val() == "") { // 입력된 값 없이 submit 버튼을 누르면 입력 요청을 함
 				alert("비밀번호를 입력해주세요.");
 				$("#userpassword").focus();
 				return false;
 			}
-			var idChkVal = $("#idChk").val();
-			if (idChkVal == "N") {
+			var idChkVal = $("#idChk").val();  // 아이디 체크에서 Y,N 여부에 따라 폼 전송이나 확인 요청
+			if (idChkVal == "N") {     
 				alert("아이디 중복 확인을 해주세요.");
-			} else if (idChkVal == "Y") {
+			} else if (idChkVal == "Y") {  
 				alert("회원가입이 되었습니다.");
 				$("#regForm").submit();
 			}
 			
-			var emailChkVal = $("#emailChkVal").val();
+			var emailChkVal = $("#emailChkVal").val(); // 이메일 체크에서 Y,N 여부에 따라 폼 전송이나 확인 요청
 			if (emailChkVal == "N") {
 				alert("이메일 중복 확인을 해주세요.");
 			} else if (emailChkVal == "Y") {
@@ -121,52 +121,52 @@
 			type : "post",
 			dataType : "json",
 			data : {
-				"useremail" : $("#useremail").val()
+				"useremail" : $("#useremail").val()   // 입력한 메일과 같은 값이 있으면
 			},
 			success : function(data) {
 				if (data == 1) {
-					alert("중복된 이메일입니다.");
+					alert("중복된 이메일입니다.");   // 중복된 아이디라 보여주고 idChkVal == "N"에서 변하지 않음.
 				} else if (data == 0) {
-					$("#emailChk").attr("value", "Y");
+					$("#emailChk").attr("value", "Y");  // 입력한 아이디와 같은 값이 없으면 idChkVal == "Y" 로 변경 
 					alert("사용가능한 이메일입니다.");
 				}
 			}
 		})
 	}
 
-	function fn_idChk() {
+	function fn_idChk() {  // 비동기식 아이디 값 체크
 		$.ajax({
 			url : "/member/idChk",
 			type : "post",
 			dataType : "json",
 			data : {
-				"userid" : $("#userid").val()
+				"userid" : $("#userid").val()   // 입력한 아이디와 같은 값이 있으면
 			},
 			success : function(data) {
 				if (data == 1) {
-					alert("중복된 아이디입니다.");
+					alert("중복된 아이디입니다.");  // 중복된 아이디라 보여주고 idChkVal == "N"에서 변하지 않음.
 				} else if (data == 0) {
-					$("#idChk").attr("value", "Y");
+					$("#idChk").attr("value", "Y");   // 입력한 아이디와 같은 값이 없으면 idChkVal == "Y" 로 변경 
 					alert("사용가능한 아이디입니다.");
 				}
 			}
 		})
 	}
-	$(function() {
-		$("#alert-success").hide();
+	$(function() { 						 // 패스워드 동일 값 체크하는 스크립트
+		$("#alert-success").hide();  
 		$("#alert-danger").hide();
-		$("input").keyup(function() {
-			var userpassword = $("#userpassword").val();
-			var Confirmpassword = $("#Confirmpassword").val();
-			if (userpassword != "" || Confirmpassword != "") {
-				if (userpassword == Confirmpassword) {
-					$("#alert-success").show();
-					$("#alert-danger").hide();
-					$("#submit").removeAttr("disabled");
-				} else {
-					$("#alert-success").hide();
-					$("#alert-danger").show();
-					$("#submit").attr("disabled", "disabled");
+		$("input").keyup(function() {  // 값을 입력하려고 하면 시작
+			var userpassword = $("#userpassword").val();  // 첫 비밀번호 입력한 값 
+			var Confirmpassword = $("#Confirmpassword").val(); // 비밀번호 확인 입력한 값
+			if (userpassword != "" || Confirmpassword != "") {  // 첫 비밀번호와 확인 비밀번호를 비교
+				if (userpassword == Confirmpassword) {    // 두 값이 같으면
+					$("#alert-success").show();  // #alert-success 보여줌
+					$("#alert-danger").hide();  // 동시에 #alert-danger 숨김
+					$("#submit").removeAttr("disabled"); // 입력 버튼 활성화
+				} else { 						// 값이 같지 않으면
+					$("#alert-success").hide();  // #alert-success 숨김
+					$("#alert-danger").show(); 	// #alert-danger 보여줌
+					$("#submit").attr("disabled", "disabled");  // 입력 버튼 비활성화
 				}
 			}
 		});
@@ -205,14 +205,14 @@
 							<div class="input__item">
 								<input type="email" id="useremail" name="useremail"
 									placeholder="ID(Email type)"> <span class="icon_mail"></span>
-								<button class="emailChk" type="button" id="emailChk"
-									onclick="fn_emailChk();" value="N">중복확인</button>
+								<button class="emailChk" type="button" id="emailChk"																	
+									onclick="fn_emailChk();" value="N">중복확인</button> <!-- 이메일체크 확인 ajax 발동 버튼, 기본값 N -->
 							</div>
 							<div class="input__item">
 								<input type="text" id="userid" name="userid"
 									placeholder="userid"> <span class="icon_profile"></span>
 								<button class="idChk" type="button" id="idChk"
-									onclick="fn_idChk();" value="N">중복확인</button>
+									onclick="fn_idChk();" value="N">중복확인</button> <!-- 아이디체크 확인 ajax 발동 버튼, 기본값 N -->
 							</div>
 							<div class="input__item">
 								<input type="password" id="userpassword" name="userpassword"
