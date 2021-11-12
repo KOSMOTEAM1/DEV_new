@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 	
 		alert("${ login.userid } 님 환영합니다.");
-		self.location = "/main/home";
+		self.location = "/";
 		
 	</script>
 </body>
