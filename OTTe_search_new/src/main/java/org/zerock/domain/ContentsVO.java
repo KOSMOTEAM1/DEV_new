@@ -29,6 +29,7 @@ public @Data class ContentsVO {
 	private Float avgScore;
 	private Integer reviewcnt;
 	private Integer halfstar;
+	private String movieimgfile;
 	
 	
 	/*

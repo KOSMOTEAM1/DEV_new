@@ -60,12 +60,12 @@
 						</div>
 						<div class="row">
 						
-					<c:forEach var="top" items="${top }" varStatus="count" begin="0" end="3" step="1">
+					<c:forEach var="top" items="${top}" varStatus="count" begin="0" end="3" step="1">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"  style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${top.contentsid}'"
-										data-setbg="../../../../resources/img/poster/${top.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${top.movieimgfile}"/>">
 
 										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> ${reviewcnt.reviewcnt}
@@ -113,7 +113,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg"style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${korean.contentsid}'"
-										data-setbg="../../../../resources/img/poster/${korean.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${korean.movieimgfile}"/>">
 
 										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> 11
@@ -159,7 +159,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg"style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
-										data-setbg="../../../../resources/img/poster/${latest.imgname}.jpg">
+										data-setbg="<c:url value="/imgfile${latest.movieimgfile}"/>">
 
 										<!-- <div class="comment">
 											<i class="fa fa-comments"></i> 11
