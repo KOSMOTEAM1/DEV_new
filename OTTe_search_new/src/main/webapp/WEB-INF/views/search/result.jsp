@@ -1,6 +1,5 @@
 <%@ include file="../include/header.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
 	<!-- Product Section Begin -->
 	<section class="product spad">
 		<div class="container">
@@ -24,8 +23,9 @@
 						<c:forEach var="search" items="${search}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="../../../../resources/img/poster/${search.imgname}.jpg">
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${search.contentsid}'"
+										data-setbg="<c:url value="/imgfile${seach.movieimgfile}"/>">
 										
 
 										<div class="comment">

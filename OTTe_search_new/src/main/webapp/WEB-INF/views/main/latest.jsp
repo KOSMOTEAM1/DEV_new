@@ -28,12 +28,6 @@
 									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
 										data-setbg="<c:url value="/imgfile${latest.movieimgfile}"/>">
 
-										<!-- <div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div> -->
 									</div>
 									<div class="product__item__text">
 										<ul>
