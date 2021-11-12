@@ -1,7 +1,7 @@
 <%@ include file="../include/header.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="org.zerock.domain.ContentsVO"%>
-<body>
+
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -49,7 +49,7 @@
 									<div class="col-lg-6 col-md-6">
 										<ul>
 											<li><span>Type: </span> ${view.classname}</li>
-											<li><span>Release Date: </span> ${view.contentsstart}</li>
+											<li><span>Release Date: </span> <fmt:formatDate pattern = "yy년 MM월 dd일" value="${view.contentsstart}"/></li>
 											<li><span>Genre: </span> ${view.classname}</li>
 											<li><span>Nation: </span> ${view.nationname}</li>
 											<li><span>서비스중인 OTT: </span> ${view.ottname}</li>

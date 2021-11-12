@@ -24,16 +24,10 @@
 						<c:forEach var="wish" items="${wish}">
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
-									<div class="product__item__pic set-bg"
+									<div class="product__item__pic set-bg"style="cursor: pointer" 
+									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
 										data-setbg="<c:url value="/imgfile${wish.movieimgfile}"/>">
 										
-
-										<!-- <div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div> -->
 									</div>
 									<div class="product__item__text">
 										<ul>
