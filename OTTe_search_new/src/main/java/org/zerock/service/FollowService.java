@@ -1,6 +1,5 @@
 package org.zerock.service;
 
-import org.zerock.domain.ContentsVO;
 import org.zerock.domain.FollowVO;
 
 public interface FollowService {

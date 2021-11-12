@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.domain.ContentsVO;
 import org.zerock.domain.FollowVO;
 import org.zerock.mapper.FollowMapper;
 
@@ -19,41 +18,40 @@ public class FollowServiceImpl implements FollowService {
 
 	@Transactional
 	@Override
+	//	찜하기
 	public void addFollow(Integer contentsid, Integer usernum) throws Exception {
 		Map<String, Integer> paramMap = new HashMap<>();
-		System.out.println("contentsid");
-		System.out.println("usernum");
+
 		paramMap.put("contentsid", contentsid);
 		paramMap.put("usernum", usernum);
-		FollowMapper.addFollow(paramMap);
 		
-		System.out.println("paraMap");
+		FollowMapper.addFollow(paramMap);
+
 	}
 
 	@Override
+	//	찜취소
 	public void removeFollow(Integer contentsid, Integer usernum) throws Exception {
 		Map<String, Integer> paramMap = new HashMap<>();
-		System.out.println("contentsid");
-		System.out.println("usernum");
+
 		paramMap.put("contentsid", contentsid);
 		paramMap.put("usernum", usernum);
-		FollowMapper.removeFollow(paramMap);
 		
-		System.out.println("paraMap");
+		FollowMapper.removeFollow(paramMap);
 
 	}
 
 	@Override
+	//	찜여부 체크
 	public FollowVO checkFollow(Integer contentsid, Integer usernum) throws Exception {
+		// 컨텐츠아이디와 유저넘버를 hashmap 형태로 저장하여 전달하여 값이 존재하면 찜
 		Map<String, Integer> paramMap = new HashMap<>();
 		
 		paramMap.put("contentsid", contentsid);
 		paramMap.put("usernum", usernum);
 		
-		//System.out.println("test@@@@@@@@"+FollowMapper.checkFollow(paramMap));
 		return FollowMapper.checkFollow(paramMap);
 	
 	}
-
 
 }
