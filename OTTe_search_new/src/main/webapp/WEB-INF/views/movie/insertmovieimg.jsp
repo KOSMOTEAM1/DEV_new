@@ -72,7 +72,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
-						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>자유게시판</span>
+						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>관리자 페이지</span>
 					</div>
 				</div>
 			</div>
@@ -90,7 +90,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="section-title">
-									<h4>자유게시판</h4>
+									<h4>영상물 이미지 입력</h4>
 								</div>
 								<br></br>
 							</div>
@@ -166,7 +166,7 @@
 
 	$(".fileDrop").on("drop", function(event) {
 		event.preventDefault();
-		alert("목록으로 돌아갑니다.");
+		alert("이미지를 등록합니다.");
 		var files = event.originalEvent.dataTransfer.files;
 		var file = files[0];
 		var formData = new FormData();

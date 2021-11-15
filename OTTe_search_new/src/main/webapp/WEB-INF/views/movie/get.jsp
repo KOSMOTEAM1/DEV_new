@@ -10,8 +10,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="breadcrumb__links">
-					<a href="./index.html"><i class="fa fa-home"></i> Home</a> <a
-						href="./categories.html">movie select</a>
+					<a href="../main/home"><i class="fa fa-home"></i> Home</a> <a
+						href="./selectmovie">관리자 페이지</a>
 				</div>
 			</div>
 		</div>
@@ -67,15 +67,22 @@ footer {
         </tr>
                 <tr>
                    <td><input name="contentsstart" readonly="readonly" value='<c:out value="${movieservice.contentssummary}"/>' ></td>
-                      <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsstart}"/>' ></td>
+                      <td><input name="contentsscore" readonly="readonly" value='<fmt:formatDate pattern = "yy/MM/dd" value="${movieservice.contentsstart}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsseason}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsepisode}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsscore}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsduration}"/>' ></td>
                 
                 <div class="btn_wrap">
-		<a class="btn" id="list_btn">목록 페이지</a> 
-		<a class="btn" id="modify_btn">수정 하기</a>
+                
+                
+              
+		<a class="btn" id="list_btn"><button type="button" class="btn btn-secondary">
+				목록 페이지
+			</button></a> 
+		<a class="btn" id="modify_btn"><button type="button" class="btn btn-secondary">
+				수정하기
+			</button></a>
 	</div>
 	<form id="infoForm" action="movie/modify" method="get">
 		<input type="hidden" id="contentsid" name="contentsid" value='<c:out value="${movieservice.contentsid}"/>'>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<%-- <fmt:parseDate value="${movieservice}" var="contentsstart" pattern="yyMMdd"/>
+<%-- <fmt:parseDate value="${movieservice}" var="contentsstart" pattern="yyMMdd"/>
 <fmt:formatDate value="${contentsstart}" pattern="yy/MM/dd"/> --%>
 <!-- Breadcrumb Begin -->
 <div class="breadcrumb-option">
@@ -12,8 +12,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="breadcrumb__links">
-					<a href="./index.html"><i class="fa fa-home"></i> Home</a> <a
-						href="./categories.html">movie select</a>
+					<a href="../main/home"><i class="fa fa-home"></i> Home</a> <a
+						href="./selectmovie">관리자 페이지</a>
 				</div>
 			</div>
 		</div>
@@ -52,6 +52,8 @@ footer {
 				<tr>
 					<td><input name="contentsid" type="number"
 						value='<c:out value="${movieservice.contentsid}"/>'></td>
+					
+					
 					<td><input name="nationcode"
 						value='<c:out value="${movieservice.nationcode}"/>'></td>
 					<td><input name="ottid"
@@ -74,8 +76,12 @@ footer {
 				<tr>
 					<td><input name="contentssummary"
 						value='<c:out value="${movieservice.contentssummary}"/>'></td>
-					<td><input name="contentsstart" 
-						value='<c:out value="${movieservice.contentsstart}"/>'></td>
+					<td><input name="contentsstart"
+						value='<fmt:formatDate pattern = "yy/MM/dd" value="${movieservice.contentsstart}"/>'></td>
+
+
+
+
 					<td><input name="contentsseason"
 						value='<c:out value="${movieservice.contentsseason}"/>'></td>
 					<td><input name="contentsepisode"
@@ -84,13 +90,25 @@ footer {
 						value='<c:out value="${movieservice.contentsscore}"/>'></td>
 					<td><input name="contentsduration"
 						value='<c:out value="${movieservice.contentsduration}"/>'></td>
-						</tr>
+				</tr>
 			</table>
 			<div class="btn_wrap">
-				<a class="btn" id="list_btn">목록 페이지</a> <a class="btn"
-					id="modify_btn">수정 완료</a>
-					<a class="btn" id="delete_btn">삭제</a>
-					 <a class="btn" id="cancel_btn">수정 취소</a>
+
+
+				<a class="btn" id="list_btn">
+				<button type="button"
+						class="btn btn-secondary">목록 페이지</button></a> 
+						<a class="btn" id="modify_btn">
+						<button type="button" class="btn btn-success">
+						수정 완료</button></a> 
+						
+						<a class="btn" id="delete_btn">
+						<button type="button"
+						class="btn btn-danger">삭제</button></a> 
+						
+						<a class="btn" id="cancel_btn">
+					<button type="button" class="btn btn-secondary">
+						수정 취소</button></a>
 			</div>
 		</form>
 
@@ -119,13 +137,13 @@ footer {
 				form.attr("action", "/movie/get");
 				form.submit();
 			});
-			
+
 			/* 삭제 버튼 */
-			$("#delete_btn").on("click", function(e){
-		        form.attr("action", "/movie/delete");
-		        form.attr("method", "post");
-		        form.submit();
-		    });
+			$("#delete_btn").on("click", function(e) {
+				form.attr("action", "/movie/delete");
+				form.attr("method", "post");
+				form.submit();
+			});
 		</script>
 		</table>
 	</div>

@@ -86,6 +86,12 @@ public class MovieServiceImpl implements MovieService {
 	 	return movieMapper.selectBoard(vo);
 	 }
 	 
+	 
+	 @Override
+	 public List<MovieVO> selectmoviename() {
+		 return movieMapper.selectmoviename();
+	 }
+	 
 		/*
 		 * @Service public class UserServiceImpl implements UserService{
 		 * 

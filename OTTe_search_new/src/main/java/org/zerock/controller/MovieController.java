@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.MovieVO;
 import org.zerock.domain.PagingVO;
 import org.zerock.domain.UserVO;
-import org.zerock.dto.LoginDTO;
 import org.zerock.service.MovieService;
 
 /**
@@ -43,12 +44,17 @@ public class MovieController {
 	}
 
 	// 영상등록 get
-	@RequestMapping(value = "/insertmovie", method = RequestMethod.GET)
-	public void getInsertMovie() throws Exception {
-		logger.info("get Insert Movie");
+		@RequestMapping(value = "/insertmovie", method = RequestMethod.GET)
+		public String getdirector(Model model) throws Exception {
 
-	}
+			logger.info("get movie name");
+			List<MovieVO> movienameservice = service.selectmoviename();
+			model.addAttribute("movienameservice", movienameservice);
+
+			return "/movie/insertmovie";
+		}
 	
+		
 	// 영상 이미지 등록 get
 	@RequestMapping(value = "/insertmovieimg", method = RequestMethod.GET)
 	public void getInsertMovieimg() throws Exception {

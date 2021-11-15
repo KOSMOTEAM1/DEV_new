@@ -39,4 +39,6 @@ public interface MovieMapper {
 	
 	// 아이디 중복체크
 		public int idChk(MovieVO vo) throws Exception;
+		
+		List<MovieVO> selectmoviename();
 }

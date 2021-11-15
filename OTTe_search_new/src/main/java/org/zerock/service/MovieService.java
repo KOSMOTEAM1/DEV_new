@@ -24,6 +24,9 @@ public interface MovieService {
     
     public int delete(int contentsid);
     
+  //영상입력에서 영상물 이름조회
+  	List<MovieVO> selectmoviename()throws Exception;
+    
  // 게시물 총 갯수
     public int countBoard();
 

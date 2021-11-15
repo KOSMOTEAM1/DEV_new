@@ -106,4 +106,9 @@
 		WHERE
 		contentsid = #{contentsid}
 	</select>
+	<!-- 영상등록 화면에서 영상 제목 검색 -->
+	<select id="selectmoviename"
+		resultType="org.zerock.domain.MovieVO">
+		select contentstitle from contents_t
+	</select>
 </mapper>
