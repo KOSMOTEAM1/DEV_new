@@ -1,5 +1,7 @@
 package org.zerock.service;
 
+import java.util.List;
+
 import org.zerock.domain.ActorVO;
 import org.zerock.domain.DirectorVO;
 import org.zerock.domain.FavoriteVO;
@@ -29,7 +31,12 @@ public interface MemberService {
 
 	public void insertdirector(DirectorVO vo) throws Exception;
 	
+	//내가 선호하는 항목들  조회
+	List<FavoriteVO> selectfavoritegenre(UserVO userVo) throws Exception;
 	
+	List<FavoriteVO> selectfavoriteactor(UserVO userVo) throws Exception;
 	
-
+	List<FavoriteVO> selectfavoritedirector(UserVO userVo) throws Exception;
+	
+	public void deletemyfavorite(UserVO userVo) throws Exception;
 }

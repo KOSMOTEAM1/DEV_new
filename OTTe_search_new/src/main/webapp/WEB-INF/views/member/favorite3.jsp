@@ -5,12 +5,24 @@
 <script src="/resources/js/jquery-3.3.1.min.js"></script>
 
 <style>
+textarea {
+	width: 400px;
+	height: 100px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: solid 2px #1E90FF;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: both;
+}
+
+
+
 #myInput {
-	background-image: url('/css/searchicon.png');
 	/* Add a search icon to input */
 	background-position: 10px 12px; /* Position the search icon */
 	background-repeat: no-repeat; /* Do not repeat the icon image */
-	width: 50%; /* Full-width */
+	width: 35%; /* Full-width */
 	font-size: 16px; /* Increase font-size */
 	padding: 12px 20px 12px 40px; /* Add some padding */
 	border: 1px solid #ddd; /* Add a grey border */
@@ -18,11 +30,15 @@
 }
 
 #myTable {
+	margin-left: auto; 
+	margin-right: auto;
 	border-collapse: collapse; /* Collapse borders */
-	width: 50%; /* Full-width */
+	width: 35%; /* Full-width */
 	border: 1px solid #ddd; /* Add a grey border */
 	font-size: 18px; /* Increase font-size */
+	
 	display: none;
+	
 }
 
 #myTable th, #myTable td {
@@ -54,6 +70,7 @@
 			</div>
 		</div>
 	</div>
+	" ' '' "
 </section>
 <!-- Normal Breadcrumb End -->
 
@@ -65,10 +82,8 @@
 		</br>
 		<h5>
 			<font color="white"> <textarea id="genreresult"
-					name="genretext" rows="5" cols="33" disabled>여기에 감독이 표시됩니다.</textarea>
-				</br>
-			</br>
-			</br>
+					name="genretext" rows="5" cols="33">여기에 감독이 표시됩니다.</textarea>
+				</br> </br> </br>
 
 				<table id="myTable">
 					<tr>
@@ -76,10 +91,10 @@
 							placeholder="Search for director..">
 					</tr>
 					<tr class="header">
-						<th style="width: 60%;">감독명</th>
-						<th style="width: 40%;">
-							<button class="site-btn" id="hidetable"
-								onclick="button2_click();">접기</button>
+						<th style="width: 80%;">감독명</th>
+						<th style="width: 80%;">
+							<button class="btn btn-secondary" id="hidetable"
+								onclick="button2_click();">close</button>
 
 						</th>
 
@@ -99,11 +114,41 @@
 			</font>
 		</h5>
 		<div class="insert">
-			<button type="button" class="insert_${genreserive.directorname}_btn"
-				data-directorname="${genreserive.directorname}">등록</button>
+			<button type="button" class="btn btn-primary"
+				data-directorname="${genreserive.directorname}" id="directorsubmit">등록</button>
 
 			<script>
-  $(".insert_${genreserive.directorname}_btn").click(function(){
+  $("#directorsubmit").click(function(){
+	  
+	  
+	  
+	  
+	  var chkbox = document.getElementsByName("chBox");
+
+		var chkCnt = 0;
+
+		for (var i = 0; i < chkbox.length; i++) {
+
+			if (chkbox[i].checked) {
+
+				chkCnt++;
+
+			}
+
+		}
+
+		if (chkCnt < 1) {
+
+			alert("1명 이상의 감독을 선택해주세요.");
+
+			obj.checked = false;
+
+			return false;
+	
+		}  
+	  
+	  
+	  
    var confirm_val = confirm("장르를 등록하시겠습니까?");
    if(confirm_val) {
 	   var checkArr = new Array();
@@ -116,8 +161,8 @@
      type : "post",
      data : { chbox : checkArr , subject : "director", usernum : ${login.usernum} },
      success : function(result){
-      if(result == 1) {  
-    	  alert("메인 페이지로 이동합니다.");
+      if(result == 1) {     
+    	  alert("회원가입이 완료되었습니다!")
        location.href = "/main/home";
       } else {
        alert("등록 실패");

@@ -177,22 +177,6 @@ public class MemberController {
 		return result;
 	}
 
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String goprofile(LoginDTO userid, Model model, HttpServletRequest request) throws Exception {
-
-		HttpSession session = request.getSession();
-
-		UserVO userVo = (UserVO) session.getAttribute("login");
-
-		logger.info("/* userVo=" + userVo.toString());
-
-		/*
-		 * List<ContentsVO> wish = contentsService.selectWishlist(userVo);
-		 * model.addAttribute("wish", wish);
-		 */
-
-		return "/member/profile";
-	}
 
 	// 회원정보 수정 post
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
@@ -337,5 +321,49 @@ public class MemberController {
 
 		return "/member/favorite3";
 	}
+	
+	//로그인시 입장가능한 프로필 페이지/ 개인정보, 나의 선호항목 조회 및 변경 가능.
+		@RequestMapping(value = "/profile", method = RequestMethod.GET)
+		public String goprofile(FavoriteVO vo, LoginDTO userid, Model model, HttpServletRequest request) throws Exception {
+
+			HttpSession session = request.getSession();
+			
+			UserVO userVo = (UserVO) session.getAttribute("login");
+
+			logger.info("/* userVo=" + userVo.toString());
+			
+			 List<FavoriteVO> genreservice = mservice.selectfavoritegenre(userVo);
+			 
+			 model.addAttribute("genreservice", genreservice);
+			 
+			 
+			 List<FavoriteVO> actorservice = mservice.selectfavoriteactor(userVo);
+			 model.addAttribute("actorservice", actorservice);
+			 
+			 
+			 List<FavoriteVO> directorservice = mservice.selectfavoritedirector(userVo);
+			 model.addAttribute("directorservice", directorservice);
+			
+
+			return "/member/profile";
+			
+		}
+		
+		
+		
+		@ResponseBody
+		@RequestMapping(value = "/deletemyfavorite", method = RequestMethod.POST)
+		public int insertgenrefavorite(LoginDTO vo, HttpSession session,int usernum, UserVO uservo) throws Exception {
+			logger.info("delete favorite");
+		
+			logger.info("선호도 삭제 시작");
+			int result = 1;
+			uservo.setUsernum(usernum);
+			
+			mservice.deletemyfavorite(uservo);
+
+			return result;
+		}
+		
 
 }

@@ -35,7 +35,8 @@
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
 
-		UPDATE USER_T SET userpassword = #{userpassword} WHERE useremail =
+		UPDATE USER_T SET userpassword = #{userpassword}
+		WHERE useremail =
 		#{useremail}
 	</update>
 
@@ -64,7 +65,8 @@
 	<!-- 임시 비밀번호 암호화 -->
 	<update id="randomPw">
 
-		UPDATE USER_T SET userpassword = #{userpassword} WHERE useremail =
+		UPDATE USER_T SET userpassword = #{userpassword}
+		WHERE useremail =
 		#{useremail}
 	</update>
 
@@ -85,21 +87,50 @@
 	<!-- 선호도 입력 -->
 	<insert id="insertfavorite">
 
-		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
-		VALUES (#{usernum}, #{favoritesubject}, #{favoritevalue})
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT,
+		FAVORITEVALUE)
+		VALUES (#{usernum}, #{favoritesubject},
+		#{favoritevalue})
 	</insert>
 
 	<insert id="insertactor">
 
-		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT,
+		FAVORITEVALUE)
 		VALUES (#{actorid}, #{actorname}, #{actorvalue})
 	</insert>
 
 	<insert id="insertdirector">
 
-		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT, FAVORITEVALUE)
-		VALUES (#{directorid}, #{directorname}, #{directorvalue})
+		INSERT INTO FAVORITE_T(USERNUM, FAVORITESUBJECT,
+		FAVORITEVALUE)
+		VALUES (#{directorid}, #{directorname},
+		#{directorvalue})
 	</insert>
+	<!-- 프로필에서 내 선호 항목 보여주기 -->
+	<select id="selectfavoritegenre"
+		resultType="org.zerock.domain.FavoriteVO">
+		SELECT * FROM FAVORITE_T
+		WHERE USERNUM = #{usernum} and
+		favoritesubject='genre'
+	</select>
 
+	<select id="selectfavoriteactor"
+		resultType="org.zerock.domain.FavoriteVO">
+		SELECT * FROM FAVORITE_T
+		WHERE USERNUM = #{usernum} and
+		favoritesubject='actor'
+	</select>
+
+	<select id="selectfavoritedirector"
+		resultType="org.zerock.domain.FavoriteVO">
+		SELECT * FROM FAVORITE_T
+		WHERE USERNUM = #{usernum} and
+		favoritesubject='director'
+	</select>
+	<!-- 내 선호항목 삭제하기 -->
+	<delete id="deletemyfavorite">
+		delete from favorite_t where usernum = #{usernum}
+	</delete>
 
 </mapper>

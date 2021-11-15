@@ -6,25 +6,24 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		// 취소
-		$(".cancle").on("click", function() {
+
+		$(".cencle").on("click", function() {
 
 			location.href = "/";
 
 		})
-		
-		
+
 		$("#submit").on("click", function() {
-			
+
 			if ($("#userpassword").val() == "") {
 				alert("변경할 비밀번호를 입력해주세요.");
-				$("#userpassword").focus();				
-				return false;			
-			}		 
-			else{
+				$("#userpassword").focus();
+				return false;
+			} else {
 				alert("변경 되었습니다.");
 			}
 		})
-		
+
 		$("#farewell").on("click", function() {
 			if ($("#userpassword1").val() == "") {
 				alert("기존 비밀번호를 입력해주세요.");
@@ -49,6 +48,36 @@
 					}
 				}
 			})
+
+		});
+
+		//여기서부터 선호도 재설정
+
+		$("#deletemyfavorite").on("click", function() {
+
+			if (confirm('선호도를 수정하시겠습니까?')) {
+
+				alert("선호도를 수정합니다.");
+				
+				$.ajax({
+				     url : "/member/deletemyfavorite",
+				     type : "post",
+				     data : { usernum : ${login.usernum} },
+				     success : function(result){
+				      if(result == 1) {     
+				       location.href = "/member/favorite";
+				      } else {
+				       alert("등록 실패");
+				      }
+				     }
+				    });
+				
+			}
+
+			else {
+				alert("선호도 수정이 취소되었습니다.");
+				return false;
+			}
 
 		});
 
@@ -88,17 +117,22 @@
 									name="useremail" readonly value="${ login.useremail }" /> <span
 									class="icon_mail"></span>
 							</div>
+							<%-- 	<div class="input__item">
+								<input class="form-control" type="text" id="userid"
+									name="useremail" readonly value="${ login.userid }" /> <span
+									class="icon_profile"></span>
+							</div> --%>
 							<div class="input__item">
 								<input class="form-control" type="password" id="userpassword"
 									name="userpassword" placeholder="Enter New Password" /> <span
 									class="icon_lock"></span>
 							</div>
 							<div class="form-group has-feedback">
-							<button class="btn btn-success"  id="submit">회원정보수정</button>
-							<button class="btn btn-success" type="button">취소</button>
-						</div>							
+								<button class="btn btn-success" id="submit">회원정보수정</button>
+								<button class="btn btn-success" type="button">취소</button>
+							</div>
 						</form>
-						
+
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -110,7 +144,7 @@
 						<div class="container-fulid">
 							<div class="row">
 								<div class="col-lg-6"> -->
-						<div class="login__form">							
+						<div class="login__form">
 							<form id="delForm" action="/member/memberDelete" method="post">
 								<div class="login__register">
 									<h3>회원 탈퇴하기</h3>
@@ -135,7 +169,98 @@
 					</div>
 				</div>
 			</div>
+			<style>
+.view {
+	display: inline;
+	background-color: white;
+	margin: 5px;
+}
+</style>
+			<!-- 여기서부터 스타일 -->
+
+			</br> </br> </br> </br>
+			<div class="container-fluid">
+				<div class="view">
+
+					<button type="button" class="btn btn-primary">내가 선호하는 항목</button>
+					<button type="button" class="btn btn-danger" id="deletemyfavorite">
+						재설정하기</button>
+				</div>
+				</br> </br>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4">
+							<table>
+								<button type="button" class="btn active btn-block btn-info">
+									장르</button>
+								</br>
+								<tr>
+									<c:forEach var="genreservice" items="${genreservice}"
+										varStatus="status">
+										<c:if test="${status.index%5==0}">
+								</tr>
+								<tr>
+									</c:if>
+									<td><button type="button" class="btn btn-secondary">
+											${genreservice.favoritevalue}</button></td>
+									</c:forEach>
+								</tr>
+							</table>
+						</div>
+						<div class="col-md-4">
+							<table>
+
+								<button type="button" class="btn active btn-block btn-info">
+									배우</button>
+								</br>
+								<tr>
+									<c:forEach var="actorservice" items="${actorservice}"
+										varStatus="status">
+										<c:if test="${status.index%5==0}">
+								</tr>
+								<tr>
+									</c:if>
+									<td><button type="button" class="btn btn-secondary">
+											${actorservice.favoritevalue}</button></td>
+									</c:forEach>
+								</tr>
+							</table>
+						</div>
+						<div class="col-md-4">
+							<table>
+
+								<button type="button" class="btn active btn-block btn-info">
+									감독</button>
+								</br>
+								<tr>
+									<c:forEach var="directorservice" items="${directorservice}"
+										varStatus="status">
+										<c:if test="${status.index%5==0}">
+								</tr>
+								<tr>
+									</c:if>
+									<td><button type="button" class="btn btn-secondary">
+											${directorservice.favoritevalue}</button></td>
+									</c:forEach>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--  여기까지 -->
+
+
+
+
+
 	</section>
+
 	<!-- 
 				</div>
 			</div>

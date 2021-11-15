@@ -5,6 +5,21 @@
 <script src="/resources/js/jquery-3.3.1.min.js"></script>
 
 <style>
+textarea {
+	width: 400px;
+	height: 100px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: solid 2px #1E90FF;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: both;
+}
+table {
+	margin-left: auto; 
+	margin-right: auto;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -75,9 +90,6 @@
 #myTable2 tr.header, #myTable2 tr:hover {
 	background-color: #f1f1f1;
 }
-
-
-
 </style>
 
 <!-- Normal Breadcrumb Begin -->
@@ -94,41 +106,74 @@
 		</div>
 	</div>
 </section>
+
+
 <!-- Normal Breadcrumb End -->
 
 <!-- Signup Section Begin -->
-<section class="signup spad">
 
-	<div class="blog__details__title">
-		<h2>선호하는 장르를 선택하세요.</h2>
-		</br>
-		<h5>
-			<font color="white"> <textarea id="genreresult"
-					name="genretext" rows="5" cols="33">여기에 장르가 표시됩니다.</textarea>
-				<table>
-					<tr>
-						<c:forEach var="genreservice" items="${genreservice}"
-							varStatus="status">
-							<c:if test="${status.index%5==0}">
-					</tr>
-					<tr>
-						</c:if>
-						<td><font color="white"> 
-						<input type="checkbox" name="chBox" class="chBox" 
-						id="${genreservice.genrename}" onclick='getGenreValue()' 
-						data-genrevalue="genre" data-genrename="${genreservice.genrename}">
-						${genreservice.genrename}
-						</font></td>
-						</c:forEach>
-					</tr>
-				</table>
-			</font>
-		</h5>
-		<div class="insert">
- <button type="button" class="insert_${genreserive.genrename}_btn" data-genrename="${genreserive.genrename}">등록</button>
- 
- <script>
-  $(".insert_${genreserive.genrename}_btn").click(function(){
+<div class="blog__details__title">
+	<h2>선호하는 장르를 선택하세요.</h2>
+	<h5>
+		<font color="white"> <textarea id="genreresult"
+				name="genretext" rows="5" cols="33">여기에 장르가 표시됩니다.</textarea>
+			<table class="checktable">
+				<tr>
+					<c:forEach var="genreservice" items="${genreservice}"
+						varStatus="status">
+						<c:if test="${status.index%5==0}">
+				</tr>
+				<tr>
+					</c:if>
+					<td><font color="white"> <input type="checkbox"
+							name="chBox" class="chBox" id="${genreservice.genrename}"
+							onclick='getGenreValue()' data-genrevalue="genre"
+							data-genrename="${genreservice.genrename}">
+							${genreservice.genrename}
+					</font></td>
+					</c:forEach>
+				</tr>
+			</table>
+		</font>
+	</h5>
+	<div class="insert">
+		<button type="button" 
+			data-genrename="${genreserive.genrename}" class="btn btn-primary"
+			id="genresubmit"
+			>장르 등록</button>
+			
+			
+			
+
+		<script>
+  $("#genresubmit").click(function(){
+	  
+	  var chkbox = document.getElementsByName("chBox");
+
+		var chkCnt = 0;
+
+		for (var i = 0; i < chkbox.length; i++) {
+
+			if (chkbox[i].checked) {
+
+				chkCnt++;
+
+			}
+
+		}
+
+		if (chkCnt < 1) {
+
+			alert("1개 이상의 장르를 선택해주세요.");
+
+			obj.checked = false;
+
+			return false;
+	
+		}  
+	  
+	  
+	  
    var confirm_val = confirm("장르를 등록하시겠습니까?");
    console.log("장르 콘솔");
    if(confirm_val) {
@@ -152,15 +197,14 @@
    } 
   });
  </script>
-</div>
 	</div>
+</div>
 
 
 
 
-	
 
-</section>
+
 
 <script>
 function getGenreValue()  {
@@ -186,7 +230,7 @@ function getGenreValue()  {
 	//체크박스 3개 초과시 알러트
 	/* function count_ck(obj) {
 
-		var chkbox = document.getElementsByName("chk");
+		var chkbox = document.getElementsByName("chBox");
 
 		var chkCnt = 0;
 
@@ -200,9 +244,9 @@ function getGenreValue()  {
 
 		}
 
-		if (chkCnt > 3) {
+		if (chkCnt < 1) {
 
-			alert("최대 3명까지 가능합니다.");
+			alert("1개 이상의 항목을 선택해주세요.");
 
 			obj.checked = false;
 

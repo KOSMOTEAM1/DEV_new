@@ -1,13 +1,17 @@
 package org.zerock.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.ActorVO;
 import org.zerock.domain.DirectorVO;
 import org.zerock.domain.FavoriteVO;
 import org.zerock.domain.UserVO;
+import org.zerock.mapper.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -19,6 +23,9 @@ public class MemberServiceImpl implements MemberService {
 	@Inject
 	SqlSession sql;
 	// 회원가입
+	
+	@Autowired
+	private MemberMapper membermapper;
 
 	private static String namespace = "org.zerock.mapper.MemberMapper";
 
@@ -92,5 +99,24 @@ public class MemberServiceImpl implements MemberService {
 	   public void insertdirector(DirectorVO vo) throws Exception{
 	      sql.insert(namespace + ".insertfavorite", vo);
 	   }
+	   
+	   //현재 로그인된 id를 받기위해 uservo를 사용해 조회
+	   @Override
+		 public List<FavoriteVO> selectfavoritegenre(UserVO userVo) throws Exception {
+			 return membermapper.selectfavoritegenre(userVo);
+		 }
+	   @Override
+		 public List<FavoriteVO> selectfavoriteactor(UserVO userVo) throws Exception {
+			 return membermapper.selectfavoriteactor(userVo);
+		 }
+	   @Override
+		 public List<FavoriteVO> selectfavoritedirector(UserVO userVo) throws Exception {
+			 return membermapper.selectfavoritedirector(userVo);
+		 }
+	   
+	   @Override
+		public void deletemyfavorite(UserVO vo) throws Exception {
+			sql.delete(namespace + ".deletemyfavorite", vo);
+		}
 		
 }

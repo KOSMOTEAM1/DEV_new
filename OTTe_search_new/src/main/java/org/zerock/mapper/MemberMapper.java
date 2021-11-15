@@ -1,5 +1,7 @@
 package org.zerock.mapper;
 
+import java.util.List;
+
 import org.zerock.domain.ActorVO;
 import org.zerock.domain.DirectorVO;
 import org.zerock.domain.FavoriteVO;
@@ -37,5 +39,15 @@ public interface MemberMapper {
 	public void insertactor(ActorVO vo) throws Exception;
 
 	public void insertdirector(DirectorVO vo) throws Exception;
+	
+	//로그인후 프로필창에서 내가 선호하는 항목 출력
+	List<FavoriteVO> selectfavoritegenre(UserVO userVo);
+	
+	List<FavoriteVO> selectfavoriteactor(UserVO userVo);
+	
+	List<FavoriteVO> selectfavoritedirector(UserVO userVo);
+	
+	public void deletemyfavorite(UserVO userVo) throws Exception;
+
 
 }
