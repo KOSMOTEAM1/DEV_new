@@ -129,9 +129,6 @@
 												</div>
 											</div>
 										</form>
-										<form action="/movie/selectmovie"  method="get">
-											<button class="btn btn-secondary my-2 my-sm-0" type="submit">이미지 등록 생략</button>
-										</form>
 									</tr>
 								</div>
 								<!-- /.box-body -->
