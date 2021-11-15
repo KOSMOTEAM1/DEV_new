@@ -68,9 +68,10 @@ public class MovieController {
 	// 영상등록 post
 	@RequestMapping(value = "/insertmovie", method = RequestMethod.POST)
 	public String postInsertMovie(MovieVO vo, RedirectAttributes rttr, Model model) throws Exception {
-		logger.info("post Insert Movie");
+		//logger.info("post Insert Movie");
  		service.insertMovie(vo);
  		rttr.addFlashAttribute("result", "enrol success");
+		model.addAttribute("insertMovie",vo);
 		model.addAttribute("insertMovie",vo);
 		return "/movie/insertmovieimg";
 	}

@@ -12,6 +12,8 @@ public interface MovieMapper {
 	// 영상 등록
 	public void insertMovie(MovieVO vo) throws Exception;
 	
+	public void insertActorjoin(MovieVO vo) throws Exception;
+	
 	// 영상 이미지 등록
 	public void insertMovieImg(@Param("contentsid") Integer contentsid, @Param("moviefilename") String fileName) throws Exception;
 

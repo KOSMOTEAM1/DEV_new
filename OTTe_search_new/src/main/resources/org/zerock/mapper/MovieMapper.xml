@@ -31,6 +31,14 @@
 		#{contentsscore},
 		#{contentsduration})
 	</insert>
+	
+		<insert id="insertActorjoin">
+		INSERT INTO actorjoin
+		VALUES(
+		#{contentsid},
+		999
+		)
+	</insert>
 	<select id="selectMovie" resultType="org.zerock.domain.MovieVO">
 		<![CDATA[SELECT *
 		FROM CONTENTS_T
