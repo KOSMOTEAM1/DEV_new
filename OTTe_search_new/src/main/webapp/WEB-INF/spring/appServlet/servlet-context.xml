@@ -68,8 +68,12 @@
 			<mapping path="/main/latest" /> 
 			<mapping path="/main/wishlist" />
 			<mapping path="/user/logout" />
-			<mapping path="/member/*" />	
-			<mapping path="/contents/*" />		
+			<mapping path="/member/profile" />
+			<mapping path="/member/favorite" />		
+			<mapping path="/member/favorite2" />		
+			<mapping path="/member/favorite3" />		
+			<mapping path="/contents/*" />
+			<mapping path="/board/*" />				
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>
