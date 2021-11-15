@@ -48,8 +48,14 @@ public class MovieController {
 		logger.info("get Insert Movie");
 
 	}
+	
+	// 영상 이미지 등록 get
+	@RequestMapping(value = "/insertmovieimg", method = RequestMethod.GET)
+	public void getInsertMovieimg() throws Exception {
+		logger.info("get Insert Movie");
+	}
+	
 	// 영상등록시 id중복체크
-
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(MovieVO vo) throws Exception {
@@ -61,12 +67,22 @@ public class MovieController {
 
 	// 영상등록 post
 	@RequestMapping(value = "/insertmovie", method = RequestMethod.POST)
-	public String postInsertMovie(MovieVO vo, RedirectAttributes rttr) throws Exception {
+	public String postInsertMovie(MovieVO vo, RedirectAttributes rttr, Model model) throws Exception {
 		logger.info("post Insert Movie");
-		service.insertMovie(vo);
-		rttr.addFlashAttribute("result", "enrol success");
-		return "/movie/insertmovie";
+ 		service.insertMovie(vo);
+ 		rttr.addFlashAttribute("result", "enrol success");
+		model.addAttribute("insertMovie",vo);
+		return "/movie/insertmovieimg";
 	}
+	
+	// 영상 이미지 등록 post
+	@RequestMapping(value = "/insertmovieimg", method = RequestMethod.POST)
+	public String postInsertMovieimg(Integer contentsid, String[] moviefilenames) throws Exception {
+		logger.info("*/ 입력된 contentsid값입니다. " + contentsid);
+		logger.info("*/ 입력된 moviefilenames값입니다. " + moviefilenames);
+		service.insertMovieImg(contentsid,moviefilenames);
+		return "redirect:/movie/selectmovie";
+	 }
 	
 
 	// 영상물 상세 조회

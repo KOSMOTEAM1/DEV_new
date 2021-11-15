@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.MovieFileVO;
 import org.zerock.domain.MovieVO;
 import org.zerock.domain.PagingVO;
 import org.zerock.mapper.MovieMapper;
@@ -22,10 +23,19 @@ public class MovieServiceImpl implements MovieService {
 	private MovieMapper movieMapper;
 	
 	private static String namespace="org.zerock.mapper.MovieMapper";
-
+	
 	@Override
 	public void insertMovie(MovieVO vo) throws Exception {
 		sql.insert(namespace+".insertMovie", vo);
+	}
+	
+	@Override	
+	public void insertMovieImg(Integer contentsid, String[] moviefilenames) throws Exception {
+
+		for (String fileName : moviefilenames) {
+			fileName = fileName.replace("/s_", "/");
+			movieMapper.insertMovieImg(contentsid,fileName);
+	    }
 	}
 	
 	@Override

@@ -58,11 +58,24 @@
 		CONTENTSDURATION = #{contentsduration}
 		WHERE CONTENTSID = #{contentsid}
 	</select>
+	
+	
+	<insert id="insertMovieImg">
+		INSERT INTO MOVIEFILES(
+		CONTENSTID,
+		MOVIEIMGFILE,
+		INSERTDATE)
+		VALUES(
+		#{contentsid},
+		#{moviefilename},
+		SYSDATE)
+	</insert>
+	
 	<delete id="delete">
 		DELETE FROM CONTENTS_T
 		WHERE CONTENTSID = #{contentsid}
-
 	</delete>
+	
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM contents_t
 	</select>

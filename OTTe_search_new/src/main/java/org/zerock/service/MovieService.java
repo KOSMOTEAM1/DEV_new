@@ -2,15 +2,19 @@ package org.zerock.service;
 
 import java.util.List;
 
+import org.zerock.domain.MovieFileVO;
 import org.zerock.domain.MovieVO;
 import org.zerock.domain.PagingVO;
+
+
 public interface MovieService {
 	//List<MovieVO> insertMovie() throws Exception;
 	List<MovieVO> selectMovie()throws Exception;
 
 	public void insertMovie(MovieVO vo) throws Exception;
 	
-
+	public void insertMovieImg(Integer contentsid, String[] moviefilenames) throws Exception;
+	
 	public void deleteMovie(MovieVO vo) throws Exception;
 	
 	 /* 영상물 조회 */
