@@ -152,6 +152,7 @@ public class MemberController {
 		return pwdChk;
 	}
 
+	
 	// 아이디 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
@@ -256,17 +257,17 @@ public class MemberController {
 				}
 			}
 
-			vo.setUserpassword(temp.toString()); // 임시번호 생성된  temp를 string으로 변환해서 vo에 패스워드 값으로 
+			vo.setUserpassword(temp.toString()); 		// 임시번호 생성된  temp를 string으로 변환해서 vo에 패스워드 값으로 
 
 			String inputPass = vo.getUserpassword(); 
 			String pwd = pwdEncoder.encode(inputPass);
-			vo.setUserpassword(pwd);			// 임시생성된 비밀번호를 암호화
+			vo.setUserpassword(pwd);					// 임시생성된 비밀번호를 암호화
 
 			sql.update(namespace + ".randomPw", vo);	// 암호화된 임시생성 번호를 DB에 저장
 
 			title = "Otte 임시 비밀번호 입니다.";
 
-			content = temp.toString();			// content="메일 내용" 암호화 전의 랜덤생성된 비밀번호가 메일 내용으로 됨 
+			content = temp.toString();					// content="메일 내용" 암호화 전의 랜덤생성된 비밀번호가 메일 내용으로 됨 
 
 			// 메일 보관함에 저장
 			messageHelper.setFrom(fromMail);
@@ -292,10 +293,7 @@ public class MemberController {
 		logger.info("insert favorite");
 	
 		
-		
 		/* LoginDTO num1 = (LoginDTO) session.getAttribute("login"); */
-		
-		
 		
 		int result = 1;
 		logger.info("for문 시작");
