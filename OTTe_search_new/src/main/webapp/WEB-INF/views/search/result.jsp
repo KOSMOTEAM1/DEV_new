@@ -1,5 +1,6 @@
 <%@ include file="../include/header.jspf"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="org.zerock.domain.ContentsVO"%>
 	<!-- Product Section Begin -->
 	<section class="product spad">
 		<div class="container">
@@ -25,9 +26,7 @@
 								<div class="product__item">
 									<div class="product__item__pic set-bg"style="cursor: pointer" 
 									OnClick="location.href ='/contents/view?contentsid=${search.contentsid}'"
-										data-setbg="<c:url value="/imgfile${seach.movieimgfile}"/>">
-										
-
+										data-setbg="<c:url value="/imgfile${search.movieimgfile}"/>">
 										<div class="comment">
 											<i class="fa fa-comments"></i> 11
 										</div>
@@ -54,6 +53,5 @@
 			</div>
 		</div>
 	</section>
-	<!-- Product Section End -->
-
+<!-- Product Section End -->
 <%@ include file="../include/footer.jspf"%>

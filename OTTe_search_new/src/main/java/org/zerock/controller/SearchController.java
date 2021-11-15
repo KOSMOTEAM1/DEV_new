@@ -41,6 +41,7 @@ public class SearchController {
 
 		logger.info("/* cri="+cri.toString());
 		List<ContentsVO> search = contentsService.selectSearch(cri);
+		logger.info("/* cri="+search.toString());
 		model.addAttribute("search", search);
 
 		// model.addAttribute("list", service.listCriteria(cri));
