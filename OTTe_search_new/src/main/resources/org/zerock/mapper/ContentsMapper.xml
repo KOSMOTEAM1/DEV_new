@@ -83,16 +83,22 @@
 	<select id="selectRecommend"
 		resultType="org.zerock.domain.ContentsVO">
 		<![CDATA[select distinct c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, m.movieimgfile 
-from genrejoin gj, contents_t c, genre_t gn, favorite_t f, ott o, nation_t n, grade_t g, class_t cl, moviefiles m, actor_t ac, actorjoin acj
-where f.usernum = 297 and gj.genreid=gn.genreid and gj.contentsid=c.contentsid  and acj.contentsid=c.contentsid and c.ottid = o.ottid
-      and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and c.contentsid =m.contenstid and ac.actorid=acj.actorid
-      and  f.favoritevalue=ac.actorname 
-union
-select distinct c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, m.movieimgfile 
-from genrejoin gj, contents_t c, genre_t gn, favorite_t f, ott o, nation_t n, grade_t g, class_t cl, moviefiles m
-where f.usernum = 297 and gj.genreid=gn.genreid and gj.contentsid=c.contentsid and c.ottid = o.ottid
-      and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and c.contentsid =m.contenstid 
-      and  f.favoritevalue=gn.genrename]]>
+		         from genrejoin gj, contents_t c, genre_t gn, favorite_t f, ott o, nation_t n, grade_t g, class_t cl, moviefiles m, actor_t ac, actorjoin acj
+				 where f.usernum = 297 and c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and c.contentsid =m.contenstid 
+    			       and ac.actorid=acj.actorid and acj.contentsid=c.contentsid
+    				   and  f.favoritevalue=ac.actorname
+				 union
+				 select distinct c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, m.movieimgfile 
+				 from genrejoin gj, contents_t c, genre_t gn, favorite_t f, ott o, nation_t n, grade_t g, class_t cl, moviefiles m
+				 where f.usernum = 297  and c.ottid = o.ottid and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and c.contentsid =m.contenstid 
+  				       and gj.genreid=gn.genreid and gj.contentsid=c.contentsid
+     				   and  f.favoritevalue=gn.genrename
+				 union          
+				 select distinct c.contentsid, n.nationname, o.ottname, g.gradename, cl.classname, c.contentstitle, c.contentssummary, c.contentsstart, c.contentsseason, c.contentsepisode, c.contentsscore, c.contentsduration, m.movieimgfile 
+				 from genrejoin gj, contents_t c, genre_t gn, favorite_t f, ott o, nation_t n, grade_t g, class_t cl, moviefiles m, director_t d, directorjoin dj
+				 where f.usernum = 297 and n.nationcode=c.nationcode and g.gradeid=c.gradeid and cl.classid=c.classid and m.contenstid=c.contentsid and o.ottid=c.ottid
+     				   and dj.directorid=d.directorid and dj.contentsid=c.contentsid
+  				       and  f.favoritevalue=d.directorname]]>
 	</select>
 
 
