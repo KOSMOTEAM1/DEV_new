@@ -35,28 +35,35 @@ public class LoginController {
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
 
 	}
-	
 
 	// 로그인 post
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void login(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	public void login(LoginDTO vo, HttpSession session, Model model) throws Exception {
 		logger.info("post login");
 
-		//session.getAttribute("login");
-		UserVO vo = service.login(dto);
-		boolean pwdMatch = false;
+		session.getAttribute("login");
+		UserVO login = service.login(vo);
 
-		if (vo != null) {
-			pwdMatch = pwdEncoder.matches(dto.getUserpassword(), vo.getUserpassword());
+		boolean pwdMatch = pwdEncoder.matches(vo.getUserpassword(), login.getUserpassword());
+
+		if (login != null && pwdMatch == true) {
+			session.setAttribute("login", login);
+		} else {
+			session.setAttribute("login", null);
+			model.addAttribute("userVO", false);
 		}
-		
-		if (vo == null || pwdMatch == false ) {
-			return;
+		if (vo.isUseCookie()) {
+
+			int amount = 60 * 60 * 24 * 7;
+
+			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
+			
+			
+			
 		}
-		
-		model.addAttribute("userVO", vo);
 				
+		
 	}
 
 
@@ -76,13 +83,13 @@ public class LoginController {
 
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 
-			/*if (loginCookie != null) {
+			if (loginCookie != null) {
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(0);
 				response.addCookie(loginCookie);
-				service.keepLogin(vo.getUseremail(), session.getId(), new Date());*/
+				service.keepLogin(vo.getUseremail(), session.getId(), new Date());
 			}
-		
+		}
 
 		return "user/logout";
 	}

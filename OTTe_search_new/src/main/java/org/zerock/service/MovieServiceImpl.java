@@ -27,7 +27,6 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void insertMovie(MovieVO vo) throws Exception {
 		sql.insert(namespace+".insertMovie", vo);
-		sql.insert(namespace+".insertActorjoin", vo);
 	}
 	
 	@Override	

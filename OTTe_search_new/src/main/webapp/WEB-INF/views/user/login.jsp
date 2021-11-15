@@ -8,36 +8,23 @@
 		$(".cencle").on("click", function() {
 			location.href = "/";
 		})
+
 		$("#submit").on("click", function() {
 			if ($("#useremail").val() == "") {
-				alert("이메일을 입력해 주세요.");
+				alert("이메일을 입력해주세요.");
 				$("#useremail").focus();
 				return false;
 			}
+			
 			if ($("#userpassword").val() == "") {
-				alert("비밀번호를 입력해 주세요.");
+				alert("비밀번호를 입력해주세요.");
 				$("#userpassword").focus();
 				return false;
 			}
-			$.ajax({
-				url : "/member/emailChk",
-				type : "post",
-				dataType : "json",
-				data : {
-					"useremail" : $("#useremail").val()
-				},
-				success : function(data) {
-					if (data == 1) {
-						$("#loginForm").submit();
-					} else if (data == 0) {						
-						alert("존재하지 않는 이메일 입니다."); 	
-						return false;
-					}
-				}
-			})
-
+			
+			$("#loginForm").submit();
+			
 		});
-	
 	})
 </script>
 <body>
