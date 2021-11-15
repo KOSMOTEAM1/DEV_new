@@ -25,7 +25,7 @@
 							<div class="col-lg-3 col-md-6 col-sm-6">
 								<div class="product__item">
 									<div class="product__item__pic set-bg"style="cursor: pointer" 
-									OnClick="location.href ='/contents/view?contentsid=${latest.contentsid}'"
+									OnClick="location.href ='/contents/view?contentsid=${wish.contentsid}'"
 										data-setbg="<c:url value="/imgfile${wish.movieimgfile}"/>">
 										
 									</div>
