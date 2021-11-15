@@ -1,5 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
+-<!DOCTYPE html>
+-<html>
+-<head>
+-<meta charset="UTF-8">
+-<meta name="description" content="Anime Template">
+-<meta name="keywords" content="Anime, unica, creative, html">
+-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+-<title>Anime | Template</title>
+-
+-<!-- Google Font -->
+-<link
+-	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+-	rel="stylesheet">
+-<link
+-	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+-	rel="stylesheet">
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css"
 	type="text/css">
@@ -30,6 +46,16 @@
 		</div>
 	<!-- Search model end -->
 
+	<!-- Js Plugins -->
+	<script src="../../resources/js/jquery-3.3.1.min.js"></script>
+	<script src="../../resources/js/bootstrap.min.js"></script>
+	<script src="../../resources/js/player.js"></script>
+	<script src="../../resources/js/jquery.nice-select.min.js"></script>
+	<script src="../../resources/js/mixitup.min.js"></script>
+	<script src="../../resources/js/jquery.slicknav.js"></script>
+	<script src="../../resources/js/owl.carousel.min.js"></script>
+	<script src="../../resources/js/main.js"></script>
+
 	<!-- 서치버튼 -->
 	<script>
 	$(document).ready(function() {
@@ -51,3 +77,6 @@
 	
 	<!-- 서치버튼 -->
 </script>
+
+</body>
+</html>
