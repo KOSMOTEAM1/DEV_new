@@ -107,11 +107,11 @@
 												</div>
 												<div class="card-body">
 													<h4 class="card-title"></h4>
-													<p class="card-text"> <a sytle="font-size: 50px;"> ${insertMovie.contentsid} </a> </p>
+													<p class="card-text"> <a sytle="font-size: 50px;"> ${insertMovie.contentsid}번 영상 </a> </p>
 													<div class="box-body">
 														<div class="form-group" id="filedropHere" sytle="font-size: 50px;">
 															<label for="exampleInputEmail1">
-																<a sytle="font-size: 50px;"> 이미지를 삽입하시겠습니까? </a>
+																<a sytle="font-size: 50px;"> 아래에 이미지를 Drop 해주세요. </a>
 															</label>
 															<div class="fileDrop"></div>
 														</div>
@@ -151,20 +151,22 @@
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<input type="text" name="contentsids" value="${insertMovie.contentsid}" style="display: none;" readonly>
 	<input type="text" name="moviefilenames" value="{{fullName}}" style="display: none;" readonly>
-	<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
 	</span>
   </div>
 </li>                
 </script>
-
+<!-- 바로 위 </span> tag 위에
+<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
+	  임시 제거-->
 <script>
 	var template = Handlebars.compile($("#template").html());
-
+	var count = 0;
 	$(".fileDrop").on("dragenter dragover", function(event) {
 		event.preventDefault();
 	});
 
 	$(".fileDrop").on("drop", function(event) {
+		count = 1;
 		event.preventDefault();
 		alert("이미지를 등록합니다.");
 		var files = event.originalEvent.dataTransfer.files;
@@ -192,7 +194,7 @@
 	$(".uploadedList").on("click", "small", function(event) {
 
 		var that = $(this);
-
+		count = 0;
 		$.ajax({
 			url : "deleteFile",
 			type : "post",
@@ -209,7 +211,16 @@
 	});
 
 	$("#registerForm").submit(
+			
+			
 			function(event) {
+				
+				if(count==0){
+					alert("이미지를 등록해주세요.");
+					return false;
+				}
+				else{
+					alert("이미지가 등록되었습니다.");
 				event.preventDefault();
 
 				var that = $(this);
@@ -225,7 +236,9 @@
 				that.append(str);
 
 				that.get(0).submit();
+			}	
 			});
+	
 </script>
 
 <%@ include file="../include/footer.jspf"%>
