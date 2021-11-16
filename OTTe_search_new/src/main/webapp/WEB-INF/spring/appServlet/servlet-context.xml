@@ -38,8 +38,7 @@
 	<!-- board팀 추가 -->
 	
 	
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 	<beans:bean id="uploadPath" class="java.lang.String">
@@ -68,8 +67,12 @@
 			<mapping path="/main/latest" /> 
 			<mapping path="/main/wishlist" />
 			<mapping path="/user/logout" />
-			<mapping path="/member/*" />	
-			<mapping path="/contents/*" />		
+			<mapping path="/member/profile" />
+			<mapping path="/member/favorite" />		
+			<mapping path="/member/favorite2" />		
+			<mapping path="/member/favorite3" />		
+			<mapping path="/contents/*" />
+			<mapping path="/board/*" />				
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>

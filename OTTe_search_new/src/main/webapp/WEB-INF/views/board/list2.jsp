@@ -71,10 +71,13 @@
 								<br></br>
 							</div>
 							<!-- 게시판 글쓰기 기능 -->
-							<div class="col-md-6" style="text-align: right;">
-								<button type="submit" class="site-btn" id='newBtn' method="get"
-									onclick="location.href='/board/write'">글쓰기</button>
-							</div>
+							<c:set var="I1" value="${user.userid}" />
+							<c:if test="${I1 != null }">
+								<div class="col-md-6" style="text-align: right;">
+									<button type="submit" class="site-btn" id='newBtn' method="get"
+										onclick="location.href='/board/write'">글쓰기</button>
+								</div>
+							</c:if>
 						</div>
 					</div>
 					<!-- 페이지 제목+검색기능 끝 -->
