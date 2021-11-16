@@ -17,7 +17,7 @@
 			<div class="col-lg-8">
 				<div class="footer__nav">
 					<ul>
-						<li><a href="./home">홈</a></li>
+						<li><a href="../main/home">홈</a></li>
 						<li><a href="../main/recommend">취향저격 콘텐츠</a></li>
 						<li><a href="../main/latest">New 콘텐츠</a></li>
 						<li><a href="../main/wishlist">내가 찜한 콘텐츠</a></li>
