@@ -91,7 +91,9 @@ textarea {
 							placeholder="Search for director..">
 					</tr>
 					<tr class="header">
-						<th style="width: 80%;">감독명</th>
+						<th style="width: 80%;"><span style="color: black;">
+						감독명
+						</span></th>
 						<th style="width: 80%;">
 							<button class="btn btn-secondary" id="hidetable"
 								onclick="button2_click();">close</button>
