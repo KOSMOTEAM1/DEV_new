@@ -299,7 +299,7 @@ body {
 					<!-- <input type="date" max="9999-12-31" name="contentsstart"
 						id="contentsstart" placeholder="DATE" format="yy/mm/dd" max="99-12-31"> -->
 					<input type="text" name="contentsstart" id="contentsstart"
-						placeholder="날짜 ? yy/mm/dd">
+						placeholder="날짜 ? yyyy/mm/dd">
 				</div>
 				<div class="col-md-2">
 					CONTENTSSEASON</br> <input type="text" name="contentsseason"

@@ -67,7 +67,7 @@ footer {
         </tr>
                 <tr>
                    <td><input name="contentsstart" readonly="readonly" value='<c:out value="${movieservice.contentssummary}"/>' ></td>
-                      <td><input name="contentsscore" readonly="readonly" value='<fmt:formatDate pattern = "yy/MM/dd" value="${movieservice.contentsstart}"/>' ></td>
+                      <td><input name="contentsscore" readonly="readonly" value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${movieservice.contentsstart}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsseason}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsepisode}"/>' ></td>
                  <td><input name="contentsscore" readonly="readonly" value='<c:out value="${movieservice.contentsscore}"/>' ></td>

@@ -135,7 +135,7 @@ html, body {
 						<td><a class="move"
 							href='<c:out value="${movieservice.contentsid}"/>'> <c:out
 									value="${movieservice.contentstitle}" /></a></td>
-						<td><fmt:formatDate pattern = "yy/MM/dd" value="${movieservice.contentsstart}"/></td>
+						<td><fmt:formatDate pattern = "yyyy/MM/dd" value="${movieservice.contentsstart}"/></td>
 						<td>${movieservice.contentsscore}</td>
 					</tr>
 				</c:forEach>

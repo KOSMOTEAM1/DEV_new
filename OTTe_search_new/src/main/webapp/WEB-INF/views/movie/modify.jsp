@@ -77,7 +77,7 @@ footer {
 					<td><input name="contentssummary"
 						value='<c:out value="${movieservice.contentssummary}"/>'></td>
 					<td><input name="contentsstart"
-						value='<fmt:formatDate pattern = "yy/MM/dd" value="${movieservice.contentsstart}"/>'></td>
+						value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${movieservice.contentsstart}"/>'></td>
 
 
 
