@@ -143,7 +143,6 @@
   <div class="mailbox-attachment-info">
 	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
 	<input type="text" name="filenames" value="{{fullName}}" style="display: none;" readonly>
-	<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
 	</span>
   </div>
 </li>                
