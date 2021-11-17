@@ -151,7 +151,7 @@ textarea {
 	  
 	  
 	  
-   var confirm_val = confirm("장르를 등록하시겠습니까?");
+   var confirm_val = confirm("감독을 등록하시겠습니까?");
    if(confirm_val) {
 	   var checkArr = new Array();
 	   $("input[class='chBox']:checked").each(function(){
