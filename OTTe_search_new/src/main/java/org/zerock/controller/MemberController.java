@@ -251,7 +251,7 @@ public class MemberController {
 
 			title = "Otte 임시 비밀번호 입니다.";
 
-			content = temp.toString();					// content="메일 내용" 암호화 전의 랜덤생성된 비밀번호가 메일 내용으로 됨 
+			content = ("안녕하세요! OTTE 임시 비밀번호 입니다. \n \n [")+(temp.toString())+("] \n \n 로그인 후 비밀번호를 변경해 주세요.");				// content="메일 내용" 암호화 전의 랜덤생성된 비밀번호가 메일 내용으로 됨 
 
 			// 메일 보관함에 저장
 			messageHelper.setFrom(fromMail);
@@ -259,7 +259,7 @@ public class MemberController {
 			messageHelper.setSubject(title);
 			messageHelper.setText(content);
 
-			mailSender.send(message); // 실제 메일 전송
+			mailSender.send(message); // 메일 전송
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}

@@ -185,8 +185,8 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="normal__breadcrumb__text">
-						<h2>Register</h2>
-						<p>Welcome to our site.</p>
+						<h2>회원 가입</h2>
+						<p>우리 홈페이지에 오신 것을 환영합니다.</p>
 					</div>
 				</div>
 			</div>
@@ -200,7 +200,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="login__form">
-						<h3>Register</h3>
+						<h3>회원 가입</h3>
 						<form id="regForm" action="/member/registpost" method="post">							
 							<div class="input__item">
 								<input type="email" id="useremail" name="useremail"
@@ -229,7 +229,7 @@
 							</div>
 						</form>
 						<div class="form-group has-feedback">
-							<button type="button" id="submit" class="site-btn">Register</button>
+							<button type="button" id="submit" class="site-btn">가입하기</button>
 						</div>
 
 					</div>
@@ -240,9 +240,8 @@
 					<div class="login__register">
 
 						<br> <br> <br> <br> <br> <br>
-						<h3>Already user?</h3>
-						<a href="../user/login"><button type="submit" class="site-btn">Login
-								now!</button></a>
+						<h3>이미 회원이신가요?</h3>
+						<a href="../user/login"><button type="submit" class="site-btn"> 로그인하기</button></a>
 
 					</div>
 					<!--   <div class="login__social__links">
